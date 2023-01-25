@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 // import Landlord from '../../server/db/models/Landlord';
 import AuthForm from '../features/auth/AuthForm';
-import Home from '../features/home/Home';
+import TenantHome from '../features/tenant/home/TenantHome.jsx';
 import { me } from './store';
 
 /**
@@ -22,8 +22,8 @@ const AppRoutes = () => {
     <div>
       {isLoggedIn ? (
         <Routes>
-          <Route path="/*" element={<Home />} />
-          <Route to="/home" element={<Home />} />
+          <Route path="/*" element={<TenantHome />} />
+          <Route to="/tenanthome" element={<TenantHome />} />
           {/* <Route to='/landlords' element={<Landlord />} /> */}
         </Routes>
       ) : (
@@ -40,8 +40,13 @@ const AppRoutes = () => {
             path="/signup"
             element={<AuthForm name="signup" displayName="Sign Up" />}
           />
+          <Route
+            path="/tenanthome"
+            element={<TenantHome name="tenanthome" displayName="Tenant Home" />}
+          />
         </Routes>
       )}
+         
     </div>
   );
 };
