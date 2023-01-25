@@ -1,15 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 
-const Unit = db.define('complex',{
-    complexId : {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-    },
-    maintenanceRequestId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-    },
+const Unit = db.define('unit',{
     unitNumber: {
         type: Sequelize.INTEGER,
     },

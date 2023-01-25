@@ -1,36 +1,43 @@
-'use strict'
+"use strict";
 
-const { db, models: { User, Landlord, Unit, Tenant, maintenanceRequest } } = require('../server/db')
+const {
+  db,
+  models: { User, Landlord, Complex, Tenant, MaintenanceRequest, Unit },
+} = require("../server/db");
 
+
+console.log(`this is complex`,Complex)
+console.log(`this is models`, User)
 /**
  * seed - this function clears the database, updates tables to
  *      match the models, and populates the database.
  */
 async function seed() {
-  await db.sync({ force: true }) // clears db and matches models to tables
-  console.log('db synced!')
+  await db.sync({ force: true }); // clears db and matches models to tables
+  console.log("db synced!");
 
   // Creating Users
   const users = await Promise.all([
-    User.create({ username: 'cody', password: '123' }),
-    User.create({ username: 'murphy', password: '123' }),
-  ])
+    User.create({ username: "murphy", password: "123" }),
+    User.create({ username: "cody", password: "123" }),
+  ]);
   //creating landlords
   const landlords = await Promise.all([
     Landlord.create({
-      name: 'Jeff',
-      email: 'jeff@properties.com',
-      phoneNumber: 5622341171,
-    })
-  ])
+      name: "Jeff",
+      email: "jeff@properties.com",
+      phoneNumber: "5622341171",
+    }),
+  ]);
 
   const complexes = await Promise.all([
     Complex.create({
-      propertyName: 'jeffsMobileHomes',
-      address: '117 Washington blvd, Los Angeles, California',
+      propertyName: "jeffsMobileHomes",
+      address: "117 Washington blvd, Los Angeles, California",
       numberOfUnits: 15,
-    })
-  ])
+    }),
+  ]);
+
   const units = await Promise.all([
     Unit.create({
       unitNumber: 1,
@@ -38,7 +45,6 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 1,
-
     }),
     Unit.create({
       unitNumber: 2,
@@ -46,7 +52,6 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
-
     }),
     Unit.create({
       unitNumber: 3,
@@ -54,7 +59,6 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
-
     }),
     Unit.create({
       unitNumber: 4,
@@ -62,7 +66,6 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
-
     }),
     Unit.create({
       unitNumber: 5,
@@ -70,7 +73,6 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
-
     }),
     Unit.create({
       unitNumber: 6,
@@ -78,7 +80,6 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
-
     }),
     Unit.create({
       unitNumber: 7,
@@ -86,7 +87,6 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
-
     }),
     Unit.create({
       unitNumber: 8,
@@ -94,7 +94,6 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
-
     }),
     Unit.create({
       unitNumber: 9,
@@ -102,7 +101,6 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
-
     }),
     Unit.create({
       unitNumber: 10,
@@ -110,7 +108,6 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
-
     }),
     Unit.create({
       unitNumber: 11,
@@ -118,7 +115,6 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
-
     }),
     Unit.create({
       unitNumber: 12,
@@ -126,7 +122,6 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
-
     }),
     Unit.create({
       unitNumber: 13,
@@ -134,7 +129,6 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
-
     }),
     Unit.create({
       unitNumber: 14,
@@ -142,7 +136,6 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: false,
       bedrooms: 2,
-
     }),
     Unit.create({
       unitNumber: 15,
@@ -150,179 +143,154 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
-
     }),
-  ])
+  ]);
   const tenants = await Promise.all([
     Tenant.create({
-      name: 'Will Murphy',
-      email: 'john@smith.com',
-      phoneNumber: '1234567899',
+      name: "Will Murphy",
+      email: "john@smith.com",
+      phoneNumber: "1234567899",
       rentPaid: false,
-      leaseStartDate: 01/01/2023,
-      leaseEndDate: 01/01/2024,
-      dateOfBirth: '08/05/1973',
+      leaseStartDate: "01/01/2023",
+      leaseEndDate: "01/01/2024",
+      dateOfBirth: "08/05/1973",
     }),
     Tenant.create({
-      name: 'Laura Sanchez',
-      email: 'john@smith.com',
-      phoneNumber: '1234567899',
+      name: "Laura Sanchez",
+      email: "john@smith.com",
+      phoneNumber: "1234567899",
       rentPaid: false,
-      leaseStartDate: 01/01/2023,
-      leaseEndDate: 01/01/2024,
-      dateOfBirth: '08/05/1973',
+      leaseStartDate: "01/01/2023",
+      leaseEndDate: "01/01/2024",
+      dateOfBirth: "08/05/1973",
     }),
     Tenant.create({
-      name: 'Fernando Diaz',
-      email: 'john@smith.com',
-      phoneNumber: '1234567899',
+      name: "Fernando Diaz",
+      email: "john@smith.com",
+      phoneNumber: "1234567899",
       rentPaid: false,
-      leaseStartDate: 01/01/2023,
-      leaseEndDate: 01/01/2024,
-      dateOfBirth: '08/05/1973',
+      leaseStartDate: "01/01/2023",
+      leaseEndDate: "01/01/2024",
+      dateOfBirth: "08/05/1973",
     }),
     Tenant.create({
-      name: 'Karla Fernandez',
-      email: 'john@smith.com',
-      phoneNumber: '1234567899',
+      name: "Karla Fernandez",
+      email: "john@smith.com",
+      phoneNumber: "1234567899",
       rentPaid: false,
-      leaseStartDate: 01/01/2023,
-      leaseEndDate: 01/01/2024,
-      dateOfBirth: '08/05/1973',
+      leaseStartDate: "01/01/2023",
+      leaseEndDate: "01/01/2024",
+      dateOfBirth: "08/05/1973",
     }),
     Tenant.create({
-      name: 'Angela Aguilar',
-      email: 'john@smith.com',
-      phoneNumber: '1234567899',
+      name: "Angela Aguilar",
+      email: "john@smith.com",
+      phoneNumber: "1234567899",
       rentPaid: false,
-      leaseStartDate: 01/01/2023,
-      leaseEndDate: 01/01/2024,
-      dateOfBirth: '08/05/1973',
+      leaseStartDate: "01/01/2023",
+      leaseEndDate: "01/01/2024",
+      dateOfBirth: "08/05/1973",
     }),
     Tenant.create({
-      name: 'Noah Varela',
-      email: 'john@smith.com',
-      phoneNumber: '1234567899',
+      name: "Noah Varela",
+      email: "john@smith.com",
+      phoneNumber: "1234567899",
       rentPaid: false,
-      leaseStartDate: 01/01/2023,
-      leaseEndDate: 01/01/2024,
-      dateOfBirth: '08/05/1973',
+      leaseStartDate: "01/01/2023",
+      leaseEndDate: "01/01/2024",
+      dateOfBirth: "08/05/1973",
     }),
     Tenant.create({
-      name: 'Alfonso Gonzalez',
-      email: 'john@smith.com',
-      phoneNumber: '1234567899',
+      name: "Alfonso Gonzalez",
+      email: "john@smith.com",
+      phoneNumber: "1234567899",
       rentPaid: false,
-      leaseStartDate: 01/01/2023,
-      leaseEndDate: 01/01/2024,
-      dateOfBirth: '08/05/1973',
+      leaseStartDate: "01/01/2023",
+      leaseEndDate: "01/01/2024",
+      dateOfBirth: "08/05/1973",
     }),
     Tenant.create({
-      name: 'Kevin Guerrero',
-      email: 'john@smith.com',
-      phoneNumber: '1234567899',
+      name: "Kevin Guerrero",
+      email: "john@smith.com",
+      phoneNumber: "1234567899",
       rentPaid: false,
-      leaseStartDate: 01/01/2023,
-      leaseEndDate: 01/01/2024,
-      dateOfBirth: '08/05/1973',
+      leaseStartDate: "01/01/2023",
+      leaseEndDate: "01/01/2024",
+      dateOfBirth: "08/05/1973",
     }),
     Tenant.create({
-      name: 'Issac Ramirez',
-      email: 'john@smith.com',
-      phoneNumber: '1234567899',
+      name: "Issac Ramirez",
+      email: "john@smith.com",
+      phoneNumber: "1234567899",
       rentPaid: false,
-      leaseStartDate: 01/01/2023,
-      leaseEndDate: 01/01/2024,
-      dateOfBirth: '08/05/1973',
+      leaseStartDate: "01/01/2023",
+      leaseEndDate: "01/01/2024",
+      dateOfBirth: "08/05/1973",
     }),
     Tenant.create({
-      name: 'Carmine Ichelli',
-      email: 'john@smith.com',
-      phoneNumber: '1234567899',
+      name: "Carmine Ichelli",
+      email: "john@smith.com",
+      phoneNumber: "1234567899",
       rentPaid: false,
-      leaseStartDate: 01/01/2023,
-      leaseEndDate: 01/01/2024,
-      dateOfBirth: '08/05/1973',
+      leaseStartDate: "01/01/2023",
+      leaseEndDate: "01/01/2024",
+      dateOfBirth: "08/05/1973",
     }),
     Tenant.create({
-      name: 'Rudy Dawson',
-      email: 'john@smith.com',
-      phoneNumber: '1234567899',
+      name: "Rudy Dawson",
+      email: "john@smith.com",
+      phoneNumber: "1234567899",
       rentPaid: false,
-      leaseStartDate: 01/01/2023,
-      leaseEndDate: 01/01/2024,
-      dateOfBirth: '08/05/1973',
+      leaseStartDate: "01/01/2023",
+      leaseEndDate: "01/01/2024",
+      dateOfBirth: "08/05/1973",
     }),
     Tenant.create({
-      name: 'Grace Lee',
-      email: 'john@smith.com',
-      phoneNumber: '1234567899',
+      name: "Grace Lee",
+      email: "john@smith.com",
+      phoneNumber: "1234567899",
       rentPaid: false,
-      leaseStartDate: 01/01/2023,
-      leaseEndDate: 01/01/2024,
-      dateOfBirth: '08/05/1973',
+      leaseStartDate: "01/01/2023",
+      leaseEndDate: "01/01/2024",
+      dateOfBirth: "08/05/1973",
     }),
     Tenant.create({
-      name: 'Brian Sanchez',
-      email: 'john@smith.com',
-      phoneNumber: '1234567899',
+      name: "Brian Sanchez",
+      email: "john@smith.com",
+      phoneNumber: "1234567899",
       rentPaid: false,
-      leaseStartDate: 01/01/2023,
-      leaseEndDate: 01/01/2024,
-      dateOfBirth: '08/05/1973',
+      leaseStartDate: "01/01/2023",
+      leaseEndDate: "01/01/2024",
+      dateOfBirth: "08/05/1973",
     }),
     Tenant.create({
-      name: 'Abraham Lopez',
-      email: 'tstark@gmail.com',
-      phoneNumber: '1234567899',
+      name: "Abraham Lopez",
+      email: "tstark@gmail.com",
+      phoneNumber: "1234567899",
       rentPaid: true,
-      leaseStartDate: 01/01/2023,
-      leaseEndDate: 01/01/2024,
-      dateOfBirth: '01/01/1990',
+      leaseStartDate: "01/01/2023",
+      leaseEndDate: "01/01/2024",
+      dateOfBirth: "01/01/1990",
     }),
-  ])
+  ]);
 
   const maintenanceRequests = await Promise.all([
-    maintenanceRequest.create({
-      type: 'plumbing',
-      severity: 'low',
-      description: 'the toilet takes a long time to refill',
-    })
-  ])
+    MaintenanceRequest.create({
+      type: "plumbing",
+      severity: "low",
+      description: "the toilet takes a long time to refill",
+    }),
+  ]);
 
-  console.log(`seeded ${users.length} users`)
-  console.log(`seeded ${landlords.length} users`)
-  console.log(`seeded ${complexes.length} users`)
-  console.log(`seeded ${units.length} users`)
-  console.log(`seeded ${tenants.length} users`)
-  console.log(`seeded ${maintenanceRequests.length} users`)
-  console.log(`seeded successfully`)
-  return {
-    users: {
-      cody: users[0],
-      murphy: users[1]
-    },
-    landlords: {
-      Jeff: landlords[0],
-    },
-    complexes: {
-      jeffsMobileHomes: complexes[0],
-    },
-    units: {
-      1: units[0],
-      2: units[1],
-      3: units[2],
-      4: units[3],
-      5: units[4],
-      6: units[5],
-      7: units[6],
-      8: units[7],
-    },
-    tenants: {
-      
-    }
-  }
-}
+  console.log(`seeded ${users.length} users`);
+  console.log(`seeded ${landlords.length} landlords`);
+  console.log(`seeded ${complexes.length} complexes`);
+  console.log(`seeded ${units.length} units`);
+  console.log(`seeded ${tenants.length} tenants`);
+  console.log(`seeded ${maintenanceRequests.length} maintenanceRequests`);
+  console.log(`seeded successfully`);
+
+ }
 
 /*
  We've separated the `seed` function from the `runSeed` function.
@@ -330,16 +298,16 @@ async function seed() {
  The `seed` function is concerned only with modifying the database.
 */
 async function runSeed() {
-  console.log('seeding...')
+  console.log("seeding...");
   try {
-    await seed()
+    await seed();
   } catch (err) {
-    console.error(err)
-    process.exitCode = 1
+    console.error(err);
+    process.exitCode = 1;
   } finally {
-    console.log('closing db connection')
-    await db.close()
-    console.log('db connection closed')
+    console.log("closing db connection");
+    await db.close();
+    console.log("db connection closed");
   }
 }
 
@@ -349,8 +317,8 @@ async function runSeed() {
   any errors that might occur inside of `seed`.
 */
 if (module === require.main) {
-  runSeed()
+  runSeed();
 }
 
 // we export the seed function for testing purposes (see `./seed.spec.js`)
-module.exports = seed
+module.exports = seed;
