@@ -1,0 +1,25 @@
+const Sequelize = require('sequelize')
+const db = require('../db')
+
+const Landlord = db.define('landlord', {
+    name: {
+      type: Sequelize.STRING,
+      unique: true,
+      allowNull: false
+    },
+    phoneNumber: {
+      type: Sequelize.INTEGER,
+      validate: {
+        isNumeric: true,
+      }, 
+    },
+    email: {
+      type: Sequelize.STRING,
+      validate: {
+        isEmail: true,
+      }, 
+      allowNull: false
+    }
+  })
+  
+  module.exports = Landlord
