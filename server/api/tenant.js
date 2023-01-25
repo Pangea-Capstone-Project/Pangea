@@ -12,6 +12,7 @@ router.get("/", async(req,res,next) =>{
         res.json(tenants)
     } catch(err){
         next(err)
-        console.log(`Error on Tenant`,err)
+        console.log(`Error on Tenant`)
+        next(err)
     }
 });

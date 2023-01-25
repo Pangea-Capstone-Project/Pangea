@@ -8,7 +8,7 @@ const Landlord = db.define('landlord', {
       allowNull: false
     },
     phoneNumber: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING,
       validate: {
         isNumeric: true,
       }, 
