@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Navbar from '../features/navbar/Navbar';
+import LandlordNavbar from '../features/navbar/LandlordNavbar';
 import AppRoutes from './AppRoutes';
 
 const App = () => {
   return (
     <div>
-      <Navbar />
+      <LandlordNavbar />
       <AppRoutes />
     </div>
   );

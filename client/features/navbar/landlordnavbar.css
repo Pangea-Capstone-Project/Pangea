@@ -1,0 +1,39 @@
+#navDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: #1E56A0;
+    align-items: center;
+}
+
+#title{
+    text-align: center;
+    color: #163172;
+}
+
+.navLinks{
+    text-decoration: none;
+    color: #F6F6F6;
+    font-size: 20px;
+}
+
+#logoutBtn{
+    height: 25px;
+    font-size: 15px;
+}
+
+#loginBtns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.landtenBtns{
+    background-color: #1E56A0;
+    color: #F6F6F6;
+}
+
+#loginDiv{
+    display: flex;
+    flex-direction: column;
+}
