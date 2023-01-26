@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 // import Landlord from '../../server/db/models/Landlord';
 import AuthForm from '../features/auth/AuthForm';
+import MaintenanceRequest from '../features/maintenanceRequest/MaintenanceRequest';
 import TenantHome from '../features/tenant/home/TenantHome.jsx';
 import { me } from './store';
 
@@ -43,6 +44,10 @@ const AppRoutes = () => {
           <Route
             path="/tenanthome"
             element={<TenantHome name="tenanthome" displayName="Tenant Home" />}
+          />
+          <Route
+            path='/workOrders'
+            element={<MaintenanceRequest name="workOrders" displayName="Work Orders" />}
           />
         </Routes>
       )}
