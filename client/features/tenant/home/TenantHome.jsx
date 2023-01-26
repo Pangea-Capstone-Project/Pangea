@@ -124,7 +124,7 @@ const TenantHome = () => {
                 </AllButtons>
                 <MessageCount style={{
                         zIndex: (messageCount === 0) ? "-1" : "2"
-                    }}>{messageCount}</MessageCount>
+                    }}>{(messageCount >= 99) ? 99 : messageCount}</MessageCount>
             </MessageButtonAndNumber>
         </Background>
     )
