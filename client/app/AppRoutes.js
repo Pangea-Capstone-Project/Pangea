@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Route, Routes } from "react-router-dom";
 // import Landlord from '../../server/db/models/Landlord';
-import AuthForm from '../features/auth/AuthForm';
-import TenantHome from '../features/tenant/home/TenantHome.jsx';
-import { me } from './store';
+import AuthForm from "../features/auth/AuthForm";
+import TenantHome from "../features/tenant/home/TenantHome.jsx";
+import Dashboard from "../pages/dashboard/Dashboard.jsx";
+
+import { me } from "./store";
 
 /**
  * COMPONENT
@@ -22,16 +24,13 @@ const AppRoutes = () => {
     <div>
       {isLoggedIn ? (
         <Routes>
-          <Route path="/*" element={<TenantHome />} />
+          <Route path="/*" element={<Dashboard />} />
           <Route to="/tenanthome" element={<TenantHome />} />
           {/* <Route to='/landlords' element={<Landlord />} /> */}
         </Routes>
       ) : (
         <Routes>
-          <Route
-            path="/*"
-            element={<AuthForm name="login" displayName="Login" />}
-          />
+        <Route path="/*" element={<Dashboard />} />
           <Route
             path="/login"
             element={<AuthForm name="login" displayName="Login" />}
@@ -46,7 +45,6 @@ const AppRoutes = () => {
           />
         </Routes>
       )}
-         
     </div>
   );
 };
