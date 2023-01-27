@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Sidebar from "../../components/sidebar/Sidebar.jsx";
-import Navbar from "../../components/navbar/Navbar.jsx";
 import "./dashboard.scss";
 import Widget from "../../components/widget/Widget.jsx";
 import Featured from "../../components/featured/Featured.jsx";

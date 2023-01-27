@@ -19,7 +19,7 @@ const RentBox = styled.div`
 border: 3px solid #1E56A0;
 color: #1E56A0;
 border-radius: 20px;
-width 45vw;
+width: 45vw;
 height: 15vh;
 margin: 2rem;
 display: flex;
