@@ -70,7 +70,9 @@ const AppRoutes = () => {
           <Route
             path="/messages"
             element={<Messages name="messages" displayName="Messages" />}
+          />
 
+          <Route
             path='/workorders'
             element={<MaintenanceRequest name="workOrders" displayName="Work Orders" />}
           />
