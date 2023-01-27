@@ -15,7 +15,7 @@ const LandlordNavbar = () => {
   };
 
   return (
-    <div>
+    <div id='titleDiv'>
       <h1 id='title'>Welcome to Pangea</h1>
       <nav>
         {isLoggedIn ? (
@@ -33,19 +33,11 @@ const LandlordNavbar = () => {
         ) : (
           <div>
             {/* The navbar will show these links before you log in */}
-            <div id='loginBtns'>
-            <button className='landtenBtns'>Landlords</button>
-            <button className='landtenBtns'>Tenants</button>
-            </div>
             {/* <AuthForm name="login" displayName="Login"/> */}
-            <div id='loginDiv'>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Sign Up</Link>
-            </div>
           </div>
         )}
       </nav>
-      <hr />
+      {/* <hr /> */}
     </div>
   );
 };

@@ -2,13 +2,21 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    background-color: #1E56A0;
+    background-color: #163172;
     align-items: center;
+    border-radius: 10px;
+}
+
+#titleDiv{
+    background-color: #D6E4F0;
+    border: solid #163172;
 }
 
 #title{
     text-align: center;
-    color: #163172;
+    color: #1E56A0;
+    font-family: fantasy;
+    font-size: 50px;
 }
 
 .navLinks{
@@ -28,10 +36,6 @@
     justify-content: space-around;
 }
 
-.landtenBtns{
-    background-color: #1E56A0;
-    color: #F6F6F6;
-}
 
 #loginDiv{
     display: flex;
