@@ -3,12 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components'
 
-// const [makeEmergencyReq, setMakeEmergencyReq] = useState(false)
-
-
-
-
-
 
 const Background = styled.div`
 display: flex;
@@ -73,9 +67,24 @@ display: flex;
 //dummy daters
 const messageCount = 10
 const landlordPhone = "757-222-1111"
-const makeEmergencyReq = true
 
 const MaintenanceReq = () => {
+
+    const [makeEmergencyReq, setMakeEmergencyReq] = useState(false)
+    const [messageCount, setMessageCount] = useState(0)
+
+    useEffect(() => {
+        console.log("Make Em Req?", makeEmergencyReq)
+    })
+
+    function detectMakeEmReqButtonClick() {
+        makeEmergencyReq ? setMakeEmergencyReq(false) : setMakeEmergencyReq(true)
+    }
+
+    function changeMessageCount() {
+        setMessageCount(messageCount +10)
+    }
+
     //message counter disappears when the tenant has no unread messages.
     //message counter stops displaying numbers of messages after 99. 
 
@@ -86,14 +95,17 @@ const MaintenanceReq = () => {
                 Examples of emergency maintenance situations include: Burst Pipes, Gas Leaks,
                 Electrical Hazards, or any other immediate threat to life or the property.
                 For a situation where someone is in danger, or a fire, call 911.<br></br>
-                Please check messages for the status of maintenance requests. 
+                Please check messages for the status of maintenance requests.
             </EmInfoBox>
-                <EmContact>
+            <EmContact>
                 {makeEmergencyReq ? <p>Landlord Emergency Contact: {landlordPhone}</p> : <></>}
-                </EmContact>
+            </EmContact>
 
-            <AllButtons>
-                Emergency Request
+            <AllButtons onClick={detectMakeEmReqButtonClick} style={{
+                backgroundColor: makeEmergencyReq ? "red" : ""
+            }}>
+            {makeEmergencyReq ? "Cancel" : "Emergency Request"}
+                
             </AllButtons>
             <AllButtons>
                 Initiate Request
@@ -107,6 +119,7 @@ const MaintenanceReq = () => {
                     zIndex: (messageCount === 0) ? "-1" : "2"
                 }}>{(messageCount >= 99) ? 99 : messageCount}</MessageCount>
             </MessageButtonAndNumber>
+            <h2 onClick={changeMessageCount}>Add Messages Test</h2>
         </Background>
     )
 }
