@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components'
+import { Link } from 'react-router-dom';
 
 const Background = styled.div`
 display: flex;
@@ -80,12 +82,27 @@ display: flex;
 `
 //dummy daters
 const rent = 1000
-const rentDue = 0
 const tenantName = "Pepe Silvia"
 const tenantUnit = "202"
 const messageCount = 100
 
 const TenantHome = () => {
+
+    const [messageCount, setMessageCount] = useState(0)
+    const [rentDue, setRentDue] = useState(0)
+    const [rent, setRent] = useState(0)
+
+    function changeMessageCount() {
+        setMessageCount(messageCount + 10)
+    }
+    function increaseRentDueClicked() {
+        setRentDue(rentDue + 1000)
+    }
+    function increaseRentClicked() {
+        setRent(rent + 1000)
+    }
+
+
     //rentDue turns green if the tenant is caught up on rent, aka. $0.
     //message counter disappears when the tenant has no unread messages.
     //message counter stops displaying numbers of messages after 99. 
@@ -113,23 +130,35 @@ const TenantHome = () => {
 
                 </DueRentBox>
             </RentBox>
-            <AllButtons>
-                Make A Payment
-            </AllButtons>
-            <AllButtons>
-                Past Payments
-            </AllButtons>
-            <AllButtons>
-                Submit Maintenance Request
-            </AllButtons>
-            <MessageButtonAndNumber>
+            <Link to={"/makeapayment"}>
                 <AllButtons>
-                    Messages
+                    Make A Payment
                 </AllButtons>
-                <MessageCount style={{
+            </Link>
+            <Link to={"/pastpayments"}>
+                <AllButtons>
+                    Past Payments
+                </AllButtons>
+            </Link>
+            <Link to={"/maintenancereq"}>
+                <AllButtons>
+                    Submit Maintenance Request
+                </AllButtons>
+            </Link>
+            <Link to={"/messages"}>
+                <MessageButtonAndNumber>
+                    <AllButtons>
+                        Messages
+                    </AllButtons>
+
+                    <MessageCount style={{
                         zIndex: (messageCount === 0) ? "-1" : "2"
                     }}>{(messageCount >= 99) ? 99 : messageCount}</MessageCount>
-            </MessageButtonAndNumber>
+                </MessageButtonAndNumber>
+            </Link>
+            <h2 onClick={changeMessageCount}>Add Messages Test</h2>
+            <h2 onClick={increaseRentClicked}>Increase Rent Test</h2>
+            <h2 onClick={increaseRentDueClicked}>Increase Rent Due Test</h2>
         </Background>
     )
 }
