@@ -78,14 +78,18 @@ margin-left: -14px;
 const MessageButtonAndNumber = styled.div`
 display: flex;
 `
-
+//dummy daters
 const rent = 1000
-const rentDue = 2000
+const rentDue = 0
 const tenantName = "Pepe Silvia"
 const tenantUnit = "202"
-const messageCount = 10
+const messageCount = 100
 
 const TenantHome = () => {
+    //rentDue turns green if the tenant is caught up on rent, aka. $0.
+    //message counter disappears when the tenant has no unread messages.
+    //message counter stops displaying numbers of messages after 99. 
+
     return (
         <Background>
             <Title>Tenant Home</Title>
