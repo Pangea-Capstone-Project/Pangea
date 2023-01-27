@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchMaintenanceRequestAsync,
   selectMaintenanceRequests,
-} from "./maintenanceRequestSlice";
+} from "./allMaintenanceRequestSlice";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -77,9 +77,7 @@ const PreviewContainer = styled.div`
   &.high-severity {
     background-color: #f92a2a;
   }
-  .blurred-background {
-    backdrop-blur: 200px;
-  }
+  display: ${({ isPreviewVisible }) => (isPreviewVisible ? "block" : "none")};
 `;
 
 const MaintenanceRequest = () => {
@@ -96,11 +94,19 @@ const MaintenanceRequest = () => {
     dispatch(fetchMaintenanceRequestAsync());
   }, [dispatch]);
 
-  const handleClick = (maintenanceRequest) => {
-    setIsPreviewVisible(!isPreviewVisible);
+  // const handleClick = (maintenanceRequest) => {
+  //   setIsPreviewVisible(!isPreviewVisible);
+  //   setSelectedMaintenanceRequest(maintenanceRequest);
+  // };
+
+  const handleMouseEnter = (maintenanceRequest) => {
+    setIsPreviewVisible(true);
     setSelectedMaintenanceRequest(maintenanceRequest);
   };
 
+  const handleMouseLeave = () => {
+    setIsPreviewVisible(false);
+  };
   return (
     <div>
       <MainContainer>
@@ -109,40 +115,41 @@ const MaintenanceRequest = () => {
       <WorkOrdersContainer>
         {maintenanceRequests.map((maintenanceRequest) => (
           <LinkContainer
-            className={`
-      ${
-        maintenanceRequest.severity.toLowerCase().charAt(0) === "l"
-          ? ""
-          : maintenanceRequest.severity.toLowerCase().charAt(0) === "m"
-          ? "medium-severity"
-          : "high-severity"
-      }
-      `}
-            onClick={() => handleClick(maintenanceRequest)}
+          className={`
+          ${
+            maintenanceRequest.severity.toLowerCase().charAt(0) === "l"
+            ? ""
+            : maintenanceRequest.severity.toLowerCase().charAt(0) === "m"
+            ? "medium-severity"
+            : "high-severity"
+          }
+          `}
+          onMouseEnter={() => handleMouseEnter(maintenanceRequest)}
+          onMouseLeave={handleMouseLeave}
           >
+            <Link to={`/workOrders/${maintenanceRequest.id}`}>
             <Unit>Unit: #123{maintenanceRequest.unit}</Unit>
             <p>Severity: {maintenanceRequest.severity}</p>
             <p>{maintenanceRequest.type}</p>
+            </Link>
           </LinkContainer>
         ))}
         {isPreviewVisible && (
           <PreviewContainer
-            className={`
+          isPreviewVisible={isPreviewVisible}
+          className={`
           ${
             selectedMaintenanceRequest.severity.toLowerCase().charAt(0) === "l"
-              ? ""
-              : selectedMaintenanceRequest.severity.toLowerCase().charAt(0) ===
-                "m"
+            ? ""
+            : selectedMaintenanceRequest.severity.toLowerCase().charAt(0) ===
+            "m"
               ? "medium-severity"
               : "high-severity"
-          }
-          `}
-          >
-            <Link to={`/workOrder`}>
-              <p style={{ fontWeight: "bold" }}>
-                Unit: #123{selectedMaintenanceRequest.unit}
-              </p>
-            </Link>
+            }
+            `}
+            >
+            <p style={{ fontWeight: "bold" }}>
+              Unit: #123{selectedMaintenanceRequest.unit}</p>
             <p>Severity: {selectedMaintenanceRequest.severity}</p>
             <p>Type: {selectedMaintenanceRequest.type}</p>
             <p>Description: {selectedMaintenanceRequest.description}</p>

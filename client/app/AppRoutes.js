@@ -47,11 +47,11 @@ const AppRoutes = () => {
             element={<TenantHome name="tenanthome" displayName="Tenant Home" />}
           />
           <Route
-            path='/workOrders'
+            path='/workorders'
             element={<MaintenanceRequest name="workOrders" displayName="Work Orders" />}
           />
           <Route
-            path='/workOrder'
+            path='/workorders/:id'
             element={<SingleMaintenanceRequest name="workOrder" displayName="Work Order" />}
           />
         </Routes>
