@@ -2,8 +2,10 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../app/store';
+import './navbar.css'
+import AuthForm from '../auth/AuthForm';
 
-const Navbar = () => {
+const LandlordNavbar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -13,28 +15,31 @@ const Navbar = () => {
   };
 
   return (
-    <div>
-      <h1>Pangea</h1>
+    <div id='titleDiv'>
+      <h1 id='title'>Welcome to Pangea</h1>
       <nav>
         {isLoggedIn ? (
-          <div>
+          <div id='navDiv'>
             {/* The navbar will show these links after you log in */}
-            <Link to="/home">Home</Link>
-            <button type="button" onClick={logoutAndRedirectHome}>
+            <Link className='navLinks' to="/home">Home</Link>
+            <Link className='navLinks' to="/tenant">Tenants</Link>
+            <Link className='navLinks' to="/workorders">Work Orders</Link>
+            <Link className='navLinks' to="/pastdue">Past Due Payments</Link>
+            <Link className='navLinks' to="/chat">Chat</Link>
+            <button id='logoutBtn' type="button" onClick={logoutAndRedirectHome}>
               Logout
             </button>
           </div>
         ) : (
           <div>
             {/* The navbar will show these links before you log in */}
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Sign Up</Link>
+            {/* <AuthForm name="login" displayName="Login"/> */}
           </div>
         )}
       </nav>
-      <hr />
+      {/* <hr /> */}
     </div>
   );
 };
 
-export default Navbar;
+export default LandlordNavbar;
