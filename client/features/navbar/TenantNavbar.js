@@ -5,7 +5,7 @@ import { logout } from '../../app/store';
 import './navbar.css'
 import AuthForm from '../auth/AuthForm';
 
-const LandlordNavbar = () => {
+const TenantNavbar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -22,10 +22,9 @@ const LandlordNavbar = () => {
           <div id='navDiv'>
             {/* The navbar will show these links after you log in */}
             <Link className='navLinks' to="/home">Home</Link>
-            <Link className='navLinks' to="/tenant">Tenants</Link>
-            <Link className='navLinks' to="/workorders">Work Orders</Link>
-            <Link className='navLinks' to="/pastdue">Past Due Payments</Link>
-            <Link className='navLinks' to="/chat">Chat</Link>
+            <Link className='navLinks' to="/tenant">Submit Work Order</Link>
+            <Link className='navLinks' to="/pastdue">Contact</Link>
+            <Link className='navLinks' to="/chat">Make A Payment</Link>
             <button id='logoutBtn' type="button" onClick={logoutAndRedirectHome}>
               Logout
             </button>
@@ -50,4 +49,4 @@ const LandlordNavbar = () => {
   );
 };
 
-export default LandlordNavbar;
+export default TenantNavbar;
