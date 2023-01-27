@@ -21,6 +21,7 @@ const Tenant = db.define("tenant",{
     // },
     rentPaid: {
         type: Sequelize.BOOLEAN,
+        defaultValue: false,
     },
     // rentDueDate: {
     //     type: Sequelize.STRING,

@@ -6,6 +6,7 @@ const {
     models: { Tenant },
 } = require("../db")
 
+// All tenants
 router.get("/", async(req,res,next) =>{
     try{
         const tenants = await Tenant.findAll()
