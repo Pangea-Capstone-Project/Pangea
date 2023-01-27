@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
+import AllTenants from "../features/allTenants/AllTenants";
 // import Landlord from '../../server/db/models/Landlord';
 import AuthForm from "../features/auth/AuthForm";
 import MaintenanceRequest from '../features/maintenanceRequest/MaintenanceRequest';
@@ -71,6 +72,8 @@ const AppRoutes = () => {
             path="/messages"
             element={<Messages name="messages" displayName="Messages" />}
           />
+          
+          {/* This route is for landlord View Workorders */}
 
           <Route
             path='/workorders'
@@ -87,6 +90,12 @@ const AppRoutes = () => {
           <Route
             path='/workorders/:id'
             element={<SingleMaintenanceRequest name="workOrder" displayName="Work Order" />}
+          />
+
+          {/* This route is for landlord View All Tenants */}
+          <Route 
+             path='/tenants'
+             element={<AllTenants name="tenants" displayName="Tenants"/>}       
           />
         </Routes>
       )}

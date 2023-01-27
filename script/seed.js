@@ -16,6 +16,13 @@ async function seed() {
   await db.sync({ force: true }); // clears db and matches models to tables
   console.log("db synced!");
 
+// Try Delete later if broken
+
+// await Unit.create({tenantId : Tenant.id})
+
+
+
+
   // Creating Users
   const users = await Promise.all([
     User.create({ username: "murphy", password: "123" }),
@@ -271,6 +278,15 @@ async function seed() {
       leaseStartDate: "01/01/2023",
       leaseEndDate: "01/01/2024",
       dateOfBirth: "01/01/1990",
+    }),
+    Tenant.create({
+      name: "Abraham Lincoln",
+      email: "linAb@gmail.com",
+      phoneNumber: "1234567899",
+      rentPaid: true,
+      leaseStartDate: "01/01/2023",
+      leaseEndDate: "01/01/2024",
+      dateOfBirth: "01/01/1900",
     }),
   ]);
 
