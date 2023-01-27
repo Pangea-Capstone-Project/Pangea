@@ -74,6 +74,15 @@ const AppRoutes = () => {
           />
           
           {/* This route is for landlord View Workorders */}
+
+          <Route
+            path='/workorders'
+            element={<MaintenanceRequest name="workOrders" displayName="Work Orders" />}
+          />
+          <Route
+            path='/workorders/:id'
+            element={<SingleMaintenanceRequest name="workOrder" displayName="Work Order" />}
+          />
           <Route
             path='/workorders'
             element={<MaintenanceRequest name="workOrders" displayName="Work Orders" />}
