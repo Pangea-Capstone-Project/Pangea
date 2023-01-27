@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../app/store';
 import './navbar.css'
 import AuthForm from '../auth/AuthForm';
+import accountIcon from './accountIcon.png'
 
 const TenantNavbar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
@@ -28,6 +29,7 @@ const TenantNavbar = () => {
             <button id='logoutBtn' type="button" onClick={logoutAndRedirectHome}>
               Logout
             </button>
+            <img id='accountIcon' src={accountIcon} alt='AccountIcon'/>
           </div>
         ) : (
           <div>
