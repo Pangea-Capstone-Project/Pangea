@@ -276,9 +276,19 @@ async function seed() {
 
   const maintenanceRequests = await Promise.all([
     MaintenanceRequest.create({
-      type: "plumbing",
-      severity: "low",
-      description: "the toilet takes a long time to refill",
+      type: "Plumbing",
+      severity: "Low",
+      description: "The toilet takes a long time to refill",
+    }),
+    MaintenanceRequest.create({
+      type: "Wall",
+      severity: "Medium",
+      description: "The wall has a small hole",
+    }),
+    MaintenanceRequest.create({
+      type: "Flooring",
+      severity: "High",
+      description: "My Floors are missing",
     }),
   ]);
 
