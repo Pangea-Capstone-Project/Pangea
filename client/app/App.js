@@ -11,6 +11,7 @@ const App = () => {
       <LandlordNavbar />
       <AppRoutes />
       <Footer />
+      {/* dont mind me */}
     </div>
   );
 };
