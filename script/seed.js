@@ -16,12 +16,9 @@ async function seed() {
   await db.sync({ force: true }); // clears db and matches models to tables
   console.log("db synced!");
 
-// Try Delete later if broken
-
-// await Unit.create({tenantId : Tenant.id})
-
-
-
+// This 1 Landlord
+    // Has 1 Complex
+      // With 15 Units and 15 Tenants
 
   // Creating Users
   const users = await Promise.all([
@@ -29,14 +26,7 @@ async function seed() {
     User.create({ username: "cody", password: "123" }),
   ]);
   //creating landlords
-  const landlords = await Promise.all([
-    Landlord.create({
-      name: "Jeff",
-      email: "jeff@properties.com",
-      phoneNumber: "5622341171",
-    }),
-  ]);
-
+  
   const complexes = await Promise.all([
     Complex.create({
       propertyName: "jeffsMobileHomes",
@@ -44,6 +34,16 @@ async function seed() {
       numberOfUnits: 15,
     }),
   ]);
+  
+  const landlords = await Promise.all([
+    Landlord.create({
+      name: "Jeff",
+      email: "jeff@properties.com",
+      phoneNumber: "5622341171",
+      complexId: complexes[0].id,
+    }),
+  ]);
+ 
 
   const units = await Promise.all([
     Unit.create({
@@ -52,6 +52,7 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 1,
+      complexId: complexes[0].id,
     }),
     Unit.create({
       unitNumber: 2,
@@ -59,6 +60,7 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
+      complexId: complexes[0].id,
     }),
     Unit.create({
       unitNumber: 3,
@@ -66,6 +68,7 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
+      complexId: complexes[0].id,
     }),
     Unit.create({
       unitNumber: 4,
@@ -73,6 +76,7 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
+      complexId: complexes[0].id,
     }),
     Unit.create({
       unitNumber: 5,
@@ -80,6 +84,7 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
+      complexId: complexes[0].id,
     }),
     Unit.create({
       unitNumber: 6,
@@ -87,6 +92,7 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
+      complexId: complexes[0].id,
     }),
     Unit.create({
       unitNumber: 7,
@@ -94,6 +100,7 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
+      complexId: complexes[0].id,
     }),
     Unit.create({
       unitNumber: 8,
@@ -101,6 +108,7 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
+      complexId: complexes[0].id,
     }),
     Unit.create({
       unitNumber: 9,
@@ -108,6 +116,7 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
+      complexId: complexes[0].id,
     }),
     Unit.create({
       unitNumber: 10,
@@ -115,6 +124,7 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
+      complexId: complexes[0].id,
     }),
     Unit.create({
       unitNumber: 11,
@@ -122,6 +132,7 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
+      complexId: complexes[0].id,
     }),
     Unit.create({
       unitNumber: 12,
@@ -129,6 +140,7 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
+      complexId: complexes[0].id,
     }),
     Unit.create({
       unitNumber: 13,
@@ -136,6 +148,7 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
+      complexId: complexes[0].id,
     }),
     Unit.create({
       unitNumber: 14,
@@ -143,6 +156,7 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: false,
       bedrooms: 2,
+      complexId: complexes[0].id,
     }),
     Unit.create({
       unitNumber: 15,
@@ -150,6 +164,7 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 2,
+      complexId: complexes[0].id,
     }),
   ]);
   const tenants = await Promise.all([
@@ -161,6 +176,7 @@ async function seed() {
       leaseStartDate: "01/01/2023",
       leaseEndDate: "01/01/2024",
       dateOfBirth: "08/05/1973",
+      unitId: units[0].id,
     }),
     Tenant.create({
       name: "Laura Sanchez",
@@ -170,6 +186,7 @@ async function seed() {
       leaseStartDate: "01/01/2023",
       leaseEndDate: "01/01/2024",
       dateOfBirth: "08/05/1973",
+      unitId: units[1].id,
     }),
     Tenant.create({
       name: "Fernando Diaz",
@@ -179,6 +196,7 @@ async function seed() {
       leaseStartDate: "01/01/2023",
       leaseEndDate: "01/01/2024",
       dateOfBirth: "08/05/1973",
+      unitId: units[2].id,
     }),
     Tenant.create({
       name: "Karla Fernandez",
@@ -188,6 +206,7 @@ async function seed() {
       leaseStartDate: "01/01/2023",
       leaseEndDate: "01/01/2024",
       dateOfBirth: "08/05/1973",
+      unitId: units[3].id,
     }),
     Tenant.create({
       name: "Angela Aguilar",
@@ -197,6 +216,7 @@ async function seed() {
       leaseStartDate: "01/01/2023",
       leaseEndDate: "01/01/2024",
       dateOfBirth: "08/05/1973",
+      unitId: units[4].id,
     }),
     Tenant.create({
       name: "Noah Varela",
@@ -206,6 +226,7 @@ async function seed() {
       leaseStartDate: "01/01/2023",
       leaseEndDate: "01/01/2024",
       dateOfBirth: "08/05/1973",
+      unitId: units[5].id,
     }),
     Tenant.create({
       name: "Alfonso Gonzalez",
@@ -215,6 +236,7 @@ async function seed() {
       leaseStartDate: "01/01/2023",
       leaseEndDate: "01/01/2024",
       dateOfBirth: "08/05/1973",
+      unitId: units[6].id,
     }),
     Tenant.create({
       name: "Kevin Guerrero",
@@ -224,6 +246,7 @@ async function seed() {
       leaseStartDate: "01/01/2023",
       leaseEndDate: "01/01/2024",
       dateOfBirth: "08/05/1973",
+      unitId: units[7].id,
     }),
     Tenant.create({
       name: "Issac Ramirez",
@@ -233,6 +256,7 @@ async function seed() {
       leaseStartDate: "01/01/2023",
       leaseEndDate: "01/01/2024",
       dateOfBirth: "08/05/1973",
+      unitId: units[8].id,
     }),
     Tenant.create({
       name: "Carmine Ichelli",
@@ -242,6 +266,7 @@ async function seed() {
       leaseStartDate: "01/01/2023",
       leaseEndDate: "01/01/2024",
       dateOfBirth: "08/05/1973",
+      unitId: units[9].id,
     }),
     Tenant.create({
       name: "Rudy Dawson",
@@ -251,6 +276,7 @@ async function seed() {
       leaseStartDate: "01/01/2023",
       leaseEndDate: "01/01/2024",
       dateOfBirth: "08/05/1973",
+      unitId: units[10].id,
     }),
     Tenant.create({
       name: "Grace Lee",
@@ -260,6 +286,7 @@ async function seed() {
       leaseStartDate: "01/01/2023",
       leaseEndDate: "01/01/2024",
       dateOfBirth: "08/05/1973",
+      unitId: units[11].id,
     }),
     Tenant.create({
       name: "Brian Sanchez",
@@ -269,6 +296,7 @@ async function seed() {
       leaseStartDate: "01/01/2023",
       leaseEndDate: "01/01/2024",
       dateOfBirth: "08/05/1973",
+      unitId: units[12].id,
     }),
     Tenant.create({
       name: "Abraham Lopez",
@@ -278,6 +306,7 @@ async function seed() {
       leaseStartDate: "01/01/2023",
       leaseEndDate: "01/01/2024",
       dateOfBirth: "01/01/1990",
+      unitId: units[13].id,
     }),
     Tenant.create({
       name: "Abraham Lincoln",
@@ -287,6 +316,7 @@ async function seed() {
       leaseStartDate: "01/01/2023",
       leaseEndDate: "01/01/2024",
       dateOfBirth: "01/01/1900",
+      unitId: units[14].id,
     }),
   ]);
 
@@ -307,7 +337,6 @@ async function seed() {
       description: "My Floors are missing",
     }),
   ]);
-
   console.log(`seeded ${users.length} users`);
   console.log(`seeded ${landlords.length} landlords`);
   console.log(`seeded ${complexes.length} complexes`);
@@ -336,7 +365,6 @@ async function runSeed() {
     console.log("db connection closed");
   }
 }
-
 /*
   Execute the `seed` function, IF we ran this module directly (`node seed`).
   `Async` functions always return a promise, so we can use `catch` to handle

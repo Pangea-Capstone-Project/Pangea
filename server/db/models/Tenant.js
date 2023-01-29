@@ -15,17 +15,10 @@ const Tenant = db.define("tenant",{
     email:{
         type: Sequelize.STRING,
     },
-    // rent: {
-    //     type: Sequelize.INTEGER,
-    //     allowNull: false,
-    // },
     rentPaid: {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
     },
-    // rentDueDate: {
-    //     type: Sequelize.STRING,
-    // },
     leaseStartDate: {
         type: Sequelize.STRING,
         // defaultValue: Sequelize.NOW,
