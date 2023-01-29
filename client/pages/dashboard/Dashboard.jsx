@@ -17,7 +17,7 @@ const Dashboard = (props) => {
     <div className="dashboard">
       <Sidebar />
       <div className="dashboardContainer">
-        {/* <Navbar /> */}
+        {/* <Navbar */}
         <div className="widgets">
           <Widget type="tenants" />
           <Widget type="properties" />
