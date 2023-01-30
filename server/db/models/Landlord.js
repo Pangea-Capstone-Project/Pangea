@@ -18,8 +18,13 @@ const Landlord = db.define('landlord', {
       validate: {
         isEmail: true,
       }, 
-      allowNull: false
-    }
+    },
+    uniqueId: {
+      type: Sequelize.INTEGER,
+    }, 
+    userId: {
+      type: Sequelize.INTEGER,
+  },
   })
   
   module.exports = Landlord

@@ -22,25 +22,54 @@ async function seed() {
 
   // Creating Users
   const users = await Promise.all([
-    User.create({ username: "murphy", password: "123" }),
-    User.create({ username: "cody", password: "123" }),
+    User.create({ username: "murphy", password: "123", role:"landlord" }),
+    User.create({ username: "cody", password: "123", role:"landlord"}),
   ]);
+
+  const newUser = await Promise.all([
+    User.create({
+      username: "TestPerson",
+      password: "123",
+      role: "landlord",
+    })
+  ]);
+
+  try {
+    if (newUser[0].role === "tenant") {
+      await Tenant.create({
+        userId: newUser[0].id,
+        name: newUser[0].username,
+        role: newUser[0].role,
+      });
+    } else if (newUser[0].role === "landlord") {
+      await Landlord.create({
+        userId: newUser[0].id,
+        name: newUser[0].username,
+        role: newUser[0].role,
+      });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+  
   //creating landlords
   
-  const complexes = await Promise.all([
-    Complex.create({
-      propertyName: "jeffsMobileHomes",
-      address: "117 Washington blvd, Los Angeles, California",
-      numberOfUnits: 15,
-    }),
-  ]);
   
   const landlords = await Promise.all([
     Landlord.create({
       name: "Jeff",
       email: "jeff@properties.com",
       phoneNumber: "5622341171",
-      complexId: complexes[0].id,
+      uniqueId: 123456,
+    }),
+  ]);
+
+  const complexes = await Promise.all([
+    Complex.create({
+      propertyName: "jeffsMobileHomes",
+      address: "117 Washington blvd, Los Angeles, California",
+      numberOfUnits: 15,
+      landlordId: landlords[0].id,
     }),
   ]);
  
@@ -337,7 +366,9 @@ async function seed() {
       description: "My Floors are missing",
     }),
   ]);
-  console.log(`seeded ${users.length} users`);
+
+
+
   console.log(`seeded ${landlords.length} landlords`);
   console.log(`seeded ${complexes.length} complexes`);
   console.log(`seeded ${units.length} units`);
@@ -345,7 +376,7 @@ async function seed() {
   console.log(`seeded ${maintenanceRequests.length} maintenanceRequests`);
   console.log(`seeded successfully`);
 
- }
+}
 
 /*
  We've separated the `seed` function from the `runSeed` function.
