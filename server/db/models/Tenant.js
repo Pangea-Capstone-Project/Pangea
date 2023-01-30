@@ -4,7 +4,7 @@ const db = require("../db");
 const Tenant = db.define("tenant",{
     name: {
         type: Sequelize.STRING,
-        allowNull: false,
+        // allowNull: false,
     },
     dateOfBirth: {
         type: Sequelize.STRING,
@@ -26,6 +26,9 @@ const Tenant = db.define("tenant",{
     leaseEndDate: {
         type: Sequelize.DATE,
         // defaultValue: Sequelize.literal('NOW() + INTERVAL \'1 month\''),
+    },
+    userId: {
+        type: Sequelize.INTEGER,
     },
 })
 
