@@ -21,9 +21,8 @@ Unit.belongsTo(Complex);
 Complex.hasMany(Landlord);
 Landlord.belongsTo(Complex);
 
-MaintenanceRequest.hasMany(Unit);
-Unit.belongsTo(MaintenanceRequest);
-
+Unit.hasMany(MaintenanceRequest);
+MaintenanceRequest.belongsTo(Unit);
 
 module.exports = {
   db,
