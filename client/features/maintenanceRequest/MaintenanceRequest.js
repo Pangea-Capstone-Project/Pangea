@@ -128,7 +128,7 @@ const MaintenanceRequest = () => {
           onMouseLeave={handleMouseLeave}
           >
             <Link to={`/workOrders/${maintenanceRequest.id}`}>
-            <Unit>Unit: #123{maintenanceRequest.unit}</Unit>
+            <Unit>Unit:123{maintenanceRequest.unitId}</Unit>
             <p>Severity: {maintenanceRequest.severity}</p>
             <p>{maintenanceRequest.type}</p>
             </Link>

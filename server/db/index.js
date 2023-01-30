@@ -12,18 +12,17 @@ const Admin = require('./models/Admin')
 //associations could go here!
 
 
+Unit.hasOne(Tenant);
+Tenant.belongsTo(Unit);
+
 Complex.hasMany(Unit);
 Unit.belongsTo(Complex);
 
-Unit.hasOne(Tenant);
-Tenant.hasOne(Unit);
-
-Landlord.hasMany(Complex);
-Complex.belongsTo(Landlord);
+Complex.hasMany(Landlord);
+Landlord.belongsTo(Complex);
 
 Unit.hasMany(MaintenanceRequest);
 MaintenanceRequest.belongsTo(Unit);
-
 
 module.exports = {
   db,
