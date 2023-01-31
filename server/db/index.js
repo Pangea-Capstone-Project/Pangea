@@ -8,7 +8,6 @@ const Complex = require('./models/Complex')
 const Unit = require('./models/Unit')
 const Landlord = require('./models/Landlord')
 const MaintenanceRequest = require('./models/MaintenanceRequest')
-const Role = require('./models/Role')
 const Admin = require('./models/Admin')
 //associations could go here!
 
@@ -19,8 +18,8 @@ Tenant.belongsTo(Unit);
 Complex.hasMany(Unit);
 Unit.belongsTo(Complex);
 
-Landlord.hasMany(Complex);
-Complex.belongsTo(Landlord);
+Complex.hasMany(Landlord, { foreignKey: 'complexId',});
+Landlord.belongsTo(Complex, { foreignKey: 'complexId',});
 
 Unit.hasMany(MaintenanceRequest);
 MaintenanceRequest.belongsTo(Unit);

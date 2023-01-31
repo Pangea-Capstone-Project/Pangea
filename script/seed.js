@@ -30,7 +30,7 @@ async function seed() {
     User.create({
       username: "TestPerson",
       password: "123",
-      role: "landlord",
+      role: "tenant",
     })
   ]);
 
@@ -55,24 +55,24 @@ async function seed() {
   //creating landlords
   
   
+  
+  const complexes = await Promise.all([
+    Complex.create({
+      propertyName: "jeffsMobileHomes",
+      address: "117 Washington blvd, Los Angeles, California",
+      numberOfUnits: 15,
+    }),
+  ]);
+  
   const landlords = await Promise.all([
     Landlord.create({
       name: "Jeff",
       email: "jeff@properties.com",
       phoneNumber: "5622341171",
       uniqueId: 123456,
+      complexId: complexes[0].id,
     }),
   ]);
-
-  const complexes = await Promise.all([
-    Complex.create({
-      propertyName: "jeffsMobileHomes",
-      address: "117 Washington blvd, Los Angeles, California",
-      numberOfUnits: 15,
-      landlordId: landlords[0].id,
-    }),
-  ]);
- 
 
   const units = await Promise.all([
     Unit.create({

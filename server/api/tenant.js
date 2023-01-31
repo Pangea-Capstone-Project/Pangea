@@ -17,3 +17,34 @@ router.get("/", async(req,res,next) =>{
         next(err)
     }
 });
+
+router.post('/', async (req, res, next) => {
+    console.log(`im request.body`,req.body)
+    try {
+        const tenant = await Tenant.create(req.body)
+        res.json(tenant)
+    } catch (error) {
+        console.log(`Error tenantPostRoute`, error)
+        next(error)
+    }
+})
+
+router.put('/:id', async (req, res, next) => {
+    try {
+    const tenant = await Tenant.update({where: {id: req.params.id}})
+    res.json(tenant)
+    } catch (error) {
+        console.log(`Error tenantPutRoute`, error)
+        next(error)
+    }
+})
+
+router.delete('/:id', async (req, res, next) => {
+    try {
+    const tenant = await Tenant.destroy({where: {id: req.params.id}})
+    res.json(tenant)
+    } catch (error) {
+        console.log(`Error tenantDeleteRoute`, error)
+        next(error)
+    }
+})

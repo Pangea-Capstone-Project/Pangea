@@ -19,12 +19,15 @@ const Landlord = db.define('landlord', {
         isEmail: true,
       }, 
     },
-    uniqueId: {
+    idForTenantToAssociate: {
       type: Sequelize.INTEGER,
     }, 
     userId: {
       type: Sequelize.INTEGER,
   },
+    complexId: {
+      type: Sequelize.INTEGER,
+    },
   })
   
   module.exports = Landlord

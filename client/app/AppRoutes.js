@@ -30,6 +30,7 @@ const AppRoutes = () => {
   return (
     <div>
       {isLoggedIn ? (
+        //all routes here works when logged in
         <Routes>
           <Route path="/*" element={<Dashboard />} />
           <Route to="/tenanthome" element={<TenantHome />} />
