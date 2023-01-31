@@ -12,6 +12,7 @@ const Complex = db.define('complex',{
     },
     numberOfUnits : {
         type: Sequelize.INTEGER,
+        defaultValue: 1,
     },   
 })  
 

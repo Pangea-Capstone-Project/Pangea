@@ -21,6 +21,7 @@ router.get('/:id', async (request, response, next) => {
 })
 
 router.post('/', async (request, response, next) => {
+    console.log(`im request.body`,request.body)
     try {
         const landlord = await Landlord.create(request.body)
         response.json(landlord)
