@@ -74,5 +74,3 @@ const UpdateLandlordForm = () => {
 };
 
 export default UpdateLandlordForm
-
-  // I STOPPED HERE //
