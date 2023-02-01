@@ -38,13 +38,13 @@ async function seed() {
     if (newUser[0].role === "tenant") {
       await Tenant.create({
         userId: newUser[0].id,
-        name: newUser[0].username,
+        username: newUser[0].username,
         role: newUser[0].role,
       });
     } else if (newUser[0].role === "landlord") {
       await Landlord.create({
         userId: newUser[0].id,
-        name: newUser[0].username,
+        username: newUser[0].username,
         role: newUser[0].role,
       });
     }
@@ -66,7 +66,7 @@ async function seed() {
   
   const landlords = await Promise.all([
     Landlord.create({
-      name: "Jeff",
+      username: "Jeff",
       email: "jeff@properties.com",
       phoneNumber: "5622341171",
       uniqueId: 123456,

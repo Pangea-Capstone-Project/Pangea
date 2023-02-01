@@ -6,6 +6,9 @@ const Tenant = db.define("tenant",{
         type: Sequelize.STRING,
         // allowNull: false,
     },
+    username:{
+        type:Sequelize.STRING,
+    },
     dateOfBirth: {
         type: Sequelize.STRING,
     },

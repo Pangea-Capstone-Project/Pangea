@@ -33,16 +33,14 @@ router.post("/signup", async (req, res, next) => {
     if (role === "tenant") {
       const tenant = await Tenant.create({
         userId: user.id,
-        name: username,
+        username: username,
         role: role,
       });
-      console.log(`im user 35`, user);
-      await user.setTenant(tenant);
-      console.log(`im user 37`, user);
-    } else if (role === "landlord") {
+       await user.setTenant(tenant);
+    } else if (role === 'landlord') {
       const landlord = await Landlord.create({
         userId: user.id,
-        name: username,
+        username: username,
         role: role,
       });
       await user.setLandlord(landlord);

@@ -5,6 +5,10 @@ const Landlord = db.define('landlord', {
     name: {
       type: Sequelize.STRING,
       unique: true,
+    },
+    username: {
+      type: Sequelize.STRING,
+      unique: true,
       allowNull: false
     },
     phoneNumber: {

@@ -14,30 +14,35 @@ const AuthForm = ({ name, displayName }) => {
   const { error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const formName = evt.target.name;
     const username = evt.target.username.value;
     const password = evt.target.password.value;
+    const role = evt.target.role.value;
 
     if (!username || !password ) {
-      alert("Please fill out all fields");
-      return;
-      }
-      
-    dispatch(authenticate({ username, password, method: formName }));
-  };
+        alert("Please fill out all fields");
+        return;
+        }
+        
+
+    dispatch(authenticate({ username, password, role, method: formName }));
+        if (role === 'landlord') {
+            navigate('/signup-landlord');
+        } else if (role === 'tenant') {
+            navigate('/signup-tenant');
+    }
+};
 
   const handleNav = () => {
-    navigate('/signup')
+    navigate('/login')
   }
-
   return (
     <div id='home'>
       <div id='loginBtns'>
-            <button className='landtenBtns'>Login</button>
-            <button className='landtenBtns' onClick={handleNav}>Sign Up</button>
+            <button className='landtenBtns' onClick={handleNav}>Login</button>
+            <button className='landtenBtns'>Sign Up</button>
             </div>
       <form id='loginForm' onSubmit={handleSubmit} name={name}>
         <div>
@@ -52,9 +57,17 @@ const AuthForm = ({ name, displayName }) => {
           </label>
           <input name="password" type="password" />
         </div>
+        <div>
+          <label htmlFor="role">
+            <small>Role</small>
+          </label>
+          <select name="role">
+            <option value="tenant">Tenant</option>
+            <option value="landlord">Landlord</option>
+          </select>
+        </div>
         <div id='loginDiv'>
-          <button className='loginBtns' type="submit">{displayName}</button>
-          {/* <button className='loginBtns' type="submit">Sign Up</button> */}
+          <button className='loginBtns' type="submit">Sign Up</button>
         </div>
         {error && <div> {error} </div>}
       </form>
