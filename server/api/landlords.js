@@ -32,6 +32,7 @@ router.post('/', async (request, response, next) => {
 
 router.put('/:id', async (req, res, next) => {
     try {
+        console.log(`req`, req.params.id)
         const landlord = await Landlord.update({ 
             name: req.body.name,
             phoneNumber: req.body.phoneNumber,
@@ -39,11 +40,13 @@ router.put('/:id', async (req, res, next) => {
             idForTenantToAssociate: req.body.idForTenantToAssociate,
         }, {
             where: {
-              id: req.params.id
+              userId: req.params.id
             }
           });
+          console.log(`landlord`,landlord)
           res.json(landlord);
     } catch (error) {
+        console.log(`put route error landlord`, error)
         next(error)
     }
 })
