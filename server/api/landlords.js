@@ -30,10 +30,19 @@ router.post('/', async (request, response, next) => {
     }
 })
 
-router.put('/:id', async (request, response, next) => {
+router.put('/:id', async (req, res, next) => {
     try {
-    const landlord = await Landlord.update({where: {id: request.params.id}})
-    response.json(landlord)
+        const landlord = await Landlord.update({ 
+            name: req.body.name,
+            phoneNumber: req.body.phoneNumber,
+            email: req.body.email, 
+            idForTenantToAssociate: req.body.idForTenantToAssociate,
+        }, {
+            where: {
+              id: req.params.id
+            }
+          });
+          res.json(landlord);
     } catch (error) {
         next(error)
     }

@@ -24,11 +24,6 @@ Landlord.belongsTo(Complex, { foreignKey: 'complexId',});
 Unit.hasMany(MaintenanceRequest);
 MaintenanceRequest.belongsTo(Unit);
 
-// Tenant.belongsTo(User);
-// User.hasMany(Tenant);
-
-// Landlord.belongsTo(User);
-// User.hasMany(Landlord);
 
 User.hasOne(Tenant, { foreignKey: 'userId', onDelete: 'cascade' });
 Tenant.belongsTo(User, { foreignKey: 'userId', onDelete: 'cascade' });

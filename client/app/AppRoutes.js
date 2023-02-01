@@ -12,6 +12,9 @@ import Messages from "../features/tenant/messages/Messages.jsx";
 import MakeAPayment from "../features/tenant/payments/MakeAPayment.jsx";
 import PastPayments from "../features/tenant/payments/PastPayments.jsx";
 import Dashboard from "../pages/dashboard/Dashboard.jsx";
+import AuthFormSignup from "../features/auth/AuthFormSignup";
+import AfterSignUpLandlord from "../features/afterSignup/AfterSignUpLandlord";
+import AfterSignUpTenant from "../features/afterSignup/AfterSignUpTenant";
 
 import { me } from "./store";
 
@@ -32,13 +35,28 @@ const AppRoutes = () => {
       {isLoggedIn ? (
         //all routes here works when logged in
         <Routes>
+          <Route path="/signup-landlord" element={<AfterSignUpLandlord />} />
+          <Route path="/signup-tenant" element={<AfterSignUpTenant />} />
+          <Route path="/tenanthome" element={<TenantHome />} />
+          <Route path="/makeapayment" element={<MakeAPayment />} />
+          <Route path="/pastpayments" element={<PastPayments />} />
+          <Route path="/maintenancereq" element={<MaintenanceReq />} />
+          <Route path="/messages" element={<Messages />} />
           <Route path="/*" element={<Dashboard />} />
-          <Route to="/tenanthome" element={<TenantHome />} />
-          <Route to="/makeapayment" element={<MakeAPayment />} />
-          <Route to="/pastpayments" element={<PastPayments />} />
-          <Route to="/maintenancereq" element={<MaintenanceReq />} />
-          <Route to="/messages" element={<Messages />} />
           {/* <Route to='/landlords' element={<Landlord />} /> */}
+          
+          {/* Route after signing up Landlord */}
+          
+          <Route
+            path="/signup-landlord"
+            element={<AfterSignUpLandlord name="signup-landlord" displayName="Landlord Signup" />}
+          />
+          <Route
+            path="/signup-tenant"
+            element={<AfterSignUpTenant name="ssignup-tenant" displayName="Tenant Signup" />}
+          />
+
+
           <Route
             path="/tenanthome"
             element={<TenantHome name="tenanthome" displayName="Tenant Home" />}
@@ -74,34 +92,18 @@ const AppRoutes = () => {
           <Route
             path="/workorders"
             element={
-              <MaintenanceRequest name="workOrders" displayName="Work Orders" />
+              <MaintenanceRequest name="workorders" displayName="Work Orders" />
             }
           />
           <Route
             path="/workorders/:id"
             element={
               <SingleMaintenanceRequest
-                name="workOrder"
+                name="workorder"
                 displayName="Work Order"
               />
             }
           />
-          <Route
-            path="/workorders"
-            element={
-              <MaintenanceRequest name="workOrders" displayName="Work Orders" />
-            }
-          />
-          <Route
-            path="/workorders/:id"
-            element={
-              <SingleMaintenanceRequest
-                name="workOrder"
-                displayName="Work Order"
-              />
-            }
-          />
-
           {/* This route is for landlord View All Tenants */}
           <Route
             path="/tenants"
@@ -110,15 +112,15 @@ const AppRoutes = () => {
         </Routes>
       ) : (
         <Routes>
-          <Route path="/*" element={<Dashboard />} />
           <Route
             path="/login"
             element={<AuthForm name="login" displayName="Login" />}
           />
           <Route
             path="/signup"
-            element={<AuthForm name="signup" displayName="Sign Up" />}
+            element={<AuthFormSignup name="signup" displayName="Sign Up" />}
           />
+          {/* <Route path="/*" element={<Dashboard />} /> */}
         </Routes>
       )}
     </div>
