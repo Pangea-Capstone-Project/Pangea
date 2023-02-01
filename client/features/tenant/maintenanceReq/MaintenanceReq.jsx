@@ -20,7 +20,7 @@ color: #1E56A0;
 font-size: 1.4rem;
 font-weight: bold;
 border-radius: 20px;
-width 45vw;
+width: 45vw;
 height: auto;
 margin: 2rem 2rem 0 2rem;
 padding: 1rem;
