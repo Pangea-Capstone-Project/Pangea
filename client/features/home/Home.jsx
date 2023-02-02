@@ -6,7 +6,8 @@ const Background = styled.div`
 display: flex;
 align-items: center;
 flex-direction: column;
-background-color: white;
+background: rgb(246,246,246);
+background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 40%, rgba(30,86,160,1) 77%, rgba(22,49,114,1) 100%);
 `
 
 const AllButtons = styled.button`
@@ -32,14 +33,16 @@ const DescriptionTitle = styled.h2`
 color: red;
 font-size: 2rem;
 margin: 1rem;
-width: 25vw;
+margin-top: 14vh;
+width: 20vw;
 display: flex;
-right: -50%;
+margin-left: 10vw;
 z-index: 3;
 background-color: rgba(30, 86, 160, 0.4);
 box-shadow: 4px 4px 10px 1px black;
 color: #D6E4F0;
 text-shadow: 2px 2px 4px black;
+justify-content: center;
 border-radius: 20px;
 border: 2px solid darkgreen;
 padding: 1rem;
@@ -48,11 +51,12 @@ const Description = styled.p`
 color: white;
 font-size: 1.5rem;
 display: flex;
+// margin-top: 10vh;
 left: -30%;
 z-index: 3;
 line-height: 3rem;
 text-shadow: 2px 2px 2px black;
-width: 40vw;
+width: 30vw;
 height: auto;
 justify-content: center;
 align-items: center;
@@ -69,7 +73,7 @@ width: 40%;
 position: absolute;
 z-index: 3;
 bottom: 15%;
-right: 25%;
+right: 22.5%;
 `
 const MainBlock = styled.div`
 width: 90%;
@@ -86,13 +90,13 @@ z-index: 2;
 border-radius: 50%;
 box-shadow: inset -20px -20px 150px 5px black;
 background-color: #1E56A0;
-width: 63vw;
-height: 60vw;
+width: 43vw;
+height: 40vw;
 `
 
 const Home = () => {
     return (
-        <Background>Home
+        <Background>
             <MainBlock>
                 <DescriptionBlock>
                     <DescriptionTitle>Whats up with pangea?</DescriptionTitle>
