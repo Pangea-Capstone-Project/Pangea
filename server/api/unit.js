@@ -56,6 +56,7 @@ router.put("/:id", async (req, res, next) => {
   });
 
 
+
 router.delete('/:id', async (req, res, next) => {
     try {
     const units = await Unit.destroy({where: {id: req.params.id}})

@@ -22,7 +22,6 @@ const unitsSlice = createSlice({
     error: null
   },
   reducers: {
-    // Add any other action creators you need here
   },
   extraReducers: {
     [createUnit.pending]: (state) => {
