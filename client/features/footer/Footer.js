@@ -14,8 +14,8 @@ const Container = styled.div`
   display: flex;
   background-color: #163172;
   color: #fff;
-  border-radius: 20px;
-  width: 99vw;
+  // border-radius: 20px;
+  width: 99.39vw;
   justify-self: center;
 `;
 
