@@ -3,7 +3,7 @@ module.exports = router;
 const { useSelector } = require('react-redux');
 
 const {
-  models: { Property, Landlord, User},
+  models: { Property, Landlord, User, Unit},
 } = require("../db");
 
 router.get("/", async (req, res, next) => {
@@ -36,6 +36,7 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+
 router.put("/:id", async (req, res, next) => {
     try {
         console.log(`req.body`, req.body)
@@ -50,7 +51,7 @@ router.put("/:id", async (req, res, next) => {
       res.json(property);
     } catch (err) {
       next(err);
-      console.log(`Error on Property`, err);
+      console.log(`Error in Property Server`, err);
     }
   });
 

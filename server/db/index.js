@@ -15,9 +15,6 @@ const Admin = require('./models/Admin')
 Unit.hasOne(Tenant);
 Tenant.belongsTo(Unit);
 
-Property.hasMany(Unit);
-Unit.belongsTo(Property);
-
 // Landlord.hasMany(Unit, { foreignKey: 'landlordId'});
 // Unit.belongsTo(Landlord, { foreignKey: 'landlordId'});
 
@@ -25,6 +22,9 @@ Unit.belongsTo(Property);
 
 Landlord.hasMany(Property, { foreignKey: 'landlordId',});
 Property.belongsTo(Landlord, { foreignKey: 'landlordId',});
+
+Property.hasMany(Unit, { foreignKey: 'propertyId',});
+Unit.belongsTo(Property, { foreignKey: 'propertyId',});
 
 Unit.hasMany(MaintenanceRequest);
 MaintenanceRequest.belongsTo(Unit);
@@ -36,6 +36,9 @@ Tenant.belongsTo(User, { foreignKey: 'userId', onDelete: 'cascade' });
 
 User.hasOne(Landlord, { foreignKey: 'userId', onDelete: 'cascade' });
 Landlord.belongsTo(User, { foreignKey: 'userId', onDelete: 'cascade' });
+
+
+
 
 
 module.exports = {
