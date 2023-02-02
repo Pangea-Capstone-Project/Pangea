@@ -12,6 +12,7 @@ import Messages from "../features/tenant/messages/Messages.jsx";
 import MakeAPayment from "../features/tenant/payments/MakeAPayment.jsx";
 import PastPayments from "../features/tenant/payments/PastPayments.jsx";
 import Dashboard from "../pages/dashboard/Dashboard.jsx";
+import Home from "../features/home/Home.jsx";
 import AuthFormSignup from "../features/auth/AuthFormSignup";
 import AfterSignUpLandlord from "../features/afterSignup/AfterSignUpLandlord";
 import AfterSignUpTenant from "../features/afterSignup/AfterSignUpTenant";
@@ -32,6 +33,17 @@ const AppRoutes = () => {
 
   return (
     <div>
+      <Routes>
+        <Route
+          path="/*"
+          element={<Home name="home" displayName="Pangea" />}
+        />
+        <Route
+          path="/home"
+          element={<Home name="home" displayName="Pangea" />}
+        />
+      </Routes>
+
       {isLoggedIn ? (
         //all routes here works when logged in
         <Routes>
@@ -42,11 +54,11 @@ const AppRoutes = () => {
           <Route path="/pastpayments" element={<PastPayments />} />
           <Route path="/maintenancereq" element={<MaintenanceReq />} />
           <Route path="/messages" element={<Messages />} />
-          <Route path="/*" element={<Dashboard />} />
+          <Route path="/landlordhome" element={<Dashboard />} />
           {/* <Route to='/landlords' element={<Landlord />} /> */}
-          
+
           {/* Route after signing up Landlord */}
-          
+
           <Route
             path="/signup-landlord"
             element={<AfterSignUpLandlord name="signup-landlord" displayName="Landlord Signup" />}
