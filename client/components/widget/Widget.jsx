@@ -2,8 +2,8 @@ import "./widget.scss";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import HouseIcon from '@mui/icons-material/House';
+import CommentBankIcon from '@mui/icons-material/CommentBank';
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 import React,{ useEffect, useState } from "react";
 
@@ -36,7 +36,7 @@ const Widget = ({ type }) => {
         isMoney: false,
         link: "View all maintenance request",
         icon: (
-          <ShoppingCartOutlinedIcon
+          <CommentBankIcon
             className="icon"
             style={{
               backgroundColor: "rgba(218, 165, 32, 0.2)",
@@ -65,7 +65,7 @@ const Widget = ({ type }) => {
         query:"properties",
         link: "See details",
         icon: (
-          <AccountBalanceWalletOutlinedIcon
+          <HouseIcon
             className="icon"
             style={{
               backgroundColor: "rgba(128, 0, 128, 0.2)",
