@@ -3,7 +3,7 @@ module.exports = router;
 
 
 const {
-    models: { Unit },
+    models: { Unit, Property },
 } = require("../db")
 
 router.get("/", async(req,res,next) =>{
@@ -16,6 +16,16 @@ router.get("/", async(req,res,next) =>{
     }
 });
 
+router.get("/:id", async (req, res, next) => {
+    try {
+      const unit = await Unit.findOne({ where: { id: req.params.id } });
+      res.json(unit);
+    } catch (err) {
+      next(err);
+      console.log(`Error on unit`, err);
+    }
+  });
+
 router.post('/', async (req, res, next) => {
     console.log(`im request.body`,req.body)
     try {
@@ -27,15 +37,25 @@ router.post('/', async (req, res, next) => {
     }
 })
 
-router.put('/:id', async (req, res, next) => {
+router.put("/:id", async (req, res, next) => {
     try {
-    const units = await Unit.update({where: {id: req.params.id}})
-    res.json(units)
-    } catch (error) {
-        console.log(`Error unitsPutRoute`, error)
-        next(error)
+        console.log(`req.body`, req.body)
+        const { unitNumber, rentAmount, bedrooms, propertyId } = req.body;
+      const unit = await Unit.create({
+        unitNumber,
+        rentAmount,
+        bedrooms,
+        propertyId
+      },
+      );
+      res.json(unit);
+    } catch (err) {
+      next(err);
+      console.log(`Error in Unit Server`, err);
     }
-})
+  });
+
+
 
 router.delete('/:id', async (req, res, next) => {
     try {

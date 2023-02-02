@@ -15,7 +15,10 @@ const Unit = db.define('unit',{
     },
     bedrooms: {
         type: Sequelize.INTEGER,
-    },    
+    },   
+    propertyId: {
+        type: Sequelize.INTEGER,
+    } 
 })  
 
 module.exports = Unit

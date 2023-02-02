@@ -16,9 +16,9 @@ import Home from "../features/home/Home.jsx";
 import AuthFormSignup from "../features/auth/AuthFormSignup";
 import AfterSignUpLandlord from "../features/afterSignup/AfterSignUpLandlord";
 import AfterSignUpTenant from "../features/afterSignup/AfterSignUpTenant";
-
+import AddAProperty from "../features/afterSignup/AddAProperty";
 import { me } from "./store";
-
+import AddAUnit from "../features/afterSignup/AddAUnit";
 /**
  * COMPONENT
  */
@@ -49,6 +49,9 @@ const AppRoutes = () => {
         <Routes>
           <Route path="/signup-landlord" element={<AfterSignUpLandlord />} />
           <Route path="/signup-tenant" element={<AfterSignUpTenant />} />
+          <Route path="/add-property" element={<AddAProperty/>} />
+          <Route path="/add-unit" element={<AddAUnit/>} />
+
           <Route path="/tenanthome" element={<TenantHome />} />
           <Route path="/makeapayment" element={<MakeAPayment />} />
           <Route path="/pastpayments" element={<PastPayments />} />
@@ -65,7 +68,15 @@ const AppRoutes = () => {
           />
           <Route
             path="/signup-tenant"
-            element={<AfterSignUpTenant name="ssignup-tenant" displayName="Tenant Signup" />}
+            element={<AfterSignUpTenant name="signup-tenant" displayName="Tenant Signup" />}
+          />
+          <Route
+            path="/add-property"
+            element={<AddAProperty name="add-property" displayName="Add Property" />}
+          />
+          <Route
+            path="/add-unit"
+            element={<AddAUnit name="add-unit" displayName="Add Unit" />}
           />
 
 

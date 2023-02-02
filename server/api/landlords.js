@@ -36,7 +36,7 @@ router.post("/", async (request, response, next) => {
 
 router.put("/:id", async (req, res, next) => {
   try {
-    console.log(`req`, req.params.id);
+    console.log(`req from landlords`, req.params);
     const landlord = await Landlord.update(
       {
         name: req.body.name,
