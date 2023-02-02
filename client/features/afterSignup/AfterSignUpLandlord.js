@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateLandlord } from './afterSignUpLandlordSlice';
 import { selectMe } from "../auth/authSlice";
-
+import { useNavigate } from 'react-router-dom';
+import AddAProperty from './AddAProperty'
 const UpdateLandlordForm = () => {
   const me = useSelector(selectMe)
   console.log(`me`,me)
@@ -11,6 +12,11 @@ const UpdateLandlordForm = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [email, setEmail] = useState('');
   const [idForTenantToAssociate, setIdForTenantToAssociate] = useState('');
+  const navigate = useNavigate();
+
+
+  const [showAddAProperty, setShowAddAProperty] = useState(false);
+
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -38,7 +44,12 @@ const UpdateLandlordForm = () => {
     }));
   };
 
+  const handleClick = () => {
+    setShowAddAProperty(true);
+  };
   return (
+    <div>
+
     <form onSubmit={handleSubmit}>
       <input
         type="text"
@@ -46,30 +57,35 @@ const UpdateLandlordForm = () => {
         value={name}
         onChange={handleNameChange}
         placeholder="Name"
-      />
+        />
       <input
         type="text"
         name="phoneNumber"
         value={phoneNumber}
         onChange={handlePhoneNumberChange}
         placeholder="Phone Number"
-      />
+        />
       <input
         type="email"
         name="email"
         value={email}
         onChange={handleEmailChange}
         placeholder="Email"
-      />
+        />
       <input
         type="number"
         name="idForTenantToAssociate"
         value={idForTenantToAssociate}
         onChange={handleIdForTenantToAssociateChange}
         placeholder="ID for Tenant to Associate"
-      />
+        />
       <button type="submit">Update Landlord</button>
     </form>
+    <div>
+      <button onClick={handleClick}>Add Property</button>
+      {showAddAProperty && <AddAProperty />}
+    </div>
+        </div>
   );
 };
 

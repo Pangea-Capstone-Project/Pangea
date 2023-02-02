@@ -15,7 +15,7 @@ import Dashboard from "../pages/dashboard/Dashboard.jsx";
 import AuthFormSignup from "../features/auth/AuthFormSignup";
 import AfterSignUpLandlord from "../features/afterSignup/AfterSignUpLandlord";
 import AfterSignUpTenant from "../features/afterSignup/AfterSignUpTenant";
-
+import AddAProperty from "../features/afterSignup/AddAProperty";
 import { me } from "./store";
 
 /**
@@ -37,6 +37,7 @@ const AppRoutes = () => {
         <Routes>
           <Route path="/signup-landlord" element={<AfterSignUpLandlord />} />
           <Route path="/signup-tenant" element={<AfterSignUpTenant />} />
+          <Route path="/add-property" element={<AddAProperty/>} />
           <Route path="/tenanthome" element={<TenantHome />} />
           <Route path="/makeapayment" element={<MakeAPayment />} />
           <Route path="/pastpayments" element={<PastPayments />} />
@@ -53,7 +54,11 @@ const AppRoutes = () => {
           />
           <Route
             path="/signup-tenant"
-            element={<AfterSignUpTenant name="ssignup-tenant" displayName="Tenant Signup" />}
+            element={<AfterSignUpTenant name="signup-tenant" displayName="Tenant Signup" />}
+          />
+          <Route
+            path="/add-property"
+            element={<AddAProperty name="add-property" displayName="Add Property" />}
           />
 
 
