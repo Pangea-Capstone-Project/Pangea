@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { authenticate } from '../../app/store';
+import './auth.css'
 
 /**
   The AuthForm component can be used for Login or Sign Up.
@@ -11,18 +13,34 @@ import { authenticate } from '../../app/store';
 const AuthForm = ({ name, displayName }) => {
   const { error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const formName = evt.target.name;
     const username = evt.target.username.value;
     const password = evt.target.password.value;
+
+    if (!username || !password ) {
+      alert("Please fill out all fields");
+      return;
+      }
+      
     dispatch(authenticate({ username, password, method: formName }));
+    navigate('/dashboard')
   };
 
+  const handleNav = () => {
+    navigate('/signup')
+  }
+
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
+    <div id='home'>
+      <div id='loginBtns'>
+            <button className='landtenBtns'>Login</button>
+            <button className='landtenBtns' onClick={handleNav}>Sign Up</button>
+            </div>
+      <form id='loginForm' onSubmit={handleSubmit} name={name}>
         <div>
           <label htmlFor="username">
             <small>Username</small>
@@ -35,8 +53,8 @@ const AuthForm = ({ name, displayName }) => {
           </label>
           <input name="password" type="password" />
         </div>
-        <div>
-          <button type="submit">{displayName}</button>
+        <div id='loginDiv'>
+          <button className='loginBtns' type="submit">{displayName}</button>
         </div>
         {error && <div> {error} </div>}
       </form>

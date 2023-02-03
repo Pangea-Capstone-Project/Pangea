@@ -4,7 +4,10 @@ const db = require("../db");
 const Tenant = db.define("tenant",{
     name: {
         type: Sequelize.STRING,
-        allowNull: false,
+        // allowNull: false,
+    },
+    username:{
+        type:Sequelize.STRING,
     },
     dateOfBirth: {
         type: Sequelize.STRING,
@@ -15,23 +18,23 @@ const Tenant = db.define("tenant",{
     email:{
         type: Sequelize.STRING,
     },
-    // rent: {
-    //     type: Sequelize.INTEGER,
-    //     allowNull: false,
-    // },
     rentPaid: {
         type: Sequelize.BOOLEAN,
+        defaultValue: false,
     },
-    // rentDueDate: {
-    //     type: Sequelize.STRING,
-    // },
     leaseStartDate: {
         type: Sequelize.STRING,
-        // defaultValue: Sequelize.NOW,
+        //  defaultValue: Sequelize.NOW,
     },
     leaseEndDate: {
         type: Sequelize.DATE,
-        // defaultValue: Sequelize.literal('NOW() + INTERVAL \'1 month\''),
+        //  defaultValue: Sequelize.literal('NOW() + INTERVAL \'1 month\''),
+    },
+    userId: {
+        type: Sequelize.INTEGER,
+    },
+    idForTenantToAssociate: {
+        type: Sequelize.INTEGER,
     },
 })
 

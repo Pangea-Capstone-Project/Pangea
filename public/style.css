@@ -1,5 +1,7 @@
 body {
   font-family: sans-serif;
+  /* background: rgb(246,246,246);
+  background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 40%, rgba(30,86,160,1) 77%, rgba(22,49,114,1) 100%); */
 }
 
 a {
@@ -12,7 +14,7 @@ label {
 
 nav a {
   display: inline-block;
-  margin: 1em;
+  margin: 10px;
 }
 
 form div {

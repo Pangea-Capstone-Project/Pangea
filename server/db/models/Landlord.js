@@ -5,6 +5,10 @@ const Landlord = db.define('landlord', {
     name: {
       type: Sequelize.STRING,
       unique: true,
+    },
+    username: {
+      type: Sequelize.STRING,
+      unique: true,
       allowNull: false
     },
     phoneNumber: {
@@ -18,8 +22,16 @@ const Landlord = db.define('landlord', {
       validate: {
         isEmail: true,
       }, 
-      allowNull: false
-    }
+    },
+    idForTenantToAssociate: {
+      type: Sequelize.INTEGER,
+    }, 
+    userId: {
+      type: Sequelize.INTEGER,
+  },
+    address : {
+      type: Sequelize.STRING,
+  },
   })
   
   module.exports = Landlord

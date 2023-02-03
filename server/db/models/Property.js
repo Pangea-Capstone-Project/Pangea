@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 
-const Complex = db.define('complex',{
+const Property = db.define('property',{
     propertyName : {
         type: Sequelize.STRING,
         allowNull: false,
@@ -12,7 +12,11 @@ const Complex = db.define('complex',{
     },
     numberOfUnits : {
         type: Sequelize.INTEGER,
-    },   
+        defaultValue: 1,
+    },
+    landlordId: {
+        type: Sequelize.INTEGER,
+    }   
 })  
 
-module.exports = Complex
+module.exports = Property

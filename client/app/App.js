@@ -1,12 +1,12 @@
-import React from 'react';
-import Navbar from '../features/navbar/Navbar';
-import AppRoutes from './AppRoutes';
-import Footer from '../features/footer/Footer';
+import React from "react";
+import AppRoutes from "./AppRoutes";
+import Footer from "../features/footer/Footer";
+// import LandlordNavbar from "../features/navbar/LandlordNavbar";
 
 const App = () => {
   return (
     <div>
-      <Navbar />
+      {/* <LandlordNavbar /> */}
       <AppRoutes />
       <Footer />
     </div>
