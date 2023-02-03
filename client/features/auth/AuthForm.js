@@ -14,19 +14,18 @@ const AuthForm = ({ name, displayName }) => {
   const { error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const formName = evt.target.name;
     const username = evt.target.username.value;
     const password = evt.target.password.value;
-
     if (!username || !password ) {
       alert("Please fill out all fields");
       return;
       }
       
     dispatch(authenticate({ username, password, method: formName }));
+    
     navigate('/dashboard')
   };
 

@@ -87,13 +87,41 @@ border-radius: 20px;
 height: auto;
 position: relative;
 `
+// const Img = styled.img`
+// z-index: 2;
+// border-radius: 50%;
+// box-shadow: inset -20px -20px 150px 5px black;
+// background-color: #1E56A0;
+// width: 43vw;
+// height: 40vw;
+// `
+
 const Img = styled.img`
-z-index: 2;
-border-radius: 50%;
-box-shadow: inset -20px -20px 150px 5px black;
-background-color: #1E56A0;
-width: 43vw;
-height: 40vw;
+  z-index: 2;
+  border-radius: 50%;
+  box-shadow: inset -20px -20px 150px 5px black;
+  background-color: #1E56A0;
+  width: 43vw;
+  height: 40vw;
+  animation: rotate 50s linear infinite, flip 50s linear infinite;
+  
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes flip {
+    from {
+      transform: scaleX(1);
+    }
+    to {
+      transform: scaleX(-1);
+    }
+  }
 `
 
 const Home = () => {

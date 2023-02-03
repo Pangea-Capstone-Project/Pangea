@@ -8,6 +8,7 @@ import Chart from "../../components/chart/Chart.jsx";
 import Table from "../../components/table/Table.jsx";
 import NavbarDashboard from "../../components/navbardashboard/NavbarDashboard.jsx";
 
+
 /**
  * COMPONENT
  */

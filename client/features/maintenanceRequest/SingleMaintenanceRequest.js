@@ -74,6 +74,7 @@ const SingleMaintenanceRequest = () => {
 const { id } = useParams();
 const isLoggedIn = useSelector((state) => !!state.auth.me.id);
 const maintenanceRequest = useSelector(selectMaintenanceRequest);
+console.log(`maintenanceReq`,maintenanceRequest)
 const dispatch = useDispatch();
 
 useEffect(() => {
