@@ -19,6 +19,10 @@ const User = db.define("user", {
     type: Sequelize.STRING,
     // allowNull: false,
   },
+  cart:{
+    type:Sequelize.JSONB,
+    defaultValue:[]
+  }
 });
 
 module.exports = User;

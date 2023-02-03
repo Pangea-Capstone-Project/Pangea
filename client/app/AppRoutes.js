@@ -19,6 +19,14 @@ import AfterSignUpTenant from "../features/afterSignup/AfterSignUpTenant";
 import AddAProperty from "../features/afterSignup/AddAProperty";
 import { me } from "./store";
 import AddAUnit from "../features/afterSignup/AddAUnit";
+
+import AllRents from "../features/rent/Rents";
+import { Rent } from "../features/rent/Rent";
+import Checkout from "../features/checkout/Checkout";
+import { CartView } from "../features/cart/CartView";
+import { OrderHistory } from "../features/orders/OrderHistory";
+import AddRent from "../features/rent/AddRent";
+
 /**
  * COMPONENT
  */
@@ -61,7 +69,31 @@ const AppRoutes = () => {
           {/* <Route to='/landlords' element={<Landlord />} /> */}
 
           {/* Route after signing up Landlord */}
-
+          <Route path="/*" element={<AllRents />} />
+					<Route
+						path="/rents"
+						element={<AllRents name="rents" displayName="All rents" />}
+					/>
+					<Route
+						path="/rents/:rentId"
+						element={<Rent name="Rent" displayName="Rent" />}
+					/>
+					<Route
+						path="/cart"
+						element={<CartView name="cart" displayName="Cart" />}
+					/>
+          <Route
+						path="/addRent"
+						element={<AddRent name="addRent" displayName="Add Rent" />}
+					/>
+					<Route
+						path="/checkout"
+						element={<Checkout name="checkout" displayName="checkout" />}
+					/>
+					<Route
+						path="/myOrders"
+						element={<OrderHistory name="orderHistory" displayName="order history" />}
+					/>
           <Route
             path="/signup-landlord"
             element={<AfterSignUpLandlord name="signup-landlord" displayName="Landlord Signup" />}
