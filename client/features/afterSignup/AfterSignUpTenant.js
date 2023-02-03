@@ -63,6 +63,7 @@ const AfterSignUpTenant = () => {
   const [dateOfBirth, setDateOfBirth] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [email, setEmail] = useState('');
+  const [idForTenantToAssociate, setIdForTenantToAssociate] = useState('');
   
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -80,6 +81,10 @@ const AfterSignUpTenant = () => {
     setEmail(event.target.value);
   };
 
+  const handleIdForTenantToAssociateChange = (event) => {
+    setIdForTenantToAssociate(event.target.value);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(updateTenant(me.id, {
@@ -87,6 +92,7 @@ const AfterSignUpTenant = () => {
       dateOfBirth,
       phoneNumber,
       email,
+      idForTenantToAssociate
     }));
     navigate('/tenantHome')
   };
@@ -121,7 +127,14 @@ const AfterSignUpTenant = () => {
           value={email}
           onChange={handleEmailChange}
           placeholder="Email"
-          />  
+          /> 
+          <StyledInput
+          type="number"
+          name="idForTenantToAssociate"
+          value={idForTenantToAssociate}
+          onChange={handleIdForTenantToAssociateChange}
+          placeholder="Unique ID from Landlord"
+          />   
           <StyledButton type="submit">Update</StyledButton>
           </StyledForm>
           </FormWrapper>

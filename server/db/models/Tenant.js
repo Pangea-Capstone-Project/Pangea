@@ -24,13 +24,16 @@ const Tenant = db.define("tenant",{
     },
     leaseStartDate: {
         type: Sequelize.STRING,
-        // defaultValue: Sequelize.NOW,
+        //  defaultValue: Sequelize.NOW,
     },
     leaseEndDate: {
         type: Sequelize.DATE,
-        // defaultValue: Sequelize.literal('NOW() + INTERVAL \'1 month\''),
+        //  defaultValue: Sequelize.literal('NOW() + INTERVAL \'1 month\''),
     },
     userId: {
+        type: Sequelize.INTEGER,
+    },
+    idForTenantToAssociate: {
         type: Sequelize.INTEGER,
     },
 })

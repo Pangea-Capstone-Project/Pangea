@@ -86,14 +86,25 @@ import { selectMe } from "../features/auth/authSlice";
 
 const AppRoutes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
-  const me = useSelector(selectMe);
-  console.log(`me`,me)
+  const userLoggedIn = useSelector(selectMe);
+
+  const dispatch = useDispatch();
+
+  console.log(`userLoggedIn`,userLoggedIn)
   console.log(`isLoggedIn`, isLoggedIn)
   console.log(`localStorage.getItem('token')`,localStorage.getItem('token'))
+
+  useEffect(() =>{
+    dispatch(me())
+  },[])
+
+
+
   return (
     <div>
       {isLoggedIn ? (
-        me.role === "tenant" ? (
+        ////////// IF Logged in as a Tenant Show this Routes /////////////
+        userLoggedIn.role === "tenant" ? (
           <Routes>
             <Route path="/tenanthome" element={<TenantHome />} />
             <Route path="/makeapayment" element={<MakeAPayment />} />
@@ -102,7 +113,9 @@ const AppRoutes = () => {
             <Route path="/messages" element={<Messages />} />
             <Route path="/signup-tenant" element={<AfterSignUpTenant />} />
           </Routes>
-        ) : (
+        ) : 
+        ////////// IF Logged in as a Landlord show this Routes///////
+       ( 
           <Routes>
             <Route path="/signup-landlord" element={<AfterSignUpLandlord />} />
             <Route path="/add-property" element={<AddAProperty />} />
@@ -114,11 +127,20 @@ const AppRoutes = () => {
           </Routes>
         )
       ) : (
+        ///////// IF Not Logged in Show this Routes ////////////
         <Routes>
           <Route path="/login" element={<AuthForm name="login" displayName="Login" />} />
           <Route path="/signup" element={<AuthFormSignup name="signup" displayName="Sign Up" />} />
           <Route path="/home" element={<Home name="home" displayName="Pangea" />} />
           <Route path="/*" element={<Home name="home" displayName="Pangea" />} />
+
+
+
+          {/* IF you wanna test a Route and troubleshooting it put it here make sure to take it out later and put it where it belongs */}
+
+
+
+          
         </Routes>
       )}
     </div>

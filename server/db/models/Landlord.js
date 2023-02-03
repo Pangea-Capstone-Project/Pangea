@@ -29,13 +29,6 @@ const Landlord = db.define('landlord', {
     userId: {
       type: Sequelize.INTEGER,
   },
-  //   propertyId: {
-  //     type: Sequelize.INTEGER,
-  //   },
-  //   propertyName : {
-  //     type: Sequelize.ARRAY(Sequelize.TEXT),
-  //     defaultValue: [],
-  // },
     address : {
       type: Sequelize.STRING,
   },
