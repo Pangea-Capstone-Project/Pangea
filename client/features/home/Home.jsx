@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 
 const Background = styled.div`
@@ -87,14 +87,30 @@ border-radius: 20px;
 height: auto;
 position: relative;
 `
+const rotate = keyframes`
+
+from {
+    transform: rotateY(0deg);
+}
+to {
+    transform: rotateY(360deg);
+} 
+`
 const Img = styled.img`
 z-index: 2;
 border-radius: 50%;
 box-shadow: inset -20px -20px 150px 5px black;
 background-color: #1E56A0;
-width: 43vw;
+width: 40vw;
 height: 40vw;
-`
+
+animation: ${rotate} 5s linear infinite;
+transform-style: preserve-3d;
+`;
+
+
+
+
 
 const Home = () => {
 
