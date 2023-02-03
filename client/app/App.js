@@ -6,7 +6,7 @@ import Footer from "../features/footer/Footer";
 const App = () => {
   return (
     <div>
-      {/* <LandlordNavbar/> */}
+      {/* <LandlordNavbar /> */}
       <AppRoutes />
       <Footer />
     </div>
