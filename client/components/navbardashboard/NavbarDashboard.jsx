@@ -19,7 +19,7 @@ const NavbarDashboard = () => {
         <div className="items">
           <div className="item">
             <LanguageOutlinedIcon className="icon" />
-            English
+            English!
           </div>
           <div className="item">
             <FullscreenExitOutlinedIcon className="icon" />
