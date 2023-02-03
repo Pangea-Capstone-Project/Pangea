@@ -69,7 +69,6 @@ async function seed() {
       email: "jeff@properties.com",
       phoneNumber: "5622341171",
       uniqueId: 123456,
-      // propertyId: properties[0].id,
     }),
   ]);
 
@@ -80,7 +79,6 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 1,
-      // propertyId: properties[0].id,
     }),
   ]);
   const tenants = await Promise.all([

@@ -27,6 +27,7 @@ const AuthForm = ({ name, displayName }) => {
       }
       
     dispatch(authenticate({ username, password, method: formName }));
+    navigate('/dashboard')
   };
 
   const handleNav = () => {
@@ -54,7 +55,6 @@ const AuthForm = ({ name, displayName }) => {
         </div>
         <div id='loginDiv'>
           <button className='loginBtns' type="submit">{displayName}</button>
-          {/* <button className='loginBtns' type="submit">Sign Up</button> */}
         </div>
         {error && <div> {error} </div>}
       </form>

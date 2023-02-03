@@ -4,6 +4,7 @@ import { createProperty, getLandlordId } from "./AddAPropertySlice";
 import { selectMe } from "../auth/authSlice";
 import styled from "styled-components";
 import AddAUnit from "./AddAUnit";
+import LandlordNavbar from "../navbar/LandlordNavbar";
 
 const Form = styled.form`
 display: flex;
@@ -95,6 +96,7 @@ const CreateProperty = () => {
   };
   return (
     <div>
+      <LandlordNavbar />
       <Form onSubmit={handleSubmit}>
         <Input
           type="text"

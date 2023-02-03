@@ -6,6 +6,7 @@ import {
 } from "./allMaintenanceRequestSlice";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import LandlordNavbar from "../navbar/LandlordNavbar";
 
 const WorkOrdersContainer = styled.div`
   display: flex;
@@ -109,6 +110,7 @@ const MaintenanceRequest = () => {
   };
   return (
     <div>
+      <LandlordNavbar />
       <MainContainer>
         <h1>Work Orders</h1>
       </MainContainer>
@@ -127,7 +129,7 @@ const MaintenanceRequest = () => {
           onMouseEnter={() => handleMouseEnter(maintenanceRequest)}
           onMouseLeave={handleMouseLeave}
           >
-            <Link to={`/workOrders/${maintenanceRequest.id}`}>
+            <Link to={`/workorders/${maintenanceRequest.id}`}>
             <Unit>Unit:123{maintenanceRequest.unitId}</Unit>
             <p>Severity: {maintenanceRequest.severity}</p>
             <p>{maintenanceRequest.type}</p>

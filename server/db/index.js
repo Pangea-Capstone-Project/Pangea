@@ -15,11 +15,6 @@ const Admin = require('./models/Admin')
 Unit.hasOne(Tenant);
 Tenant.belongsTo(Unit);
 
-// Landlord.hasMany(Unit, { foreignKey: 'landlordId'});
-// Unit.belongsTo(Landlord, { foreignKey: 'landlordId'});
-
-// FIGURE OUT ASSOCIATION BETWEEN A LANDLORD A UNIT AND A TENANT!!!!!!!!
-
 Landlord.hasMany(Property, { foreignKey: 'landlordId',});
 Property.belongsTo(Landlord, { foreignKey: 'landlordId',});
 
@@ -36,6 +31,9 @@ Tenant.belongsTo(User, { foreignKey: 'userId', onDelete: 'cascade' });
 
 User.hasOne(Landlord, { foreignKey: 'userId', onDelete: 'cascade' });
 Landlord.belongsTo(User, { foreignKey: 'userId', onDelete: 'cascade' });
+
+Landlord.hasMany(Tenant);
+Tenant.belongsTo(Landlord);
 
 
 

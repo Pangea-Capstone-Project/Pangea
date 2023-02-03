@@ -7,6 +7,7 @@ import AddAProperty from './AddAProperty'
 
 
 import styled from 'styled-components';
+import LandlordNavbar from '../navbar/LandlordNavbar';
 
 const FormWrapper = styled.div`
   background-color: #F6F6F6;
@@ -118,7 +119,7 @@ const UpdateLandlordForm = () => {
   };
   return (
       <FormWrapper>
-
+        <LandlordNavbar />
       <StyledForm onSubmit={handleSubmit}>
         <StyledInput
           type="text"

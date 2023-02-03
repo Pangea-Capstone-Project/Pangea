@@ -13,7 +13,8 @@ import NavbarDashboard from "../../components/navbardashboard/NavbarDashboard.js
  */
 const Dashboard = (props) => {
   const username = useSelector((state) => state.auth.me.username);
-
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+  
   return (
     <div className="dashboard">
       <Sidebar />

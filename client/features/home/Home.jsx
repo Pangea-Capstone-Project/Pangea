@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Navigate, useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
+
 
 const Background = styled.div`
 display: flex;
@@ -95,6 +97,15 @@ height: 40vw;
 `
 
 const Home = () => {
+
+
+    const navigate = useNavigate();
+    const handleLogin = () =>{
+        navigate('/login')
+    }
+    const handleSignup = () =>{
+        navigate('/signup')
+    }
     return (
         <Background>
             <MainBlock>
@@ -107,8 +118,8 @@ const Home = () => {
                 </DescriptionBlock>
                 <Img src="pangea5.png" alt="photo of super continent Pangea" ></Img>
                 <ButtonBox>
-                    <AllButtons>Login</AllButtons>
-                    <AllButtons>Create Account</AllButtons>
+                    <AllButtons onClick={handleLogin}>Login</AllButtons>
+                    <AllButtons onClick={handleSignup}>Create Account</AllButtons>
                 </ButtonBox>
             </MainBlock>
         </Background>
