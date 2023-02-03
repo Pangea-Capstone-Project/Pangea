@@ -2,13 +2,13 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from 'react';
 import { fetchRentsAsync, selectRents } from "./rentSlice";
 import { Link } from "react-router-dom";
-import { selectAuth } from "../auth/authSlice";
+import { selectMe } from "../auth/authSlice";
 import DeleteButton from "./DeleteButton";
 import { SortingSelector } from "./SortingSelector";
 import { SearchBar } from "./SearchBar";
 const AllRents = () => {
   const rents = useSelector(selectRents);
-  const { isAdmin } = useSelector(selectAuth)
+  const { isAdmin } = useSelector(selectMe)
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchRentsAsync());

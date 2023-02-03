@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectAuth } from "../auth/authSlice";
+import { selectMe } from "../auth/authSlice";
 import { fetchRentsAsync, selectRents } from "../rent/rentSlice";
 import { storeRentDetails } from "./cartRentDetailsSlice";
 import {
@@ -16,7 +16,7 @@ const Cart = () => {
 	const dispatch = useDispatch();
 	const allRents = useSelector(selectRents);
 	const cart = useSelector(selectCart);
-	const { id } = useSelector(selectAuth);
+	const { id } = useSelector(selectMe);
 	useEffect(() => {
 		dispatch(fetchRentsAsync())
 		dispatch(storeRentDetails(cartRents))

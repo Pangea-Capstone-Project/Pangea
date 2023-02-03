@@ -10,11 +10,11 @@ import {
 	updateCartLocalAsync,
 } from "../cart/cartSlice";
 import { Link } from "react-router-dom";
-import { selectAuth } from "../auth/authSlice";
+import { selectMe } from "../auth/authSlice";
 import EditRent from "./EditRent";
 
 export const Rent = () => {
-	const { isAdmin, id } = useSelector(selectAuth);
+	const { isAdmin, id } = useSelector(selectMe);
 	const rent = useSelector(selectSingleRent);
 	const cart = useSelector(selectCart);
 	const { rentId } = useParams();

@@ -2,10 +2,10 @@ import React from "react";
 import AppRoutes from "./AppRoutes";
 import Footer from "../features/footer/Footer";
 import { fetchCartAsync } from "../features/cart/cartSlice";
-import { selectAuth } from "../features/auth/authSlice.js";
+import { selectMe } from "../features/auth/authSlice.js";
 
 const App = () => {
-  const { id } = useSelector(selectAuth);
+  const { id } = useSelector(selectMe);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		if (id) dispatch(fetchCartAsync(id));
