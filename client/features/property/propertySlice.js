@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+// this gets all the properties for the landlord from the database and stores them in the store
 export const fetchPropertiesAsync = createAsyncThunk('properties', async() =>{
   try{
     const { data } = await axios.get(`http://localhost:8080/api/property`);
@@ -23,7 +24,7 @@ const propertiesSlice = createSlice({
     },
   });
 
-  
+// this gets the properties from the store
 export const selectProperties = (state) => {
     return state.property;
   };
