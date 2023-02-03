@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const {
-  models: { Landlord },
+  models: { Landlord, User },
 } = require("../db");
 module.exports = router;
 
@@ -13,14 +13,32 @@ router.get("/", async (request, response, next) => {
   }
 });
 
-router.get("/:id", async (request, response, next) => {
+// router.get('/:id', async(req,res,next) =>{
+//   try{
+//     console.log(`req.params`,req.params)
+//     console.log(`req.body`,req.body)
+//       const landlord = await Landlord.findByPk(req.params.id);
+//       console.log(`landlordId`,req.params.id)
+//       res.send(landlord);
+//   } catch(err){
+//       console.log(`error in single landlord route`, err)
+//       next(err)
+//   }
+// })
+
+router.get('/:id', async (req, res, next) => {
   try {
-    const landlord = await Landlord.findOne({
-      where: { id: request.params.id },
+    const { id } = req.params
+    const landlord = await Landlord.findAll({
+      where: {
+        userId: id,
+      }
     });
-    response.json(landlord);
-  } catch (error) {
-    next(error);
+    console.log(`landlordId`, req.params.id);
+    res.send(landlord);
+  } catch (err) {
+    console.log(`error in single landlord route`, err);
+    next(err);
   }
 });
 
@@ -43,6 +61,7 @@ router.put("/:id", async (req, res, next) => {
         phoneNumber: req.body.phoneNumber,
         email: req.body.email,
         idForTenantToAssociate: req.body.idForTenantToAssociate,
+        address: req.body.address
       },
       {
         where: {

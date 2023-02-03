@@ -5,7 +5,8 @@ import maintenanceRequestsReducer from '../features/maintenanceRequest/allMainte
 import maintenanceRequestReducer from '../features/maintenanceRequest/singleMaintenanceRequestSlice';
 import tenantsReducer from '../features/allTenants/allTenantsSlice';
 import unitsReducer from '../features/units/unitsSlice';
-import propertiesReducer from '../features/property/propertySlice'
+import propertiesReducer from '../features/property/propertySlice';
+import landlordReducer from '../features/profilePage/landlordProfileSlice';
 const store = configureStore({
   reducer: { 
     auth: authReducer,
@@ -17,6 +18,7 @@ const store = configureStore({
     tenants: tenantsReducer,
     units: unitsReducer,
     property: propertiesReducer,
+    landlord: landlordReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
