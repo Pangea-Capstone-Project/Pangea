@@ -9,25 +9,58 @@ const TOKEN = 'token';
 /*
   THUNKS
 */
+// export const me = createAsyncThunk('auth/me', async () => {
+//   const token = window.localStorage.getItem(TOKEN);
+//   try {
+//     if (token) {
+//       const res = await axios.get('/auth/me', {
+//         headers: {
+//           authorization: token,
+//         },
+//       });
+//       return res.data;
+//     } else {
+//       return {};
+//     }
+//   } catch (err) {
+//     if (err.response.data) {
+//       return thunkAPI.rejectWithValue(err.response.data);
+//     } else {
+//       return 'There was an issue with your request.';
+//     }
+//   }
+// });
+
+// export const authenticate = createAsyncThunk(
+//   'auth/authenticate',
+//   async ({ username, password, role, method }, thunkAPI) => {
+//     try {
+//       const res = await axios.post(`/auth/${method}`, { username, password, role });
+//       window.localStorage.setItem(TOKEN, res.data.token);
+//       thunkAPI.dispatch(me());
+//     } catch (err) {
+//       if (err.response.data) {
+//         return thunkAPI.rejectWithValue(err.response.data);
+//       } else {
+//         return 'There was an issue with your request.';
+//       }
+//     }
+//   }
+// );
 export const me = createAsyncThunk('auth/me', async () => {
   const token = window.localStorage.getItem(TOKEN);
+  if (!token) {
+    return {};
+  }
   try {
-    if (token) {
-      const res = await axios.get('/auth/me', {
-        headers: {
-          authorization: token,
-        },
-      });
-      return res.data;
-    } else {
-      return {};
-    }
+    const res = await axios.get('/auth/me', {
+      headers: {
+        authorization: token,
+      },
+    });
+    return res.data;
   } catch (err) {
-    if (err.response.data) {
-      return thunkAPI.rejectWithValue(err.response.data);
-    } else {
-      return 'There was an issue with your request.';
-    }
+    return {};
   }
 });
 
@@ -37,7 +70,7 @@ export const authenticate = createAsyncThunk(
     try {
       const res = await axios.post(`/auth/${method}`, { username, password, role });
       window.localStorage.setItem(TOKEN, res.data.token);
-      thunkAPI.dispatch(me());
+      return thunkAPI.dispatch(me());
     } catch (err) {
       if (err.response.data) {
         return thunkAPI.rejectWithValue(err.response.data);

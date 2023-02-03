@@ -27,6 +27,7 @@ const AuthForm = ({ name, displayName }) => {
       }
       
     dispatch(authenticate({ username, password, method: formName }));
+    navigate('/dashboard')
   };
 
   const handleNav = () => {

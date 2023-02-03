@@ -8,7 +8,6 @@ const Background = styled.div`
 display: flex;
 align-items: center;
 flex-direction: column;
-background-color: white;
 `
 const Title = styled.h1`
 color: #163172;
