@@ -20,6 +20,7 @@ import { me } from "./store";
 import AddAUnit from "../features/afterSignup/AddAUnit";
 import { selectMe } from "../features/auth/authSlice";
 import LandlordProfile from "../features/profilePage/LandlordProfile";
+import AddTenantToUnit from "../features/afterSignup/AddTenantToUnit";
 
 
 
@@ -66,6 +67,7 @@ const AppRoutes = () => {
             <Route path="/workorders" element={<MaintenanceRequest />} />
             <Route path="/tenants" element={<AllTenants />} />
             <Route path="/profile-page" element={<LandlordProfile/>} />
+            <Route path="add-tenant-unit" element={<AddTenantToUnit />} />
             <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         )

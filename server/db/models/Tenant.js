@@ -36,7 +36,7 @@ const Tenant = db.define("tenant",{
     idForTenantToAssociate: {
         type: Sequelize.INTEGER,
     },
-    unitId: {
+    unitIdToAssociateTenant: {
         type:Sequelize.INTEGER,
     }
 })

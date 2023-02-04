@@ -2,7 +2,7 @@ const router = require("express").Router();
 module.exports = router;
 
 const {
-  models: { Tenant },
+  models: { Tenant, Unit },
 } = require("../db");
 
 // All tenants
@@ -18,15 +18,15 @@ router.get("/", async (req, res, next) => {
 });
 
 router.get("/:id", async (request, response, next) => {
-    try {
-      const tenant  = await Tenant.findOne({
-        where: { id: request.params.id },
-      });
-      response.json(tenant);
-    } catch (error) {
-      next(error);
-    }
-  });
+  try {
+    const tenant = await Tenant.findOne({
+      where: { id: request.params.id },
+    });
+    response.json(tenant);
+  } catch (error) {
+    next(error);
+  }
+});
 
 router.post("/", async (req, res, next) => {
   console.log(`im request.body`, req.body);
@@ -38,7 +38,6 @@ router.post("/", async (req, res, next) => {
     next(error);
   }
 });
-
 
 router.put("/:id", async (req, res, next) => {
   try {
@@ -54,7 +53,7 @@ router.put("/:id", async (req, res, next) => {
         email: req.body.email,
         idForTenantToAssociate: req.body.idForTenantToAssociate,
         leaseStartDate: now.toISOString(),
-        leaseEndDate: nextMonth.toISOString()
+        leaseEndDate: nextMonth.toISOString(),
       },
       {
         where: {
@@ -68,7 +67,6 @@ router.put("/:id", async (req, res, next) => {
     next(error);
   }
 });
-
 router.delete("/:id", async (req, res, next) => {
   try {
     const tenant = await Tenant.destroy({ where: { id: req.params.id } });
@@ -78,3 +76,6 @@ router.delete("/:id", async (req, res, next) => {
     next(error);
   }
 });
+
+
+module.exports = router;

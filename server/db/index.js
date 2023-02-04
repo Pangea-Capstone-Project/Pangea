@@ -17,8 +17,8 @@ Property.belongsTo(Landlord, { foreignKey: 'landlordId'});
 Property.hasMany(Unit, { foreignKey: 'propertyId'});
 Unit.belongsTo(Property, { foreignKey: 'propertyId'});
 
-Unit.hasOne(Tenant, {foreignKey: 'unitId'})
-Tenant.belongsTo(Unit, {foreignKey: 'unitId'})
+Unit.hasOne(Tenant, {foreignKey: 'unitIdToAssociateTenant'})
+Tenant.belongsTo(Unit, {foreignKey: 'unitIdToAssociateTenant'})
 
 Unit.hasMany(MaintenanceRequest);
 MaintenanceRequest.belongsTo(Unit);

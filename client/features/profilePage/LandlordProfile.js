@@ -40,6 +40,7 @@ const LandlordProfile = () => {
   const dispatch = useDispatch();
   const me = useSelector(selectMe);
   const userLandlord = useSelector(selectLandlord);
+  console.log(`userLandlord`,userLandlord)
 
   useEffect(() => {
     dispatch(fetchlandlordAsync(me.id));
