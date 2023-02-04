@@ -17,6 +17,7 @@ const store = configureStore({
     // all tenants
     tenants: tenantsReducer,
     units: unitsReducer,
+    // all properties
     property: propertiesReducer,
     landlord: landlordReducer,
   },
