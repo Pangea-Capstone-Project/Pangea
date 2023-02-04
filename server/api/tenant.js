@@ -39,29 +39,7 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-// router.put("/:id", async (req, res, next) => {
-//   try {
-//     console.log(`req.body`,req.body);
-//     const tenant = await Tenant.update(
-//         {
-//         name: req.body.name,
-//         dateOfBirth: req.body.dateOfBirth,
-//         phoneNumber: req.body.phoneNumber,
-//         email: req.body.email,
-//         idForTenantToAssociate: req.body.idForTenantToAssociate
-//       },
-//       {
-//         where: {
-//           userId: req.params.id,
-//         },
-//       }
-//     );
-//     res.json(tenant);
-//   } catch (error) {
-//     console.log(`Error tenantPutRoute`, error);
-//     next(error);
-//   }
-// });
+
 router.put("/:id", async (req, res, next) => {
   try {
     console.log(`req.body`, req.body);

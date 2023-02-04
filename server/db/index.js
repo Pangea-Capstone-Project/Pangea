@@ -11,15 +11,14 @@ const MaintenanceRequest = require('./models/MaintenanceRequest')
 const Admin = require('./models/Admin')
 //associations could go here!
 
+Landlord.hasMany(Property, { foreignKey: 'landlordId'});
+Property.belongsTo(Landlord, { foreignKey: 'landlordId'});
 
-Unit.hasOne(Tenant);
-Tenant.belongsTo(Unit);
+Property.hasMany(Unit, { foreignKey: 'propertyId'});
+Unit.belongsTo(Property, { foreignKey: 'propertyId'});
 
-Landlord.hasMany(Property, { foreignKey: 'landlordId',});
-Property.belongsTo(Landlord, { foreignKey: 'landlordId',});
-
-Property.hasMany(Unit, { foreignKey: 'propertyId',});
-Unit.belongsTo(Property, { foreignKey: 'propertyId',});
+Unit.hasOne(Tenant, {foreignKey: 'unitId'})
+Tenant.belongsTo(Unit, {foreignKey: 'unitId'})
 
 Unit.hasMany(MaintenanceRequest);
 MaintenanceRequest.belongsTo(Unit);

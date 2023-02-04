@@ -36,6 +36,9 @@ const Tenant = db.define("tenant",{
     idForTenantToAssociate: {
         type: Sequelize.INTEGER,
     },
+    unitId: {
+        type:Sequelize.INTEGER,
+    }
 })
 
 module.exports = Tenant
