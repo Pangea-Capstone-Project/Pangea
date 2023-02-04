@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
+import SingleTenant from "../components/SingleTenant/SingleTenant";
 import AllTenants from "../features/allTenants/AllTenants";
 // import Landlord from '../../server/db/models/Landlord';
 import AuthForm from "../features/auth/AuthForm";
@@ -32,11 +33,12 @@ const AppRoutes = () => {
       {isLoggedIn ? (
         <Routes>
           <Route path="/*" element={<Dashboard />} />
-          <Route to="/tenanthome" element={<TenantHome />} />
-          <Route to="/makeapayment" element={<MakeAPayment />} />
-          <Route to="/pastpayments" element={<PastPayments />} />
-          <Route to="/maintenancereq" element={<MaintenanceReq />} />
-          <Route to="/messages" element={<Messages />} />
+          <Route path="/tenanthome" element={<TenantHome />} />
+          <Route path="/makeapayment" element={<MakeAPayment />} />
+          <Route path="/pastpayments" element={<PastPayments />} />
+          <Route path="/maintenancereq" element={<MaintenanceReq />} />
+          <Route path="/messages" element={<Messages />} />
+          <Route path="/singletenant/:id" element={<SingleTenant />} />
           {/* <Route to='/landlords' element={<Landlord />} /> */}
           <Route
             path="/tenanthome"
