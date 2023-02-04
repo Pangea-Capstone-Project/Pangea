@@ -31,8 +31,8 @@ Tenant.belongsTo(User, { foreignKey: 'userId', onDelete: 'cascade' });
 User.hasOne(Landlord, { foreignKey: 'userId', onDelete: 'cascade' });
 Landlord.belongsTo(User, { foreignKey: 'userId', onDelete: 'cascade' });
 
-Landlord.hasMany(Tenant);
-Tenant.belongsTo(Landlord);
+Landlord.hasMany(Tenant, { foreignKey: 'idForTenantToAssociate', targetKey: 'id'});
+Tenant.belongsTo(Landlord, { foreignKey: 'idForTenantToAssociate', sourceKey: 'id'});
 
 
 

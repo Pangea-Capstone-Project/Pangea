@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
+const { Landlord } = require('./Landlord');
 
 const Tenant = db.define("tenant",{
     name: {
@@ -33,8 +34,15 @@ const Tenant = db.define("tenant",{
     userId: {
         type: Sequelize.INTEGER,
     },
+    // idForTenantToAssociate: {
+    //     type: Sequelize.INTEGER,
+    // },
     idForTenantToAssociate: {
         type: Sequelize.INTEGER,
+        references: {
+          model: Landlord,
+          key: 'id'
+        },
     },
     unitIdToAssociateTenant: {
         type:Sequelize.INTEGER,
