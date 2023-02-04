@@ -4,6 +4,7 @@ import { fetchTenantsAsync, selectTenants } from "./allTenantsSlice";
 import { fetchUnitsAsync, selectUnits } from "../units/unitsSlice";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import LandlordNavbar from "../navbar/LandlordNavbar";
 
 const Container = styled.div`
   display: flex;
@@ -65,12 +66,14 @@ const AllTenants = () => {
   }, [dispatch]);
 
   return (
+    <div> 
+      <LandlordNavbar />
     <Container>
       <h1 style={{ color: "#163172" }}>All Tenants</h1>
       <div>
         {tenants.map((tenant) => {
           const matchingUnit = units.find((unit) => unit.id === tenant.unitId);
-
+          
           return (
             <TenantContainer key={tenant.id}>
                 <p style={{ color: "#163172" }}>Unit: {tenant.unitId}</p>
@@ -87,6 +90,7 @@ const AllTenants = () => {
         })}
       </div>
     </Container>
+        </div>
   );
 };
 

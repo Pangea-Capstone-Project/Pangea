@@ -2,11 +2,10 @@
 
 const {
   db,
-  models: { User, Landlord, Complex, Tenant, MaintenanceRequest, Unit },
+  models: { User, Landlord, Tenant, Property, MaintenanceRequest, Unit },
 } = require("../server/db");
 
 
-console.log(`this is complex`,Complex)
 console.log(`this is models`, User)
 /**
  * seed - this function clears the database, updates tables to
@@ -17,7 +16,7 @@ async function seed() {
   console.log("db synced!");
 
 // This 1 Landlord
-    // Has 1 Complex
+    // Has 1 Property
       // With 15 Units and 15 Tenants
 
   // Creating Users
@@ -30,7 +29,7 @@ async function seed() {
     User.create({
       username: "TestPerson",
       password: "123",
-      role: "landlord",
+      role: "tenant",
     })
   ]);
 
@@ -38,13 +37,13 @@ async function seed() {
     if (newUser[0].role === "tenant") {
       await Tenant.create({
         userId: newUser[0].id,
-        name: newUser[0].username,
+        username: newUser[0].username,
         role: newUser[0].role,
       });
     } else if (newUser[0].role === "landlord") {
       await Landlord.create({
         userId: newUser[0].id,
-        name: newUser[0].username,
+        username: newUser[0].username,
         role: newUser[0].role,
       });
     }
@@ -55,24 +54,23 @@ async function seed() {
   //creating landlords
   
   
+  
+  const properties = await Promise.all([
+    Property.create({
+      propertyName: "jeffsMobileHomes",
+      address: "117 Washington blvd, Los Angeles, California",
+      numberOfUnits: 15,
+    }),
+  ]);
+  
   const landlords = await Promise.all([
     Landlord.create({
-      name: "Jeff",
+      username: "Jeff",
       email: "jeff@properties.com",
       phoneNumber: "5622341171",
       uniqueId: 123456,
     }),
   ]);
-
-  const complexes = await Promise.all([
-    Complex.create({
-      propertyName: "jeffsMobileHomes",
-      address: "117 Washington blvd, Los Angeles, California",
-      numberOfUnits: 15,
-      landlordId: landlords[0].id,
-    }),
-  ]);
- 
 
   const units = await Promise.all([
     Unit.create({
@@ -81,119 +79,6 @@ async function seed() {
       rentDueDate: 10,
       isOccupied: true,
       bedrooms: 1,
-      complexId: complexes[0].id,
-    }),
-    Unit.create({
-      unitNumber: 2,
-      rentAmount: 1200,
-      rentDueDate: 10,
-      isOccupied: true,
-      bedrooms: 2,
-      complexId: complexes[0].id,
-    }),
-    Unit.create({
-      unitNumber: 3,
-      rentAmount: 1200,
-      rentDueDate: 10,
-      isOccupied: true,
-      bedrooms: 2,
-      complexId: complexes[0].id,
-    }),
-    Unit.create({
-      unitNumber: 4,
-      rentAmount: 1200,
-      rentDueDate: 10,
-      isOccupied: true,
-      bedrooms: 2,
-      complexId: complexes[0].id,
-    }),
-    Unit.create({
-      unitNumber: 5,
-      rentAmount: 1200,
-      rentDueDate: 10,
-      isOccupied: true,
-      bedrooms: 2,
-      complexId: complexes[0].id,
-    }),
-    Unit.create({
-      unitNumber: 6,
-      rentAmount: 1200,
-      rentDueDate: 10,
-      isOccupied: true,
-      bedrooms: 2,
-      complexId: complexes[0].id,
-    }),
-    Unit.create({
-      unitNumber: 7,
-      rentAmount: 1200,
-      rentDueDate: 10,
-      isOccupied: true,
-      bedrooms: 2,
-      complexId: complexes[0].id,
-    }),
-    Unit.create({
-      unitNumber: 8,
-      rentAmount: 1200,
-      rentDueDate: 10,
-      isOccupied: true,
-      bedrooms: 2,
-      complexId: complexes[0].id,
-    }),
-    Unit.create({
-      unitNumber: 9,
-      rentAmount: 1200,
-      rentDueDate: 10,
-      isOccupied: true,
-      bedrooms: 2,
-      complexId: complexes[0].id,
-    }),
-    Unit.create({
-      unitNumber: 10,
-      rentAmount: 1200,
-      rentDueDate: 10,
-      isOccupied: true,
-      bedrooms: 2,
-      complexId: complexes[0].id,
-    }),
-    Unit.create({
-      unitNumber: 11,
-      rentAmount: 1200,
-      rentDueDate: 10,
-      isOccupied: true,
-      bedrooms: 2,
-      complexId: complexes[0].id,
-    }),
-    Unit.create({
-      unitNumber: 12,
-      rentAmount: 1200,
-      rentDueDate: 10,
-      isOccupied: true,
-      bedrooms: 2,
-      complexId: complexes[0].id,
-    }),
-    Unit.create({
-      unitNumber: 13,
-      rentAmount: 1200,
-      rentDueDate: 10,
-      isOccupied: true,
-      bedrooms: 2,
-      complexId: complexes[0].id,
-    }),
-    Unit.create({
-      unitNumber: 14,
-      rentAmount: 1200,
-      rentDueDate: 10,
-      isOccupied: false,
-      bedrooms: 2,
-      complexId: complexes[0].id,
-    }),
-    Unit.create({
-      unitNumber: 15,
-      rentAmount: 1200,
-      rentDueDate: 10,
-      isOccupied: true,
-      bedrooms: 2,
-      complexId: complexes[0].id,
     }),
   ]);
   const tenants = await Promise.all([
@@ -206,146 +91,6 @@ async function seed() {
       leaseEndDate: "01/01/2024",
       dateOfBirth: "08/05/1973",
       unitId: units[0].id,
-    }),
-    Tenant.create({
-      name: "Laura Sanchez",
-      email: "john@smith.com",
-      phoneNumber: "1234567899",
-      rentPaid: false,
-      leaseStartDate: "01/01/2023",
-      leaseEndDate: "01/01/2024",
-      dateOfBirth: "08/05/1973",
-      unitId: units[1].id,
-    }),
-    Tenant.create({
-      name: "Fernando Diaz",
-      email: "john@smith.com",
-      phoneNumber: "1234567899",
-      rentPaid: false,
-      leaseStartDate: "01/01/2023",
-      leaseEndDate: "01/01/2024",
-      dateOfBirth: "08/05/1973",
-      unitId: units[2].id,
-    }),
-    Tenant.create({
-      name: "Karla Fernandez",
-      email: "john@smith.com",
-      phoneNumber: "1234567899",
-      rentPaid: false,
-      leaseStartDate: "01/01/2023",
-      leaseEndDate: "01/01/2024",
-      dateOfBirth: "08/05/1973",
-      unitId: units[3].id,
-    }),
-    Tenant.create({
-      name: "Angela Aguilar",
-      email: "john@smith.com",
-      phoneNumber: "1234567899",
-      rentPaid: false,
-      leaseStartDate: "01/01/2023",
-      leaseEndDate: "01/01/2024",
-      dateOfBirth: "08/05/1973",
-      unitId: units[4].id,
-    }),
-    Tenant.create({
-      name: "Noah Varela",
-      email: "john@smith.com",
-      phoneNumber: "1234567899",
-      rentPaid: false,
-      leaseStartDate: "01/01/2023",
-      leaseEndDate: "01/01/2024",
-      dateOfBirth: "08/05/1973",
-      unitId: units[5].id,
-    }),
-    Tenant.create({
-      name: "Alfonso Gonzalez",
-      email: "john@smith.com",
-      phoneNumber: "1234567899",
-      rentPaid: false,
-      leaseStartDate: "01/01/2023",
-      leaseEndDate: "01/01/2024",
-      dateOfBirth: "08/05/1973",
-      unitId: units[6].id,
-    }),
-    Tenant.create({
-      name: "Kevin Guerrero",
-      email: "john@smith.com",
-      phoneNumber: "1234567899",
-      rentPaid: false,
-      leaseStartDate: "01/01/2023",
-      leaseEndDate: "01/01/2024",
-      dateOfBirth: "08/05/1973",
-      unitId: units[7].id,
-    }),
-    Tenant.create({
-      name: "Issac Ramirez",
-      email: "john@smith.com",
-      phoneNumber: "1234567899",
-      rentPaid: false,
-      leaseStartDate: "01/01/2023",
-      leaseEndDate: "01/01/2024",
-      dateOfBirth: "08/05/1973",
-      unitId: units[8].id,
-    }),
-    Tenant.create({
-      name: "Carmine Ichelli",
-      email: "john@smith.com",
-      phoneNumber: "1234567899",
-      rentPaid: false,
-      leaseStartDate: "01/01/2023",
-      leaseEndDate: "01/01/2024",
-      dateOfBirth: "08/05/1973",
-      unitId: units[9].id,
-    }),
-    Tenant.create({
-      name: "Rudy Dawson",
-      email: "john@smith.com",
-      phoneNumber: "1234567899",
-      rentPaid: false,
-      leaseStartDate: "01/01/2023",
-      leaseEndDate: "01/01/2024",
-      dateOfBirth: "08/05/1973",
-      unitId: units[10].id,
-    }),
-    Tenant.create({
-      name: "Grace Lee",
-      email: "john@smith.com",
-      phoneNumber: "1234567899",
-      rentPaid: false,
-      leaseStartDate: "01/01/2023",
-      leaseEndDate: "01/01/2024",
-      dateOfBirth: "08/05/1973",
-      unitId: units[11].id,
-    }),
-    Tenant.create({
-      name: "Brian Sanchez",
-      email: "john@smith.com",
-      phoneNumber: "1234567899",
-      rentPaid: false,
-      leaseStartDate: "01/01/2023",
-      leaseEndDate: "01/01/2024",
-      dateOfBirth: "08/05/1973",
-      unitId: units[12].id,
-    }),
-    Tenant.create({
-      name: "Abraham Lopez",
-      email: "tstark@gmail.com",
-      phoneNumber: "1234567899",
-      rentPaid: true,
-      leaseStartDate: "01/01/2023",
-      leaseEndDate: "01/01/2024",
-      dateOfBirth: "01/01/1990",
-      unitId: units[13].id,
-    }),
-    Tenant.create({
-      name: "Abraham Lincoln",
-      email: "linAb@gmail.com",
-      phoneNumber: "1234567899",
-      rentPaid: true,
-      leaseStartDate: "01/01/2023",
-      leaseEndDate: "01/01/2024",
-      dateOfBirth: "01/01/1900",
-      unitId: units[14].id,
     }),
   ]);
 
@@ -370,7 +115,7 @@ async function seed() {
 
 
   console.log(`seeded ${landlords.length} landlords`);
-  console.log(`seeded ${complexes.length} complexes`);
+  console.log(`seeded ${properties.length} Property`);
   console.log(`seeded ${units.length} units`);
   console.log(`seeded ${tenants.length} tenants`);
   console.log(`seeded ${maintenanceRequests.length} maintenanceRequests`);

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { authenticate } from '../../app/store';
 import './auth.css'
 
@@ -12,21 +13,31 @@ import './auth.css'
 const AuthForm = ({ name, displayName }) => {
   const { error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const formName = evt.target.name;
     const username = evt.target.username.value;
     const password = evt.target.password.value;
-    const role = evt.target.role.value;
-    dispatch(authenticate({ username, password, role, method: formName }));
+    if (!username || !password ) {
+      alert("Please fill out all fields");
+      return;
+      }
+      
+    dispatch(authenticate({ username, password, method: formName }));
+    
+    navigate('/dashboard')
   };
+
+  const handleNav = () => {
+    navigate('/signup')
+  }
 
   return (
     <div id='home'>
       <div id='loginBtns'>
-            <button className='landtenBtns'>Landlords</button>
-            <button className='landtenBtns'>Tenants</button>
+            <button className='landtenBtns'>Login</button>
+            <button className='landtenBtns' onClick={handleNav}>Sign Up</button>
             </div>
       <form id='loginForm' onSubmit={handleSubmit} name={name}>
         <div>
@@ -41,15 +52,8 @@ const AuthForm = ({ name, displayName }) => {
           </label>
           <input name="password" type="password" />
         </div>
-        <div>
-          <label htmlFor="role">
-            <small>Role</small>
-          </label>
-          <input name="role" type="role" />
-        </div>
         <div id='loginDiv'>
           <button className='loginBtns' type="submit">{displayName}</button>
-          <button className='loginBtns' type="submit">Sign Up</button>
         </div>
         {error && <div> {error} </div>}
       </form>

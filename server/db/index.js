@@ -4,11 +4,10 @@ const db = require('./db')
 
 const User = require('./models/User')
 const Tenant = require('./models/Tenant')
-const Complex = require('./models/Complex')
+const Property = require('./models/Property')
 const Unit = require('./models/Unit')
 const Landlord = require('./models/Landlord')
 const MaintenanceRequest = require('./models/MaintenanceRequest')
-const Role = require('./models/Role')
 const Admin = require('./models/Admin')
 //associations could go here!
 
@@ -16,20 +15,15 @@ const Admin = require('./models/Admin')
 Unit.hasOne(Tenant);
 Tenant.belongsTo(Unit);
 
-Complex.hasMany(Unit);
-Unit.belongsTo(Complex);
+Landlord.hasMany(Property, { foreignKey: 'landlordId',});
+Property.belongsTo(Landlord, { foreignKey: 'landlordId',});
 
-Landlord.hasMany(Complex);
-Complex.belongsTo(Landlord);
+Property.hasMany(Unit, { foreignKey: 'propertyId',});
+Unit.belongsTo(Property, { foreignKey: 'propertyId',});
 
 Unit.hasMany(MaintenanceRequest);
 MaintenanceRequest.belongsTo(Unit);
 
-// Tenant.belongsTo(User);
-// User.hasMany(Tenant);
-
-// Landlord.belongsTo(User);
-// User.hasMany(Landlord);
 
 User.hasOne(Tenant, { foreignKey: 'userId', onDelete: 'cascade' });
 Tenant.belongsTo(User, { foreignKey: 'userId', onDelete: 'cascade' });
@@ -38,13 +32,19 @@ Tenant.belongsTo(User, { foreignKey: 'userId', onDelete: 'cascade' });
 User.hasOne(Landlord, { foreignKey: 'userId', onDelete: 'cascade' });
 Landlord.belongsTo(User, { foreignKey: 'userId', onDelete: 'cascade' });
 
+Landlord.hasMany(Tenant);
+Tenant.belongsTo(Landlord);
+
+
+
+
 
 module.exports = {
   db,
   models: {
     User,
     Tenant,
-    Complex,
+    Property,
     Unit,
     Landlord,
     MaintenanceRequest,

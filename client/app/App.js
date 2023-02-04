@@ -1,17 +1,14 @@
-import React from 'react';
-
-import LandlordNavbar from '../features/navbar/LandlordNavbar';
-// import TenantNavbar from '../features/navbar/Tenantnavbar';
-import AppRoutes from './AppRoutes';
-import Footer from '../features/footer/Footer';
+import React from "react";
+import AppRoutes from "./AppRoutes";
+import Footer from "../features/footer/Footer";
+// import LandlordNavbar from "../features/navbar/LandlordNavbar";
 
 const App = () => {
   return (
     <div>
-      <LandlordNavbar />
+      {/* <LandlordNavbar /> */}
       <AppRoutes />
       <Footer />
-      {/* dont mind me */}
     </div>
   );
 };

@@ -7,6 +7,8 @@ import tenantsReducer from '../features/allTenants/allTenantsSlice';
 import unitsReducer from '../features/units/unitsSlice';
 import singleTenantSlice from '../components/SingleTenant/singleTenantSlice' 
 
+import propertiesReducer from '../features/property/propertySlice';
+import landlordReducer from '../features/profilePage/landlordProfileSlice';
 const store = configureStore({
   reducer: { 
     auth: authReducer,
@@ -18,6 +20,9 @@ const store = configureStore({
     tenants: tenantsReducer,
     tenant: singleTenantSlice,
     units: unitsReducer,
+    // all properties
+    property: propertiesReducer,
+    landlord: landlordReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
@@ -31,3 +36,4 @@ const store = configureStore({
 
 export default store;
 export * from '../features/auth/authSlice';
+export * from '../features/afterSignup/AddAPropertySlice';

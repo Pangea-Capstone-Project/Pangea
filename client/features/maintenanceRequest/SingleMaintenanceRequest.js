@@ -6,6 +6,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import LandlordNavbar from "../navbar/LandlordNavbar";
 
 const WorkOrdersContainer = styled.div`
   display: flex;
@@ -73,6 +74,7 @@ const SingleMaintenanceRequest = () => {
 const { id } = useParams();
 const isLoggedIn = useSelector((state) => !!state.auth.me.id);
 const maintenanceRequest = useSelector(selectMaintenanceRequest);
+console.log(`maintenanceReq`,maintenanceRequest)
 const dispatch = useDispatch();
 
 useEffect(() => {
@@ -83,6 +85,7 @@ const { type, severity, description, imageUrl } =
 maintenanceRequest.maintenanceRequest;
 return (
   <div>
+    <LandlordNavbar />
     <WorkOrdersContainer className={severity === "Low" ? "low-severity" : (severity === "Medium" ? "medium-severity" : "high-severity")}>
       <Unit>Unit: #123</Unit>
       <p>Type: {type}</p>
