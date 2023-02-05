@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom';
 
 
 const Background = styled.div`
@@ -69,7 +70,7 @@ const messageCount = 10
 const landlordPhone = "757-222-1111"
 
 const MaintenanceReq = () => {
-
+    const navigate = useNavigate();
     const [makeEmergencyReq, setMakeEmergencyReq] = useState(false)
     const [messageCount, setMessageCount] = useState(0)
 
@@ -87,7 +88,9 @@ const MaintenanceReq = () => {
 
     //message counter disappears when the tenant has no unread messages.
     //message counter stops displaying numbers of messages after 99. 
-
+    const handleNav = () =>{
+        navigate('/create-maintenance-request')
+    }
     return (
         <Background>
             <Title>Maintenance Request</Title>
@@ -107,7 +110,7 @@ const MaintenanceReq = () => {
             {makeEmergencyReq ? "Cancel" : "Emergency Request"}
                 
             </AllButtons>
-            <AllButtons>
+            <AllButtons onClick={handleNav}>
                 Initiate Request
             </AllButtons>
 

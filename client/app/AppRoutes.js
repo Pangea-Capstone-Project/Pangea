@@ -21,6 +21,7 @@ import AddAUnit from "../features/afterSignup/AddAUnit";
 import { selectMe } from "../features/auth/authSlice";
 import LandlordProfile from "../features/profilePage/LandlordProfile";
 import AddTenantToUnit from "../features/afterSignup/AddTenantToUnit";
+import CreateMaintenanceRequest from "../features/createMaintenanceRequestTenant/CreateMaintenanceRequest";
 
 
 
@@ -54,6 +55,9 @@ const AppRoutes = () => {
             <Route path="/maintenancereq" element={<MaintenanceReq />} />
             <Route path="/messages" element={<Messages />} />
             <Route path="/signup-tenant" element={<AfterSignUpTenant />} />
+            <Route path="/create-maintenance-request" element={<CreateMaintenanceRequest />} />
+
+            <Route path="/*" element={<TenantHome/>} />
           </Routes>
         ) : 
         ////////// IF Logged in as a Landlord show this Routes///////
@@ -69,6 +73,7 @@ const AppRoutes = () => {
             <Route path="/profile-page" element={<LandlordProfile/>} />
             <Route path="add-tenant-unit" element={<AddTenantToUnit />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/*" element={<Dashboard/>} />
           </Routes>
         )
       ) : (

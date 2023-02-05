@@ -21,7 +21,10 @@ Unit.hasOne(Tenant, {foreignKey: 'unitIdToAssociateTenant'})
 Tenant.belongsTo(Unit, {foreignKey: 'unitIdToAssociateTenant'})
 
 Unit.hasMany(MaintenanceRequest);
-MaintenanceRequest.belongsTo(Unit);
+MaintenanceRequest.belongsTo(Unit, {
+  foreignKey: 'unitId',
+  onDelete: 'cascade'
+})
 
 
 User.hasOne(Tenant, { foreignKey: 'userId', onDelete: 'cascade' });
