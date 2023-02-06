@@ -57,12 +57,11 @@ const AllTenants = () => {
   const dispatch = useDispatch();
   const tenants = useSelector(selectTenants);
   const units = useSelector(selectUnits);
-
+  console.log(`tenants`,tenants)
+  console.log(`units`,units)
   useEffect(() => {
     dispatch(fetchTenantsAsync());
     dispatch(fetchUnitsAsync());
-    console.log(`tenants`, tenants);
-    console.log(`units`, units);
   }, [dispatch]);
 
   return (

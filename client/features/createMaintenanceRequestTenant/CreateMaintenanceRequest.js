@@ -81,16 +81,16 @@ import { fetchUnitsAsync, selectUnits } from "../units/unitsSlice";
 import { useNavigate } from "react-router-dom";
 
 const Form = styled.form`
-display: flex;
-flex-direction: column;
-align-items: center;
-background-color: #F6F6F6;
-padding: 20px;
-border-radius: 10px;
-width: 80%;
-margin: 20px auto;
-background-color: #f2f2f2;
-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f6f6f6;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  margin: 20px auto;
+  background-color: #f2f2f2;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 `;
 
 const Select = styled.select`
@@ -102,30 +102,29 @@ const Select = styled.select`
 `;
 
 const Input = styled.input`
-margin: 10px 0;
-padding: 10px;
-width: 60%;
-font-size: 1.2em;
-border-radius: 5px;
-border: none;
-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  margin: 10px 0;
+  padding: 10px;
+  width: 60%;
+  font-size: 1.2em;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 `;
 
-
 const Button = styled.button`
-margin-top: 20px;
-padding: 10px 20px;
-font-size: 18px;
-background-color: #1e56a0;
-color: #fff;
-border-radius: 5px;
-border: none;
-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-cursor: pointer;
-&:hover {
-  background-color: #163172;
-  color: #f6f6f6;
-}
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #1e56a0;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  &:hover {
+    background-color: #163172;
+    color: #f6f6f6;
+  }
 `;
 
 const CreateMaintenanceRequest = () => {
@@ -139,13 +138,13 @@ const CreateMaintenanceRequest = () => {
   });
   const navigate = useNavigate();
   useEffect(() => {
-    dispatch(fetchUnitsAsync())
+    dispatch(fetchUnitsAsync());
   }, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createMaintenanceRequest(requestData));
-    navigate('/tenantHome')
+    navigate("/tenantHome");
   };
 
   const handleChange = (e) => {
@@ -158,27 +157,24 @@ const CreateMaintenanceRequest = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <Select name="unitId" value={requestData.unitId} onChange={handleChange}>
-        <option value>
-          Select Unit Number
-        </option>
+        <option value>Select Unit Number</option>
         {units.map((unit) => (
           <option key={unit.id} value={unit.id}>
             {unit.unitNumber}
           </option>
         ))}
       </Select>
+      <Select name="severity" value={requestData.severity} onChange={handleChange}>
+        <option value>Severity</option>
+        <option>Low</option>
+        <option>Medium</option>
+        <option>High</option>
+      </Select>
       <Input
         type="text"
         name="type"
         value={requestData.type}
         placeholder="Type"
-        onChange={handleChange}
-      />
-      <Input
-        type="text"
-        name="severity"
-        value={requestData.severity}
-        placeholder="Severity"
         onChange={handleChange}
       />
       <Input
