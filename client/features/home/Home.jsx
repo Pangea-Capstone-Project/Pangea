@@ -1,15 +1,34 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 
 const Background = styled.div`
 display: flex;
+justify-content: center;
 align-items: center;
 flex-direction: column;
 background: rgb(246,246,246);
 background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 40%, rgba(30,86,160,1) 77%, rgba(22,49,114,1) 100%);
+`
+const WelcomeBanner = styled.div`
+Width: 93vw;
+height: 10vh;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 20px;
+border: 2px solid darkgreen;
+padding: 1rem;
+z-index: 3;
+background-color: rgba(30, 86, 160, 0.4);
+box-shadow: 4px 4px 10px 1px black;
+color: #D6E4F0;
+text-shadow: 2px 2px 4px black;
+font-size: 3rem;
+margin: 1rem;
+gap: 4rem;
 `
 
 const AllButtons = styled.button`
@@ -28,17 +47,14 @@ const DescriptionBlock = styled.div`
 color: white;
 display: flex;
 flex-direction: column;
-position: absolute
+margin-left: 2rem;
 `
 
 const DescriptionTitle = styled.h2`
-color: red;
 font-size: 2rem;
-margin: 1rem;
-margin-top: 14vh;
 width: 20vw;
+margin: 0.5rem 0 0 0;
 display: flex;
-margin-left: 10vw;
 z-index: 3;
 background-color: rgba(30, 86, 160, 0.4);
 box-shadow: 4px 4px 10px 1px black;
@@ -53,15 +69,13 @@ const Description = styled.p`
 color: white;
 font-size: 1.5rem;
 display: flex;
-// margin-top: 10vh;
 left: -30%;
 z-index: 3;
 line-height: 3rem;
 text-shadow: 2px 2px 2px black;
 width: 30vw;
-height: auto;
+height: 50vh;
 justify-content: center;
-align-items: center;
 background-color: rgba(30, 86, 160, 0.4);
 box-shadow: 4px 4px 10px 1px black;
 color: #D6E4F0;
@@ -82,47 +96,34 @@ width: 90%;
 display: flex;
 flex-direction: row;
 justify-content: center;
+align-items: center;
 margin: 20px;
 border-radius: 20px;
 height: auto;
 position: relative;
 `
-// const Img = styled.img`
-// z-index: 2;
-// border-radius: 50%;
-// box-shadow: inset -20px -20px 150px 5px black;
-// background-color: #1E56A0;
-// width: 43vw;
-// height: 40vw;
-// `
+const rotate = keyframes`
 
-const Img = styled.img`
-  z-index: 2;
-  border-radius: 50%;
-  box-shadow: inset -20px -20px 150px 5px black;
-  background-color: #1E56A0;
-  width: 43vw;
-  height: 40vw;
-  animation: rotate 50s linear infinite, flip 50s linear infinite;
-  
-  @keyframes rotate {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
-  @keyframes flip {
-    from {
-      transform: scaleX(1);
-    }
-    to {
-      transform: scaleX(-1);
-    }
-  }
+from { background-position: 0vw 0vw; }
+to { background-position: 10057vw 0vw; }
 `
+const Img = styled.div`
+z-index: 2;
+border-radius: 50%;
+box-shadow: inset -20px -20px 150px 5px black;
+background-color: #1E56A0;
+width: 40vw;
+height: 40vw;
+background-image: url(pangea5.png);
+animation: ${rotate} 2000s linear infinite;
+animation-fill-mode: both;
+transform-style: preserve-3d;
+
+`;
+
+
+
+
 
 const Home = () => {
 
@@ -136,7 +137,13 @@ const Home = () => {
     }
     return (
         <Background>
+            <WelcomeBanner>
+            <AllButtons onClick={handleLogin}>Login</AllButtons>
+                Welcome To Pangea 
+                    <AllButtons onClick={handleSignup}>Create Account</AllButtons>
+                </WelcomeBanner>
             <MainBlock>
+                <Img></Img>
                 <DescriptionBlock>
                     <DescriptionTitle>Whats up with pangea?</DescriptionTitle>
                     <Description> Pangea will strongly reduce your apartment complex's sinusoidal depleneration.
@@ -144,11 +151,7 @@ const Home = () => {
                         and hopefully assisting you with your mental complexes.
                     </Description>
                 </DescriptionBlock>
-                <Img src="pangea5.png" alt="photo of super continent Pangea" ></Img>
-                <ButtonBox>
-                    <AllButtons onClick={handleLogin}>Login</AllButtons>
-                    <AllButtons onClick={handleSignup}>Create Account</AllButtons>
-                </ButtonBox>
+               
             </MainBlock>
         </Background>
     )
