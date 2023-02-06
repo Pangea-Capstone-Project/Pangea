@@ -24,11 +24,11 @@ router.route('/')
       }
       //Create Tenant
       // const tenant = await Tenant.create({rentAmount})
-      const tenant = await Tenant.update({rentAmount : rentAmount}, {where:{userId: user.id}});
+      const tenant = await Tenant.update({rentAmount : rentAmount}, {where:{id: req.body.tenantId}});
       if(tenant){
         res.status(201).json({
           // price: Tenant.rentAmount,
-          rentAmount: rentAmount
+          rentAmount: req.body.rentAmount
         })
       }
     } else{

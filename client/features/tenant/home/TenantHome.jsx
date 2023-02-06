@@ -163,6 +163,11 @@ const TenantHome = () => {
                     }}>{(messageCount >= 99) ? 99 : messageCount}</MessageCount>
                 </MessageButtonAndNumber>
             </Link>
+            <Link to={"/cart"}>
+                <button>
+                Payment
+                </button>
+            </Link>
             <h2 onClick={changeMessageCount}>Add Messages Test</h2>
             <h2 onClick={increaseRentClicked}>Increase Rent Test</h2>
             <h2 onClick={increaseRentDueClicked}>Increase Rent Due Test</h2>
