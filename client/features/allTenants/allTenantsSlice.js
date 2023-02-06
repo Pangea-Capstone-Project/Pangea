@@ -10,10 +10,11 @@ export const fetchTenantsAsync = createAsyncThunk('tenants', async() =>{
     }
 })
 
+
 const tenantsSlice = createSlice({
     name: 'tenants',
     initialState: [],
-    reduicers: {},
+    reducers: {},
     extraReducers:(buildeR) =>{
         buildeR.addCase(fetchTenantsAsync.fulfilled, (state,action) =>{
             return action.payload;
