@@ -110,7 +110,7 @@ to { background-position: 10057vw 0vw; }
 const Img = styled.div`
 z-index: 2;
 border-radius: 50%;
-box-shadow: inset -20px -20px 150px 5px black;
+box-shadow: inset -30px -30px 150px 5px black;
 background-color: #1E56A0;
 width: 40vw;
 height: 40vw;

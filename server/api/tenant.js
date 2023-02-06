@@ -20,7 +20,7 @@ router.get("/", async (req, res, next) => {
 router.get("/:id", async (request, response, next) => {
   try {
     const tenant = await Tenant.findOne({
-      where: { id: request.params.id },
+      where: { userId: request.params.id },
     });
     response.json(tenant);
   } catch (error) {

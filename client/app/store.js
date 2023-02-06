@@ -13,7 +13,7 @@ import singleRentSlice from "../features/rent/singleRentSlice";
 import orderSlice from "../features/orders/orderSlice";
 import cartRentDetailsSlice from "../features/cart/cartRentDetailsSlice";
 import landlordReducer from '../features/profilePage/landlordProfileSlice';
-
+import singleTenantReducer from "../features/allTenants/singleTenantSlice"
 
 const store = configureStore({
   reducer: {
@@ -23,6 +23,9 @@ const store = configureStore({
     // all tenants
     tenants: tenantsReducer,
     units: unitsReducer,
+    // single tenant
+    tenant: singleTenantReducer,
+    
     // all properties
     property: propertiesReducer,
 

@@ -7,7 +7,6 @@ import MaintenanceRequest from "../features/maintenanceRequest/MaintenanceReques
 import SingleMaintenanceRequest from "../features/maintenanceRequest/SingleMaintenanceRequest";
 import TenantHome from "../features/tenant/home/TenantHome.jsx";
 import MaintenanceReq from "../features/tenant/maintenanceReq/MaintenanceReq.jsx";
-import Messages from "../features/tenant/messages/Messages.jsx";
 import MakeAPayment from "../features/tenant/payments/MakeAPayment.jsx";
 import PastPayments from "../features/tenant/payments/PastPayments.jsx";
 import Dashboard from "../pages/dashboard/Dashboard.jsx";
@@ -55,7 +54,6 @@ const AppRoutes = () => {
             <Route path="/makeapayment" element={<MakeAPayment />} />
             <Route path="/pastpayments" element={<PastPayments />} />
             <Route path="/maintenancereq" element={<MaintenanceReq />} />
-            <Route path="/messages" element={<Messages />} />
             <Route path="/signup-tenant" element={<AfterSignUpTenant />} />
             <Route
               path="/create-maintenance-request"
