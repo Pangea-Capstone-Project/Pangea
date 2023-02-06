@@ -2,7 +2,8 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { logout } from '../../../app/store';
 
 const Background = styled.div`
 display: flex;
@@ -86,7 +87,8 @@ const tenantUnit = "202"
 const messageCount = 100
 
 const TenantHome = () => {
-
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [messageCount, setMessageCount] = useState(0)
     const [rentDue, setRentDue] = useState(0)
     const [rent, setRent] = useState(0)
@@ -101,7 +103,10 @@ const TenantHome = () => {
         setRent(rent + 1000)
     }
 
-
+    const logoutAndRedirectHome = () => {
+        dispatch(logout());
+        navigate('/login');
+      };
     //rentDue turns green if the tenant is caught up on rent, aka. $0.
     //message counter disappears when the tenant has no unread messages.
     //message counter stops displaying numbers of messages after 99. 
@@ -109,6 +114,9 @@ const TenantHome = () => {
     return (
         <Background>
             <Title>Tenant Home</Title>
+            <button onClick={logoutAndRedirectHome}>
+              Logout
+            </button>
             <Title>Hello, {tenantName}</Title>
             <Title>Suite #{tenantUnit}</Title>
             <RentBox>

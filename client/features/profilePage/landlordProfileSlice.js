@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 const initialState = {
-    landlord:{},
+    landlord:[],
 };
 
 export const fetchlandlordAsync = createAsyncThunk('landlord', async(id) =>{
@@ -23,7 +23,7 @@ export const fetchlandlordAsync = createAsyncThunk('landlord', async(id) =>{
     extraReducers:(builder) =>{
         builder.addCase(fetchlandlordAsync.fulfilled,(state,action) =>{
             console.log(`action`, action)
-            state.landlord = action.payload;
+            return action.payload;
         })
     }
 })

@@ -11,18 +11,20 @@ const MaintenanceRequest = require('./models/MaintenanceRequest')
 const Admin = require('./models/Admin')
 //associations could go here!
 
+Landlord.hasMany(Property, { foreignKey: 'landlordId'});
+Property.belongsTo(Landlord, { foreignKey: 'landlordId'});
 
-Unit.hasOne(Tenant);
-Tenant.belongsTo(Unit);
+Property.hasMany(Unit, { foreignKey: 'propertyId'});
+Unit.belongsTo(Property, { foreignKey: 'propertyId'});
 
-Landlord.hasMany(Property, { foreignKey: 'landlordId',});
-Property.belongsTo(Landlord, { foreignKey: 'landlordId',});
-
-Property.hasMany(Unit, { foreignKey: 'propertyId',});
-Unit.belongsTo(Property, { foreignKey: 'propertyId',});
+Unit.hasOne(Tenant, {foreignKey: 'unitIdToAssociateTenant'})
+Tenant.belongsTo(Unit, {foreignKey: 'unitIdToAssociateTenant'})
 
 Unit.hasMany(MaintenanceRequest);
-MaintenanceRequest.belongsTo(Unit);
+MaintenanceRequest.belongsTo(Unit, {
+  foreignKey: 'unitId',
+  onDelete: 'cascade'
+})
 
 
 User.hasOne(Tenant, { foreignKey: 'userId', onDelete: 'cascade' });
@@ -32,8 +34,8 @@ Tenant.belongsTo(User, { foreignKey: 'userId', onDelete: 'cascade' });
 User.hasOne(Landlord, { foreignKey: 'userId', onDelete: 'cascade' });
 Landlord.belongsTo(User, { foreignKey: 'userId', onDelete: 'cascade' });
 
-Landlord.hasMany(Tenant);
-Tenant.belongsTo(Landlord);
+Landlord.hasMany(Tenant, { foreignKey: 'idForTenantToAssociate', targetKey: 'id'});
+Tenant.belongsTo(Landlord, { foreignKey: 'idForTenantToAssociate', sourceKey: 'id'});
 
 
 

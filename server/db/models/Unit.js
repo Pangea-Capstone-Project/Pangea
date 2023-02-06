@@ -21,4 +21,4 @@ const Unit = db.define('unit',{
     } 
 })  
 
-module.exports = Unit
+module.exports = Unit;

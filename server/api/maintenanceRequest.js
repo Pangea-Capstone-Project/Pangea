@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { models: { MaintenanceRequest }} = require('../db')
+const { models: { MaintenanceRequest, Unit }} = require('../db')
 // All Work Order Route
 router.get('/', async (req, res, next) => {
     try {
@@ -25,12 +25,23 @@ router.get('/:maintenanceRequestId', async(req,res,next) =>{
 // Create Work Order Route
 router.post('/', async (req, res, next) => {
     try {
-        const maintenanceRequest = await MaintenanceRequest.create(req.body)
-        res.json(maintenanceRequest)
+        console.log(`req.body`,req.body)
+      const newMaintenanceRequest = await MaintenanceRequest.create({
+        type: req.body.type,
+        severity: req.body.severity,
+        description: req.body.description,
+        // imageUrl: req.body.imageUrl,
+        // unitId: req.body.unitId
+      });
+  
+      const unit = await Unit.findByPk(req.body.unitId);
+      unit.addMaintenanceRequest(newMaintenanceRequest);
+  
+      res.json(newMaintenanceRequest);
     } catch (error) {
-        next(error)
+      next(error);
     }
-})
+  });
 
 // Update Work Order Route
 router.put('/:maintenanceRequestId', async(req,res,next) =>{
