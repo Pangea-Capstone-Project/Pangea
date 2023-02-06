@@ -30,12 +30,15 @@ router.get("/", async (req, res, next) => {
 //     }
 // });
 
+
+// single tenant route 
 router.get('/:id', async (request, response, next) => {
     try {
     const tenant = await Tenant.findOne({ 
         where: { id: request.params.id }, 
         include: {
             model: Unit,
+// number of work orders 
             attributes: {
                 include: [
                     [Sequelize.fn('COUNT', Sequelize.col('unit.maintenanceRequests.id')), 'workOrders']

@@ -69,6 +69,7 @@ const AppRoutes = () => {
             <Route path="/profile-page" element={<LandlordProfile/>} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/singletenant/:id" element={<SingleTenant />} />
+            <Route path="/singletenant/:id/workorders" element={<MaintenanceRequest />} />
           </Routes>
         )
       ) : (

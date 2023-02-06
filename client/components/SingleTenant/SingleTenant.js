@@ -30,14 +30,14 @@ const SingleTenant = () => {
             </div>
             <div id="tenInfoDiv">
             <ul id="tenantBoxes">
+                    {/* <li className="tenantLi">
+                        <Link className="tenLinks" to={`/messages/${tenant.id}`}>Messages</Link>
+                    </li> */}
                     <li className="tenantLi">
-                        <Link className="tenLinks" to='/messages/:id'>Messages</Link>
+                        <Link className="tenLinks" to={tenant.unit && `/singletenant/${tenant.unit.id}/workorders`}>Work Orders: <span id="workNum">{tenant.unit && tenant.unit.workOrders}</span></Link>
                     </li>
                     <li className="tenantLi">
-                        <Link className="tenLinks" to='/workorders/:id'>Work Orders</Link>
-                    </li>
-                    <li className="tenantLi">
-                        <Link className="tenLinks" to='/pastpayments'>Payment History</Link>
+                        <Link className="tenLinks" to={'/pastpayments'}>Payment History</Link>
                     </li>
                 </ul>
                 <ul id="teninfoUL">

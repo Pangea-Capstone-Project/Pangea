@@ -27,13 +27,6 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
 
-// const blah = configureStore({ 
-//   reducers: {
-//     // ... 
-//     tenant: singleTenantSlice
-//   } 
-// }) 
-
 export default store;
 export * from '../features/auth/authSlice';
 export * from '../features/afterSignup/AddAPropertySlice';
