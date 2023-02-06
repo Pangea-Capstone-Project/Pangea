@@ -15,7 +15,7 @@ const singleRentSlice = createSlice({
 	initialState: [],
 	reducers: {},
 	extraReducers: (builder) => {
-		builder.addCase(fetchRentAsync.fulfilled, (_state, action) => {
+		builder.addCase(fetchRentAsync.fulfilled, (state, action) => {
 			return action.payload;
 		});
 	},

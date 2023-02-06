@@ -14,7 +14,8 @@ router.route('/')
 .post(async (req,res,next) => {
   const user = await User.findByToken(req.headers.authorization);
   try{
-    if(user.role === 'tenant'){
+    if(user.role === 'tenant' || 'landlord'){
+      console.log(`hi im req.body`,req.body)
       const { rentAmount } = req.body;
       //validation
       if( !rentAmount){
@@ -22,10 +23,12 @@ router.route('/')
         throw new Error('Please include a Rent Amount');
       }
       //Create Tenant
-      const tenant = await Tenant.create({rentAmount})
+      // const tenant = await Tenant.create({rentAmount})
+      const tenant = await Tenant.update({rentAmount : rentAmount}, {where:{userId: user.id}});
       if(tenant){
         res.status(201).json({
-          price: Tenant.rentAmount,
+          // price: Tenant.rentAmount,
+          rentAmount: rentAmount
         })
       }
     } else{

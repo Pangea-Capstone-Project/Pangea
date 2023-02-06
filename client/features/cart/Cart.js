@@ -70,15 +70,15 @@ const Cart = () => {
 			<ul >
 				{cartRents.map((item) => (
 					<li key={`Cart item ${item.rentId}`}>
-						{!item.name ? <div className="error">DELETE THIS ITEM IT IS NO LONGER AVAILABLE<button onClick={() => {
+						{/* {!item.price ? <div className="error">DELETE THIS ITEM IT IS NO LONGER AVAILABLE<button onClick={() => {
 							handleRemoveItem(item);
 							handleUpdateCart(item.rentId);
-						}}>Remove</button><hr /></div> :
+						}}>Remove</button><hr /></div> : */}
 							<div className="cartRentCard">
 								<img src={item.imageUrl} width="75" height="75" /><br />
 
 								<div className="cartRentCardInfo">
-								<h1>{item.name}{" "}</h1>
+								<h1>{item.rentAmount}{" "}</h1>
 								<div className="cartRentCardButtons">
 									<button className="adjustQtyBtn" onClick={() => {
 											handleIncreaseQuantity(item);
@@ -86,7 +86,7 @@ const Cart = () => {
 										}}>
 										+
 									</button>{" "}
-									<h3>Total:{item.quantity}</h3>
+									<h3>Total quantity:{item.quantity}</h3>
 									<button className="adjustQtyBtn"
 										onClick={() => {
 											handleDecreaseQuantity(item);
@@ -105,10 +105,10 @@ const Cart = () => {
 								</button>
 								</div>
 							
-								<h3 className="cartRentPrice">Rent: ${item.price}</h3>
+								<h3 className="cartRentPrice">Rent: ${item.rentAmount}</h3>
 								</div>
-								<div className="cartTotalPrice">Total Rent: ${item.price * item.quantity}.00</div>
-							</div>}
+								<div className="cartTotalPrice">Total Rent: ${item.rentAmount * item.quantity}.00</div>
+							</div>
 					</li>
 				))}
 				<div className="orderSummary">

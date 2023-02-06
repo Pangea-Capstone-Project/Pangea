@@ -21,6 +21,7 @@ export const addRentAsync = createAsyncThunk(
 					Authorization: token,
 				},
 			};
+			console.log(`data`,rentData)
 			const { data } = await axios.post("/api/rents", rentData, config);
 			alert("This rent is now added to inventory");
 			return data;

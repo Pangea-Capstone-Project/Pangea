@@ -19,7 +19,7 @@ export const Rent = () => {
 	const cart = useSelector(selectCart);
 	const { rentId } = useParams();
 	const dispatch = useDispatch();
-	const {  price } = rent;
+	const {  rentAmount } = rent;
 
 	useEffect(() => {
 		dispatch(fetchRentAsync(rentId));
@@ -54,7 +54,7 @@ export const Rent = () => {
 				<p>Back to all rents</p>
 			</Link> */}
 			<div className="singleRentInfo">
-				<h3>Rent Amount: ${price}</h3>
+				<h3>Rent Amount: ${rentAmount}</h3>
 				<button
 				onClick={() => {
 					handleAddToCart(rent);

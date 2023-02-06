@@ -38,7 +38,7 @@ const AllRents = () => {
               key={`All rents: ${rent.id}`}>
               <div className="rentCard">
                 <Link className="rentCardLink" to={`/rents/${rent.id}`}>
-                  <p>${rent.price}</p>
+                  <p>${rent.rentAmount}</p>
                 </Link>
               </div>
               {isAdmin ? (<DeleteButton rentId={rent.id} rentName={rent.name} />) : null}
