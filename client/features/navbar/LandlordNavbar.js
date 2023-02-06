@@ -25,6 +25,7 @@ const LandlordNavbar = () => {
             <Link className='navLinks' to="/workorders">Work Orders</Link>
             <Link className='navLinks' to="/add-property">Add Property</Link>
             <Link className='navLinks' to="/add-unit">Add Unit</Link>
+            <Link className='navLinks' to="/signup-landlord">Update Information</Link>
             <button id='logoutBtn' type="button" onClick={logoutAndRedirectHome}>
               Logout
             </button>

@@ -95,10 +95,7 @@ const MaintenanceRequest = () => {
     dispatch(fetchMaintenanceRequestAsync());
   }, [dispatch]);
 
-  // const handleClick = (maintenanceRequest) => {
-  //   setIsPreviewVisible(!isPreviewVisible);
-  //   setSelectedMaintenanceRequest(maintenanceRequest);
-  // };
+
 
   const handleMouseEnter = (maintenanceRequest) => {
     setIsPreviewVisible(true);
