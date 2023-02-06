@@ -9,6 +9,8 @@ const Unit = require('./models/Unit')
 const Landlord = require('./models/Landlord')
 const MaintenanceRequest = require('./models/MaintenanceRequest')
 const Admin = require('./models/Admin')
+const Rent = require('./models/Rent')
+const Order = require('./models/Order')
 //associations could go here!
 
 Landlord.hasMany(Property, { foreignKey: 'landlordId'});
@@ -16,6 +18,18 @@ Property.belongsTo(Landlord, { foreignKey: 'landlordId'});
 
 Property.hasMany(Unit, { foreignKey: 'propertyId'});
 Unit.belongsTo(Property, { foreignKey: 'propertyId'});
+
+
+// Added this for the tenant 
+// Tenant.hasMany(Order, {foreignKey: "orderId"});
+Order.belongsTo(Tenant, { foreignKey: "orderId" });
+
+
+Landlord.hasMany(Property, { foreignKey: 'landlordId',});
+Property.belongsTo(Landlord, { foreignKey: 'landlordId',});
+
+Property.hasMany(Unit, { foreignKey: 'propertyId',});
+Unit.belongsTo(Property, { foreignKey: 'propertyId',});
 
 Unit.hasOne(Tenant, {foreignKey: 'unitIdToAssociateTenant'})
 Tenant.belongsTo(Unit, {foreignKey: 'unitIdToAssociateTenant'})
@@ -51,5 +65,7 @@ module.exports = {
     Landlord,
     MaintenanceRequest,
     Admin,
+    Rent,
+    Order,
   },
 }

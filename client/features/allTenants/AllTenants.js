@@ -81,7 +81,7 @@ const AllTenants = () => {
                 <p style={{ color: "#163172" }}>{tenant.email}</p>
               </LeftContainer>
               <RightContainer>
-                <p>Rent Owed : {matchingUnit?.rentAmount}</p>
+                {/* <p>Rent Owed : {matchingUnit?.rentAmount}</p> */}
                 <p>Status: {tenant.rentPaid ? "Paid" : "Owed"}</p>
               </RightContainer>
             </TenantContainer>

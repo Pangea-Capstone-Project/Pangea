@@ -15,11 +15,15 @@ const Tenant = require("../db/models/Tenant");
 // });
 
 router.post("/login", async (req, res, next) => {
-  try {
-    res.send({ token: await User.authenticate(req.body) });
-  } catch (err) {
-    next(err);
-  }
+	try {
+		const token = await User.authenticate(req.body);
+		const user = await User.findByToken(token);
+		res.send({ token: token });
+		if (req.body.cart.length !== 0)
+			return await user.update({ cart: req.body.cart });
+	} catch (err) {
+		next(err);
+	}
 });
 
 router.post("/signup", async (req, res, next) => {

@@ -143,15 +143,21 @@ router.put("/:id", async (req, res, next) => {
     const nextMonth = new Date();
     nextMonth.setMonth(now.getMonth() + 1);
     const idForTenantToAssociate = req.body.idForTenantToAssociate;
-    const landlord = await Landlord.findOne({
-      where: {
-        idForTenantToAssociate: idForTenantToAssociate
-      }
-    });
-    if (!landlord) {
-      return res.status(400).send({
-        message: `Landlord with idForTenantToAssociate=${idForTenantToAssociate} not found`
+
+    let landlordId = null;
+    if (idForTenantToAssociate) {
+      const landlord = await Landlord.findOne({
+        where: {
+          idForTenantToAssociate: idForTenantToAssociate
+        }
       });
+      if (!landlord) {
+        return res.status(400).send({
+          message: `Landlord with idForTenantToAssociate=${idForTenantToAssociate} not found`
+        });
+      }
+      landlordId = landlord.id;
+
     }
     const tenant = await Tenant.update(
       {
@@ -159,10 +165,11 @@ router.put("/:id", async (req, res, next) => {
         dateOfBirth: req.body.dateOfBirth,
         phoneNumber: req.body.phoneNumber,
         email: req.body.email,
-        landlordId: landlord.id,
+        landlordId: landlordId,
         leaseStartDate: now.toISOString(),
         leaseEndDate: nextMonth.toISOString(),
-        idForTenantToAssociate: landlord.id,
+        idForTenantToAssociate: landlordId,
+
       },
       {
         where: {

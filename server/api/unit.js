@@ -40,10 +40,10 @@ router.post('/', async (req, res, next) => {
 router.put("/:id", async (req, res, next) => {
     try {
         console.log(`req.body`, req.body)
-        const { unitNumber, rentAmount, bedrooms, propertyId } = req.body;
+        const { unitNumber, bedrooms, propertyId } = req.body;
       const unit = await Unit.create({
         unitNumber,
-        rentAmount,
+        // rentAmount,
         bedrooms,
         propertyId
       },
