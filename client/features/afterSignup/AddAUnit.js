@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createUnit } from './AddAUnitSlice';
 import styled from "styled-components";
 import { selectProperties, fetchPropertiesAsync } from '../property/propertySlice';
+import LandlordNavbar from '../navbar/LandlordNavbar';
 const Form = styled.form`
 display: flex;
 flex-direction: column;
@@ -45,7 +46,7 @@ const Button = styled.button`
 const UnitForm = () => {
   const [unit, setUnit] = useState({
     unitNumber: '',
-    rentAmount: '',
+    // rentAmount: '',
     bedrooms: '',
     propertyId: '',
   });
@@ -70,6 +71,8 @@ const UnitForm = () => {
   };
 
   return (
+    <div>
+      <LandlordNavbar />
     <Form onSubmit={handleSubmit}>
       <Input
         type="text"
@@ -77,27 +80,27 @@ const UnitForm = () => {
         value={unit.unitNumber}
         onChange={handleChange}
         placeholder="Unit#"
-      />
-      <Input
+        />
+      {/* <Input
         type="number"
         name="rentAmount"
         value={unit.rentAmount}
         onChange={handleChange}
         placeholder="Rent Amount"
-      />
+        /> */}
       <Input
         type="number"
         name="bedrooms"
         value={unit.bedrooms}
         onChange={handleChange}
         placeholder="Bedrooms"
-      />
+        />
       <div>
         <select
           name="propertyId"
           value={unit.propertyId}
           onChange={handleChange}
-        >
+          >
           <option value="">Select Property</option>
           {properties.map(property => (
             <option key={property.id} value={property.id}>
@@ -108,6 +111,7 @@ const UnitForm = () => {
       </div>
       <Button type="submit">Create Unit</Button>
     </Form>
+          </div>
   );
 };
 

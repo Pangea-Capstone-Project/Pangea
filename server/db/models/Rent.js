@@ -7,7 +7,6 @@ const Rent = db.define('rent', {
     type: Sequelize.DECIMAL(10,2),
     allowNull: false,
   },
- 
 });
 
 module.exports = Rent;

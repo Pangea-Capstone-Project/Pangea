@@ -8,12 +8,14 @@ import Chart from "../../components/chart/Chart.jsx";
 import Table from "../../components/table/Table.jsx";
 import NavbarDashboard from "../../components/navbardashboard/NavbarDashboard.jsx";
 
+
 /**
  * COMPONENT
  */
 const Dashboard = (props) => {
   const username = useSelector((state) => state.auth.me.username);
-
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+  
   return (
     <div className="dashboard">
       <Sidebar />

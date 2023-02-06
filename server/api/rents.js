@@ -1,14 +1,12 @@
 const router = require("express").Router();
-const Rent = require("../db/models/Rent.js");
+const Tenant = require("../db/models/Tenant");
 const User = require('../db/models/User')
 
 router.route('/')
 .get(async (req, res, next) => {
   try {
-    const rents = await Rent.findAll({
-      order:[['id','ASC']]
-    });
-    res.json(rents);
+    const tenants = await Tenant.findAll();
+    res.json(tenants);
   } catch (err) {
     next(err);
   }
@@ -16,19 +14,18 @@ router.route('/')
 .post(async (req,res,next) => {
   const user = await User.findByToken(req.headers.authorization);
   try{
-    if(user.isAdmin){
-      const { price } = req.body;
+    if(user.role === 'tenant'){
+      const { rentAmount } = req.body;
       //validation
-      if( !price){
+      if( !rentAmount){
         res.status(400);
-        throw new Error('Please include a price');
+        throw new Error('Please include a Rent Amount');
       }
- 
-      //Create rent
-      const rent = await Rent.create({price})
-      if(rent){
+      //Create Tenant
+      const tenant = await Tenant.create({rentAmount})
+      if(tenant){
         res.status(201).json({
-          price: rent.price,
+          price: Tenant.rentAmount,
         })
       }
     } else{
@@ -43,11 +40,11 @@ router.route('/')
 
 
 
-router.route('/:rentId')
+router.route('/:TenantId')
 .get(async (req, res, next) => {
   try {
-    const rent = await Rent.findByPk(req.params.rentId);
-    res.json(rent);
+    const tenant = await Tenant.findByPk(req.params.TenantId);
+    res.json(tenant);
   } catch (err) {
     next(err);
   }
@@ -56,14 +53,14 @@ router.route('/:rentId')
   const user = await User.findByToken(req.headers.authorization);
   if(user.isAdmin){
     try{
-      const rent = await Rent.findByPk(req.params.rentId);
+      const tenant = await Tenant.findByPk(req.params.TenantId);
 
-      if(!rent){
+      if(!tenant){
         res.status(404);
-        throw new Error('rent not found');
+        throw new Error('Tenant not found');
       }else{
-        const updatedRent = await rent.update(req.body);
-        res.status(202).send(updatedRent);
+        const updatedTenant = await Tenant.update(req.body);
+        res.status(202).send(updatedTenant);
       }
     } catch(err){
       next(err);
@@ -77,12 +74,12 @@ router.route('/:rentId')
   const user = await User.findByToken(req.headers.authorization);
   if(user.isAdmin){
     try{
-      const rent = await Rent.findByPk(req.params.rentId);
-      if(!rent){
+      const tenant = await Tenant.findByPk(req.params.TenantId);
+      if(!tenant){
         res.status(404);
-        throw new Error('rent not found');
+        throw new Error('Tenant not found');
       }else{
-        await rent.destroy();
+        await Tenant.destroy();
         res.status(200).send('Terminated'); 
 
 

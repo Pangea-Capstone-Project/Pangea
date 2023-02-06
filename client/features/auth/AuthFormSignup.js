@@ -29,7 +29,7 @@ const AuthForm = ({ name, displayName }) => {
 
     dispatch(authenticate({ username, password, role, method: formName }));
         if (role === 'landlord') {
-            navigate('/signup-landlord');
+            navigate('/dashboard');
         } else if (role === 'tenant') {
             navigate('/signup-tenant');
     }

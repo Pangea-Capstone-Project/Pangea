@@ -13,6 +13,7 @@ const App = () => {
 	}, [dispatch, id]);
   return (
     <div>
+      {/* <LandlordNavbar /> */}
       <AppRoutes />
       <Footer />
     </div>

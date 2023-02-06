@@ -45,7 +45,17 @@ router.put("/:id", async (req, res, next) => {
       const property = await Property.create({
         propertyName,
         address,
-        landlordId
+        landlordId,
+        // pricePurchased,
+        // datePurchased,
+        // rentalAmount,
+        // mortgageExpense,
+        // currentMarketValue,
+        // hoaExpense,
+        // propertyTax,
+        // insuranceExpense,
+        // vacancyRate,
+        // repairsExpense,
       },
       );
       res.json(property);

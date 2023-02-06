@@ -5,10 +5,10 @@ const Unit = db.define('unit',{
     unitNumber: {
         type: Sequelize.INTEGER,
     },
-    rentAmount: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-    },
+    // rentAmount: {
+    //     type: Sequelize.INTEGER,
+    //     allowNull: false,
+    // },
     isOccupied: {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
@@ -21,4 +21,4 @@ const Unit = db.define('unit',{
     } 
 })  
 
-module.exports = Unit
+module.exports = Unit;

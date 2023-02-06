@@ -7,6 +7,7 @@ import AddAProperty from './AddAProperty'
 
 
 import styled from 'styled-components';
+import LandlordNavbar from '../navbar/LandlordNavbar';
 
 const FormWrapper = styled.div`
   background-color: #F6F6F6;
@@ -80,11 +81,12 @@ const UpdateLandlordForm = () => {
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [email, setEmail] = useState('');
+  const [address, setAddress] = useState('');
   const [idForTenantToAssociate, setIdForTenantToAssociate] = useState('');
   const navigate = useNavigate();
 
 
-  const [showAddAProperty, setShowAddAProperty] = useState(false);
+  // const [showAddAProperty, setShowAddAProperty] = useState(false);
 
 
   const handleNameChange = (event) => {
@@ -102,6 +104,9 @@ const UpdateLandlordForm = () => {
   const handleIdForTenantToAssociateChange = (event) => {
     setIdForTenantToAssociate(event.target.value);
   };
+  const handleAddressChange = (event) => {
+    setAddress(event.target.value);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -110,15 +115,17 @@ const UpdateLandlordForm = () => {
       phoneNumber,
       email,
       idForTenantToAssociate,
+      address
     }));
+    navigate('/dashboard')
   };
 
-  const handleClick = () => {
-    setShowAddAProperty(true);
-  };
+  // const handleClick = () => {
+  //   setShowAddAProperty(true);
+  // };
   return (
       <FormWrapper>
-
+        <LandlordNavbar />
       <StyledForm onSubmit={handleSubmit}>
         <StyledInput
           type="text"
@@ -148,10 +155,17 @@ const UpdateLandlordForm = () => {
           onChange={handleIdForTenantToAssociateChange}
           placeholder="ID for Tenant to Associate"
           />
+          <StyledInput
+          type="text"
+          name="address"
+          value={address}
+          onChange={handleAddressChange}
+          placeholder="Address"
+          />
         <StyledButton type="submit">Update Landlord</StyledButton>
       </StyledForm>
-      <StyledAddAPropertyButton onClick={handleClick}>Add Property</StyledAddAPropertyButton>
-      {showAddAProperty && <AddAProperty />}
+      {/* <StyledAddAPropertyButton onClick={handleClick}>Add Property</StyledAddAPropertyButton>
+      {showAddAProperty && <AddAProperty />} */}
           </FormWrapper>
     );
 };

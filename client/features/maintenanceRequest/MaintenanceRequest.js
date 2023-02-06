@@ -6,6 +6,7 @@ import {
 } from "./allMaintenanceRequestSlice";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import LandlordNavbar from "../navbar/LandlordNavbar";
 
 const WorkOrdersContainer = styled.div`
   display: flex;
@@ -94,10 +95,7 @@ const MaintenanceRequest = () => {
     dispatch(fetchMaintenanceRequestAsync());
   }, [dispatch]);
 
-  // const handleClick = (maintenanceRequest) => {
-  //   setIsPreviewVisible(!isPreviewVisible);
-  //   setSelectedMaintenanceRequest(maintenanceRequest);
-  // };
+
 
   const handleMouseEnter = (maintenanceRequest) => {
     setIsPreviewVisible(true);
@@ -109,6 +107,7 @@ const MaintenanceRequest = () => {
   };
   return (
     <div>
+      <LandlordNavbar />
       <MainContainer>
         <h1>Work Orders</h1>
       </MainContainer>
@@ -127,8 +126,8 @@ const MaintenanceRequest = () => {
           onMouseEnter={() => handleMouseEnter(maintenanceRequest)}
           onMouseLeave={handleMouseLeave}
           >
-            <Link to={`/workOrders/${maintenanceRequest.id}`}>
-            <Unit>Unit:123{maintenanceRequest.unitId}</Unit>
+            <Link to={`/workorders/${maintenanceRequest.id}`}>
+            <Unit>Unit#:{maintenanceRequest.unitId}</Unit>
             <p>Severity: {maintenanceRequest.severity}</p>
             <p>{maintenanceRequest.type}</p>
             </Link>
@@ -149,11 +148,10 @@ const MaintenanceRequest = () => {
             `}
             >
             <p style={{ fontWeight: "bold" }}>
-              Unit: #123{selectedMaintenanceRequest.unit}</p>
+              Unit#: {selectedMaintenanceRequest.unitId}</p>
             <p>Severity: {selectedMaintenanceRequest.severity}</p>
             <p>Type: {selectedMaintenanceRequest.type}</p>
             <p>Description: {selectedMaintenanceRequest.description}</p>
-            <p>Requested by: Bofa Deez</p>
           </PreviewContainer>
         )}
       </WorkOrdersContainer>

@@ -1,22 +1,19 @@
 import "./sidebar.scss";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-import CreditCardIcon from "@mui/icons-material/CreditCard";
 import StoreIcon from "@mui/icons-material/Store";
-import InsertChartIcon from "@mui/icons-material/InsertChart";
-import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import AddHomeWorkOutlinedIcon from '@mui/icons-material/AddHomeWorkOutlined';
+import AddHomeOutlinedIcon from '@mui/icons-material/AddHomeOutlined';
+import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
+import CoPresentIcon from '@mui/icons-material/CoPresent';
 import { Link } from "react-router-dom";
 import React from "react";
 
 
 const Sidebar = () => {
-  
+
   return (
     <div className="sidebar">
       <div className="top">
@@ -32,8 +29,8 @@ const Sidebar = () => {
             <DashboardIcon className="icon" />
             <span>Dashboard</span>
           </li>
-          <p className="title">LISTS</p>
-          <Link to="/users" style={{ textDecoration: "none" }}>
+          <p className="title">USERS</p>
+          <Link to="/tenants" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
               <span>Users</span>
@@ -45,45 +42,41 @@ const Sidebar = () => {
               <span>Properties</span>
             </li>
           </Link>
-          <li>
-            <CreditCardIcon className="icon" />
-            <span>Accounts</span>
-          </li>
-          <li>
-            <ManageAccountsIcon className="icon" />
-            <span>Property Managers</span>
-          </li>
-          <p className="title">USEFUL</p>
-          <li>
-            <InsertChartIcon className="icon" />
-            <span>Portfolio Stats</span>
-          </li>
-          <li>
-            <NotificationsNoneIcon className="icon" />
-            <span>Notifications</span>
-          </li>
-          <p className="title">SERVICE</p>
-          <li>
-            <SettingsSystemDaydreamOutlinedIcon className="icon" />
-            <span>System Health</span>
-          </li>
-          <li>
-            <PsychologyOutlinedIcon className="icon" />
-            <span>Maintenance Requests</span>
-          </li>
-          <li>
-            <SettingsApplicationsIcon className="icon" />
-            <span>Settings</span>
-          </li>
-          <p className="title">USER</p>
+          <Link to="/workorders" style={{ textDecoration: "none" }}>
+            <li>
+              <PsychologyOutlinedIcon className="icon" />
+              <span>Maintenance Requests</span>
+            </li>
+          </Link>
+          <p className="title">SETTINGS</p>
           <li>
             <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>
           </li>
+          <Link to="/signup-landlord" style={{ textDecoration: "none" }}>
+            <li>
+              <AdminPanelSettingsOutlinedIcon className="icon" />
+              <span>Update Account</span>
+            </li>
+          </Link>
+          <Link to="/add-property" style={{ textDecoration: "none" }}>
           <li>
-            <ExitToAppIcon className="icon" />
-            <span>Logout</span>
+            <AddHomeWorkOutlinedIcon className="icon" />
+            <span>Add Properties</span>
           </li>
+          </Link>
+          <Link to="/add-unit" style={{ textDecoration: "none" }}>
+          <li>
+            <AddHomeOutlinedIcon className="icon" />
+            <span>Add Unit</span>
+          </li>
+          </Link>
+          <Link to="/add-tenant-unit" style={{ textDecoration: "none" }}>
+          <li>
+            <CoPresentIcon className="icon" />
+            <span>Add Tenant to Unit</span>
+          </li>
+          </Link>
         </ul>
       </div>
       <div className="bottom">

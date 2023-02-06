@@ -18,24 +18,25 @@ const LandlordNavbar = () => {
     <div id='titleDiv'>
       <h1 id='title'>Welcome to Pangea</h1>
       <nav>
-        {isLoggedIn ? (
           <div id='navDiv'>
             {/* The navbar will show these links after you log in */}
-            <Link className='navLinks' to="/home">Home</Link>
-            <Link className='navLinks' to="/tenant">Tenants</Link>
+            <Link className='navLinks' to="/dashboard">Home</Link>
+            <Link className='navLinks' to="/tenants">Tenants</Link>
             <Link className='navLinks' to="/workorders">Work Orders</Link>
-            <Link className='navLinks' to="/pastdue">Past Due Payments</Link>
-            <Link className='navLinks' to="/chat">Chat</Link>
+            <Link className='navLinks' to="/add-property">Add Property</Link>
+            <Link className='navLinks' to="/add-unit">Add Unit</Link>
+            <Link className='navLinks' to="/signup-landlord">Update Information</Link>
             <button id='logoutBtn' type="button" onClick={logoutAndRedirectHome}>
               Logout
             </button>
           </div>
+        {/* {isLoggedIn ? (
         ) : (
+            )} */}
           <div>
             {/* The navbar will show these links before you log in */}
             {/* <AuthForm name="login" displayName="Login"/> */}
           </div>
-        )}
       </nav>
       {/* <hr /> */}
     </div>
