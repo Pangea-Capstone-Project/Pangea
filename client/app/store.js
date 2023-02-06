@@ -5,17 +5,15 @@ import maintenanceRequestsReducer from '../features/maintenanceRequest/allMainte
 import maintenanceRequestReducer from '../features/maintenanceRequest/singleMaintenanceRequestSlice';
 import tenantsReducer from '../features/allTenants/allTenantsSlice';
 import unitsReducer from '../features/units/unitsSlice';
-
 import propertiesReducer from '../features/property/propertySlice'
-
 import rentsReducer from "../features/rent/rentSlice";
 import cartSlice from "../features/cart/cartSlice";
 import singleRentSlice from "../features/rent/singleRentSlice";
 // import usersReducer from "../features/users/usersSlice";
 import orderSlice from "../features/orders/orderSlice";
 import cartRentDetailsSlice from "../features/cart/cartRentDetailsSlice";
-
 import landlordReducer from '../features/profilePage/landlordProfileSlice';
+
 
 const store = configureStore({
   reducer: {
@@ -34,7 +32,6 @@ const store = configureStore({
     // users: usersReducer,
     order: orderSlice,
     orderDetails: cartRentDetailsSlice,
-
     landlord: landlordReducer,
 
   },

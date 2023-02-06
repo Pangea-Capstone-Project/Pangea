@@ -18,7 +18,6 @@ import AfterSignUpTenant from "../features/afterSignup/AfterSignUpTenant";
 import AddAProperty from "../features/afterSignup/AddAProperty";
 import { me } from "./store";
 import AddAUnit from "../features/afterSignup/AddAUnit";
-
 import AllRents from "../features/rent/Rents";
 import { Rent } from "../features/rent/Rent";
 import Checkout from "../features/checkout/Checkout";
@@ -44,6 +43,7 @@ const AppRoutes = () => {
   useEffect(() => {
     dispatch(me());
   }, []);
+
 
   return (
     <div>
@@ -77,10 +77,7 @@ const AppRoutes = () => {
             <Route path="/add-property" element={<AddAProperty />} />
             <Route path="/add-unit" element={<AddAUnit />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route
-              path="/workorders/:id"
-              element={<SingleMaintenanceRequest />}
-            />
+            <Route path="/workorders/:id" element={<SingleMaintenanceRequest />} />
             <Route path="/workorders" element={<MaintenanceRequest />} />
             <Route path="/tenants" element={<AllTenants />} />
             <Route path="/profile-page" element={<LandlordProfile />} />
@@ -95,24 +92,19 @@ const AppRoutes = () => {
       ) : (
         ///////// IF Not Logged in Show this Routes ////////////
         <Routes>
-          <Route
-            path="/login"
-            element={<AuthForm name="login" displayName="Login" />}
-          />
-          <Route
-            path="/signup"
-            element={<AuthFormSignup name="signup" displayName="Sign Up" />}
-          />
-          <Route
-            path="/home"
-            element={<Home name="home" displayName="Pangea" />}
-          />
-          <Route
-            path="/*"
-            element={<Home name="home" displayName="Pangea" />}
-          />
 
           {/* IF you wanna test a Route and troubleshooting it put it here make sure to take it out later and put it where it belongs */}
+
+          <Route path="/login" element={<AuthForm name="login" displayName="Login" />} />
+          <Route path="/signup" element={<AuthFormSignup name="signup" displayName="Sign Up" />} />
+          <Route path="/home" element={<Home name="home" displayName="Pangea" />} />
+          <Route path="/*" element={<Home name="home" displayName="Pangea" />} />
+
+
+
+          {/* IF you wanna test a Route and troubleshooting it put it here make sure to take it out later and put it where it belongs */}
+
+
         </Routes>
       )}
     </div>

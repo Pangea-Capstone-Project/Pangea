@@ -39,6 +39,7 @@ const Tenant = db.define("tenant",{
         references: {
         model: Landlord,
         key: 'id'
+
         },
     },
     unitIdToAssociateTenant: {

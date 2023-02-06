@@ -81,13 +81,6 @@ const UnitForm = () => {
         onChange={handleChange}
         placeholder="Unit#"
         />
-      {/* <Input
-        type="number"
-        name="rentAmount"
-        value={unit.rentAmount}
-        onChange={handleChange}
-        placeholder="Rent Amount"
-        /> */}
       <Input
         type="number"
         name="bedrooms"
