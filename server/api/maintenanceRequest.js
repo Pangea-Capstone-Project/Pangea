@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const { models: { MaintenanceRequest, Unit }} = require('../db')
-
 // All Work Order Route
 router.get('/', async (req, res, next) => {
     try {
