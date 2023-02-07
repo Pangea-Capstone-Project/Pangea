@@ -5,6 +5,7 @@ import maintenanceRequestsReducer from '../features/maintenanceRequest/allMainte
 import maintenanceRequestReducer from '../features/maintenanceRequest/singleMaintenanceRequestSlice';
 import tenantsReducer from '../features/allTenants/allTenantsSlice';
 import unitsReducer from '../features/units/unitsSlice';
+import singleTenantSlice from '../components/SingleTenant/singleTenantSlice' 
 import propertiesReducer from '../features/property/propertySlice'
 import rentsReducer from "../features/rent/rentSlice";
 import cartSlice from "../features/cart/cartSlice";
@@ -22,6 +23,7 @@ const store = configureStore({
     maintenanceRequests: maintenanceRequestsReducer,
     // all tenants
     tenants: tenantsReducer,
+    tenant: singleTenantSlice,
     units: unitsReducer,
     // single tenant
     tenant: singleTenantReducer,

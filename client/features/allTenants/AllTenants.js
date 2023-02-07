@@ -74,6 +74,7 @@ const AllTenants = () => {
           const matchingUnit = units.find((unit) => unit.id === tenant.unitId);
           
           return (
+            <Link to= {`/singletenant/${tenant.id}`}>
             <TenantContainer key={tenant.id}>
                 <p style={{ color: "#163172" }}>Unit: {tenant.unitId}</p>
               <LeftContainer>
@@ -85,6 +86,7 @@ const AllTenants = () => {
                 <p>Status: {tenant.rentPaid ? "Paid" : "Owed"}</p>
               </RightContainer>
             </TenantContainer>
+            </Link>
           );
         })}
       </div>

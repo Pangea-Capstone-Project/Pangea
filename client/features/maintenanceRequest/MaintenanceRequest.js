@@ -4,7 +4,7 @@ import {
   fetchMaintenanceRequestAsync,
   selectMaintenanceRequests,
 } from "./allMaintenanceRequestSlice";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import LandlordNavbar from "../navbar/LandlordNavbar";
 
@@ -91,10 +91,26 @@ const MaintenanceRequest = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const dispatch = useDispatch();
 
+  // filter for workorders 
+  const [holdRequest, setHoldRequest] = useState([])
+  const urlParams = useParams()
+  
+
   useEffect(() => {
     dispatch(fetchMaintenanceRequestAsync());
+
   }, [dispatch]);
 
+  // checking url for unit id and filter workorders by unit id
+  useEffect(() => {
+  if('id' in urlParams){
+    setHoldRequest(maintenanceRequests.filter((request) => {
+      return request.unit && (request.unit.id === urlParams.id)
+    }))
+  } else{
+    setHoldRequest(maintenanceRequests)
+  }
+},[maintenanceRequests])
 
 
   const handleMouseEnter = (maintenanceRequest) => {
@@ -112,7 +128,7 @@ const MaintenanceRequest = () => {
         <h1>Work Orders</h1>
       </MainContainer>
       <WorkOrdersContainer>
-        {maintenanceRequests.map((maintenanceRequest) => (
+        {holdRequest && holdRequest.map((maintenanceRequest) => (
           <LinkContainer
           className={`
           ${

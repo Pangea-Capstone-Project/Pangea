@@ -2,8 +2,10 @@ const router = require("express").Router();
 module.exports = router;
 
 const {
-  models: { Tenant, Unit, Landlord },
+  models: { Tenant, Unit, MaintenanceRequest, Landlord },
 } = require("../db");
+
+const Sequelize = require("sequelize")
 
 // All tenants
 router.get("/", async (req, res, next) => {
@@ -17,16 +19,43 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (request, response, next) => {
+// router.get("/:id", async (request, response, next) => {
+//   try {
+//     const tenant = await Tenant.findOne({
+//       where: { userId: request.params.id },
+//     });
+//     response.json(tenant);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
+
+// single tenant route 
+router.get('/:id', async (request, response, next) => {
   try {
-    const tenant = await Tenant.findOne({
-      where: { userId: request.params.id },
-    });
-    response.json(tenant);
-  } catch (error) {
-    next(error);
+  const tenant = await Tenant.findOne({ 
+      where: { id: request.params.id }, 
+      include: {
+          model: Unit,
+// number of work orders 
+          attributes: {
+              include: [
+                  [Sequelize.fn('COUNT', Sequelize.col('unit.maintenanceRequests.id')), 'workOrders']
+              ]
+          },
+          include: {
+              model: MaintenanceRequest,
+              attributes: []
+          }
+      },
+      group: ['tenant.id', 'unit.id']
+  })
+
+  response.send(tenant)
+  } catch(error){
+  next(error)
   }
-});
+  });
 
 router.post("/", async (req, res, next) => {
   console.log(`im request.body`, req.body);
@@ -183,7 +212,6 @@ router.put("/:id", async (req, res, next) => {
     next(error);
   }
 });
-
 
 router.delete("/:id", async (req, res, next) => {
   try {

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
+import SingleTenant from "../components/SingleTenant/SingleTenant";
 import AllTenants from "../features/allTenants/AllTenants";
 import AuthForm from "../features/auth/AuthForm";
 import MaintenanceRequest from "../features/maintenanceRequest/MaintenanceRequest";
@@ -78,6 +79,8 @@ const AppRoutes = () => {
             <Route path="/workorders/:id" element={<SingleMaintenanceRequest />} />
             <Route path="/workorders" element={<MaintenanceRequest />} />
             <Route path="/tenants" element={<AllTenants />} />
+            <Route path="/singletenant/:id" element={<SingleTenant />} />
+            <Route path="/singletenant/:id/workorders" element={<MaintenanceRequest />} />
             <Route path="/profile-page" element={<LandlordProfile />} />
             <Route path="add-tenant-unit" element={<AddTenantToUnit />} />
             <Route path="/addRent"element={<AddRent name="addRent" displayName="Add Rent" />}/>
@@ -110,3 +113,6 @@ const AppRoutes = () => {
 };
 
 export default AppRoutes;
+
+
+

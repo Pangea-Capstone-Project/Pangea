@@ -3,7 +3,11 @@ const { models: { MaintenanceRequest, Unit }} = require('../db')
 // All Work Order Route
 router.get('/', async (req, res, next) => {
     try {
-        const maintenaceRequests = await MaintenanceRequest.findAll()
+        const maintenaceRequests = await MaintenanceRequest.findAll({
+            include: {model: Unit,
+            attributes: ['id']
+            }
+        })
         res.json(maintenaceRequests);
     } catch (err) {
         console.log(`error in maintenance req`,err)
