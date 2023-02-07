@@ -6,89 +6,75 @@ import {
 } from "./allMaintenanceRequestSlice";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
-import LandlordNavbar from "../navbar/LandlordNavbar";
+import Sidebar from "../../components/sidebar/Sidebar.jsx";
+import {
+  FaHome
+} from "react-icons/fa";
 
 const WorkOrdersContainer = styled.div`
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: nowrap;
   flex-direction: row;
 `;
-const LinkContainer = styled.div`
-  background-color: #f6f6f6;
-  color: #163172;
-  margin: 10px;
-  padding: 20px;
-  border-radius: 5px;
-  width: 300px;
-  text-align: center;
-  box-shadow: 0 4px 8px 0 #d6e4f0;
-  position: relative;
-  margin-bottom: 17.6%;
-  &.medium-severity {
-    background-color: #f9a51a;
-  }
-  &.high-severity {
-    background-color: #f92a2a;
-  }
-`;
 
-const p = styled.p`
-  font-weight: bold;
-`;
-const MainContainer = styled.div`
+const WorkOrderItems = styled.div`
+  width: 20rem;
+  height: 20rem;
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  text-align: center;
-`;
-
-const Unit = styled.p`
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-weight: bold;
-  font-size: 0.8rem;
-  font-family: "Montserrat", sans-serif;
-  background-color: #1e56a0;
-  color: #fff;
-  padding: 2px 4px;
-  border-radius: 5px;
-`;
-
-const PreviewContainer = styled.div`
-  position: absolute;
-  background-color: #f6f6f6;
-  color: #163172;
+  justify-content: center;
   margin: 10px;
-  padding: 20px;
-  border-radius: 5px;
-  width: 300px;
-  text-align: center;
-  box-shadow: 0 4px 8px 0 #d6e4f0;
-  z-index: 1;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  font-size: 9rem;
+`;
+
+const WorkOrderFont = styled.p`
+  font-size: 24px;
+  margin: 10px;
+  font-weight: bold;
+  color: black;
+`;
+
+const WorkOrder = styled.div`
+  width: 20rem;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  background-color: #eee;
+  box-shadow: 4px 4px 20px rgba(1, 2, 3, 0.2);
   &.medium-severity {
     background-color: #f9a51a;
   }
   &.high-severity {
     background-color: #f92a2a;
   }
-  display: ${({ isPreviewVisible }) => (isPreviewVisible ? "block" : "none")};
+`;
+
+const WorkOrdersSection = styled.section`
+  background: linear-gradient(
+    90deg,
+    rgba(246, 246, 246, 1) 0%,
+    rgba(214, 228, 240, 1) 44%,
+    rgba(30, 86, 160, 1) 79%,
+    rgba(22, 49, 114, 1) 99%
+  );
+  background-color: #fff;
+  flex: 7;
+  width: 50%;
+  padding: 20px;
+  box-shadow: 4px 4px 20px rgba(1, 2, 3, 0.2);
+
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: auto;
 `;
 
 const MaintenanceRequest = () => {
-  const [isPreviewVisible, setIsPreviewVisible] = useState(false);
-  const [selectedMaintenanceRequest, setSelectedMaintenanceRequest] = useState(
-    {}
-  );
-  const maintenanceRequests = useSelector(selectMaintenanceRequests);
 
-  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+  const maintenanceRequests = useSelector(selectMaintenanceRequests);
+console.log(`maintenanceRequests`, maintenanceRequests)
   const dispatch = useDispatch();
 
   // filter for workorders 
@@ -113,23 +99,12 @@ const MaintenanceRequest = () => {
 },[maintenanceRequests])
 
 
-  const handleMouseEnter = (maintenanceRequest) => {
-    setIsPreviewVisible(true);
-    setSelectedMaintenanceRequest(maintenanceRequest);
-  };
-
-  const handleMouseLeave = () => {
-    setIsPreviewVisible(false);
-  };
   return (
-    <div>
-      <LandlordNavbar />
-      <MainContainer>
-        <h1>Work Orders</h1>
-      </MainContainer>
-      <WorkOrdersContainer>
-        {holdRequest && holdRequest.map((maintenanceRequest) => (
-          <LinkContainer
+    <WorkOrdersContainer>
+      <Sidebar />
+      <WorkOrdersSection>
+        {maintenanceRequests.map((maintenanceRequest) => (
+          <WorkOrder
           className={`
           ${
             maintenanceRequest.severity.toLowerCase().charAt(0) === "l"
@@ -138,40 +113,19 @@ const MaintenanceRequest = () => {
             ? "medium-severity"
             : "high-severity"
           }
-          `}
-          onMouseEnter={() => handleMouseEnter(maintenanceRequest)}
-          onMouseLeave={handleMouseLeave}
+          `} 
           >
+            <WorkOrderItems>
+          <FaHome /># {maintenanceRequest.unitId}
             <Link to={`/workorders/${maintenanceRequest.id}`}>
-            <Unit>Unit#:{maintenanceRequest.unitId}</Unit>
-            <p>Severity: {maintenanceRequest.severity}</p>
-            <p>{maintenanceRequest.type}</p>
+            <WorkOrderFont>Priority: {maintenanceRequest.severity}</WorkOrderFont>
+            <WorkOrderFont>Type: {maintenanceRequest.type}</WorkOrderFont>
             </Link>
-          </LinkContainer>
+        </WorkOrderItems>
+          </WorkOrder>
         ))}
-        {isPreviewVisible && (
-          <PreviewContainer
-          isPreviewVisible={isPreviewVisible}
-          className={`
-          ${
-            selectedMaintenanceRequest.severity.toLowerCase().charAt(0) === "l"
-            ? ""
-            : selectedMaintenanceRequest.severity.toLowerCase().charAt(0) ===
-            "m"
-              ? "medium-severity"
-              : "high-severity"
-            }
-            `}
-            >
-            <p style={{ fontWeight: "bold" }}>
-              Unit#: {selectedMaintenanceRequest.unitId}</p>
-            <p>Severity: {selectedMaintenanceRequest.severity}</p>
-            <p>Type: {selectedMaintenanceRequest.type}</p>
-            <p>Description: {selectedMaintenanceRequest.description}</p>
-          </PreviewContainer>
-        )}
-      </WorkOrdersContainer>
-    </div>
+      </WorkOrdersSection>
+    </WorkOrdersContainer>
   );
 };
 

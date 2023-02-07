@@ -3,74 +3,55 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateLandlord } from './afterSignUpLandlordSlice';
 import { selectMe } from "../auth/authSlice";
 import { useNavigate } from 'react-router-dom';
-import AddAProperty from './AddAProperty'
-
-
 import styled from 'styled-components';
-import LandlordNavbar from '../navbar/LandlordNavbar';
+import Sidebar from '../../components/sidebar/Sidebar.jsx';
 
-const FormWrapper = styled.div`
-  background-color: #F6F6F6;
-  padding: 20px;
-  border-radius: 10px;
-  width: 90%;
-  margin: 20px auto;
-  background-color: #f2f2f2;
-  border-radius: 10px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-`;
+const Container = styled.div`
+display:flex;
+flex-direction: row
+background: rgb(246,246,246);
+background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 44%, rgba(30,86,160,1) 79%, rgba(22,49,114,1) 99%);
+;`
+
 const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #F6F6F6;
-  padding: 20px;
-  border-radius: 10px;
-  width: 80%;
-  margin: 20px auto;
-  background-color: #f2f2f2;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+display: flex;
+flex:7;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+background-color: #F6F6F6;
+padding: 20px;
+width: 80rem;
+height:40rem;
+margin: 15px auto;
+background-color: #f2f2f2;
+box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 `;
 
 const StyledInput = styled.input`
-  margin: 10px 0;
-  padding: 10px;
-  width: 60%;
-  font-size: 1.2em;
-  border-radius: 5px;
-  border: none;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+margin: 10px 0;
+padding: 10px;
+width: 20rem;
+font-size: 1.2em;
+box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 `;
 
 const StyledButton = styled.button`
-  margin: 20px 0;
-  padding: 10px 20px;
-  background-color: #1E56A0;
-  color: #fff; 
-  font-size: 1.2em;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  &:hover {
-    background-color: #163172;
-    color: #F6F6F6;
-  }
+margin-top: 20px;
+padding: 10px 20px;
+font-size: 18px;
+background-color: #1e56a0;
+color: #fff;
+border-radius: 5px;
+border: none;
+box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+cursor: pointer;
+&:hover {
+  background-color: #163172;
+  color: #f6f6f6;
+}
 `;
 
-const StyledAddAPropertyButton = styled.button`
-  margin: 20px 0;
-  padding: 10px 20px;
-  background-color: #1E56A0;
-  color: #fff; 
-  font-size: 1.2em;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  &:hover {
-    background-color: #163172;
-    color: #F6F6F6;
-  }
-`;
 
 
 
@@ -124,8 +105,8 @@ const UpdateLandlordForm = () => {
   //   setShowAddAProperty(true);
   // };
   return (
-      <FormWrapper>
-        <LandlordNavbar />
+      <Container>
+        <Sidebar />
       <StyledForm onSubmit={handleSubmit}>
         <StyledInput
           type="text"
@@ -166,7 +147,7 @@ const UpdateLandlordForm = () => {
       </StyledForm>
       {/* <StyledAddAPropertyButton onClick={handleClick}>Add Property</StyledAddAPropertyButton>
       {showAddAProperty && <AddAProperty />} */}
-          </FormWrapper>
+          </Container>
     );
 };
 

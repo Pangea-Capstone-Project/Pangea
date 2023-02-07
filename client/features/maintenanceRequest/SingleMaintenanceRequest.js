@@ -6,7 +6,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import LandlordNavbar from "../navbar/LandlordNavbar";
+
 
 const WorkOrdersContainer = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ const WorkOrdersContainer = styled.div`
   color: #163172;
   margin: 10px;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 20px;
   height:400px;
   text-align: center;
   box-shadow: 0 4px 8px 0 #d6e4f0;
@@ -72,23 +72,25 @@ useEffect(() => {
 dispatch(fetchSingleMaintenanceRequestAsync(id));
 }, [dispatch]);
 
-const { type, severity, description, imageUrl, unitId } =
-maintenanceRequest.maintenanceRequest;
+// const { type, severity, description, imageUrl, unitId } =
+// maintenanceRequest.maintenanceRequest;
 return (
-  <div>
-    <LandlordNavbar />
-    <WorkOrdersContainer>
-      <Unit>Unit#:{unitId}</Unit>
-      <p>Type: {type}</p>
-      <p>Severity: {severity}</p>
-        <p>{description}</p>
-      <ImageContainer>
-        <Image src={imageUrl} alt="placeholder" />
-      </ImageContainer>
-      <Button> Respond </Button>
-    </WorkOrdersContainer>
-  </div>
+  <>Hi there</>
 );
+  // <div>
+  //   <LandlordNavbar />
+  //   <WorkOrdersContainer>
+  //     <Unit>Unit#:{unitId}</Unit>
+  //     <p>Type: {type}</p>
+  //     <p>Severity: {severity}</p>
+  //       <p>{description}</p>
+  //     <ImageContainer>
+  //       <Image src={imageUrl} alt="placeholder" />
+  //     </ImageContainer>
+  //     <Button> Respond </Button>
+  //   </WorkOrdersContainer>
+  // </div>
+// );
 };
 
 export default SingleMaintenanceRequest;

@@ -2,96 +2,103 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTenantsAsync, selectTenants } from "./allTenantsSlice";
 import { fetchUnitsAsync, selectUnits } from "../units/unitsSlice";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import LandlordNavbar from "../navbar/LandlordNavbar";
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-basis: 15%;
-  flex-wrap: wrap;
-  align-items: center;
-  padding: 2rem;
-`;
+import Sidebar from "../../components/sidebar/Sidebar.jsx";
+import {
+  FaHome
+} from "react-icons/fa";
 
 
-const TenantContainer = styled.div`
+const StyledLandlordProfile = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
-  background-color: #F6F6F6;
-  box-shadow: 2px 2px 2px #ccc;
-  margin: 1rem 0;
-  padding: 1rem;
-  width: 500px;
 `;
 
-const LeftContainer = styled.div`
+const ProfileImage = styled.div`
+  width: 15rem;
+  height: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+`;
+
+const ProfileItem = styled.p`
+  font-size: 14px;
+  margin: 10px;
+`;
+
+const TenantWrapper = styled.div`
+  width: 20%;
+  height: 50rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background-color: #D6E4F0;
-  width: 50%;
-  padding: 1rem;
-  border-radius: 10px 0 0 10px;
-  flex: 1;
+  margin: 10px;
+  background-color: #eee;
+  box-shadow: 2px 2px 5px rgba(1, 2, 3, 0.2);
 `;
 
-const RightContainer = styled.div`
+const ProfileSection = styled.section`
+  background: linear-gradient(
+    90deg,
+    rgba(246, 246, 246, 1) 0%,
+    rgba(214, 228, 240, 1) 44%,
+    rgba(30, 86, 160, 1) 79%,
+    rgba(22, 49, 114, 1) 99%
+  );
+  background-color: #fff;
+  flex: 7;
+  width: 50%;
+  padding: 20px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  background-color: #1E56A0;
-  color: #fff;
-  width: 50%;
-  padding: 1rem;
-  border-radius: 0 10px 10px 0;
-  flex: 1;
+  overflow: auto;
 `;
 
-
-const AllTenants = () => {
+ const AllTenants = () => {
   const dispatch = useDispatch();
   const tenants = useSelector(selectTenants);
   const units = useSelector(selectUnits);
-  console.log(`tenants`,tenants)
-  console.log(`units`,units)
+  console.log(`tenants`, tenants);
+  console.log(`units`, units);
   useEffect(() => {
     dispatch(fetchTenantsAsync());
     dispatch(fetchUnitsAsync());
   }, [dispatch]);
-
   return (
-    <div> 
-      <LandlordNavbar />
-    <Container>
-      <h1 style={{ color: "#163172" }}>All Tenants</h1>
-      <div>
+    <StyledLandlordProfile>
+      <Sidebar />
+        <ProfileSection>
         {tenants.map((tenant) => {
-          const matchingUnit = units.find((unit) => unit.id === tenant.unitId);
-          
+          const matchingUnit = units.find(
+            (unit) => unit.id === tenant.unitId
+          );
+
           return (
-            <Link to= {`/singletenant/${tenant.id}`}>
-            <TenantContainer key={tenant.id}>
-                <p style={{ color: "#163172" }}>Unit: {tenant.unitId}</p>
-              <LeftContainer>
-                <p style={{ color: "#163172" }}>{tenant.name}</p>
-                <p style={{ color: "#163172" }}>{tenant.email}</p>
-              </LeftContainer>
-              <RightContainer>
-                {/* <p>Rent Owed : {matchingUnit?.rentAmount}</p> */}
-                <p>Status: {tenant.rentPaid ? "Paid" : "Owed"}</p>
-              </RightContainer>
-            </TenantContainer>
-            </Link>
+            <TenantWrapper key={tenant.id}>
+              <ProfileImage>
+                <FaHome />#{tenant.unitIdToAssociateTenant}
+              </ProfileImage>
+              <ProfileItem>{tenant.name}</ProfileItem>
+              <ProfileItem>Phone Number:{tenant.phoneNumber}</ProfileItem>
+              <ProfileItem>Email: {tenant.email}</ProfileItem>
+              <ProfileItem>Username: {tenant.username}</ProfileItem>
+              <ProfileItem>Birth Date: {tenant.dateOfBirth}</ProfileItem>
+              <ProfileItem>leaseStartDate: {tenant.leaseStartDate}</ProfileItem>
+              <ProfileItem>leaseEndDate: {tenant.leaseEndDate}</ProfileItem>
+              <ProfileItem>Rent:{tenant.rentAmount}</ProfileItem>
+              <ProfileItem>
+                Status: {tenant.rentPaid ? "Paid" : "Owed"}
+              </ProfileItem>
+            </TenantWrapper>
           );
         })}
-      </div>
-    </Container>
-        </div>
+      </ProfileSection>
+    </StyledLandlordProfile>
   );
 };
 
