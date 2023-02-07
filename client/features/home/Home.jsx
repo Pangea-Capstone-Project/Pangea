@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components'
-
+import Footer from '../footer/Footer';
 
 const Background = styled.div`
 display: flex;
@@ -153,6 +153,7 @@ const Home = () => {
                 </DescriptionBlock>
                
             </MainBlock>
+            <Footer />
         </Background>
     )
 }

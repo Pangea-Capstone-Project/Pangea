@@ -11,25 +11,38 @@ import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import CoPresentIcon from '@mui/icons-material/CoPresent';
 import { Link } from "react-router-dom";
 import React from "react";
+import { logout } from '../../app/store.js';
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 
 
 const Sidebar = () => {
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const logoutAndRedirectHome = () => {
+    dispatch(logout());
+    navigate('/');
+};
   return (
     <div className="sidebar">
       <div className="top">
         <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo">Admin</span>
+          <span className="logo">Pangea</span>
         </Link>
       </div>
+        <button onClick={logoutAndRedirectHome}> Logout </button>
       <hr />
       <div className="center">
         <ul>
           <p className="title">MAIN</p>
+          <Link to="/dashboard" style={{ textDecoration: "none" }}>
+
           <li>
             <DashboardIcon className="icon" />
             <span>Dashboard</span>
           </li>
+          </Link>
           <p className="title">USERS</p>
           <Link to="/tenants" style={{ textDecoration: "none" }}>
             <li>
@@ -50,10 +63,12 @@ const Sidebar = () => {
             </li>
           </Link>
           <p className="title">SETTINGS</p>
+          <Link to="/profile-page" style={{ textDecoration: "none" }}>
           <li>
             <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>
           </li>
+          </Link>
           <Link to="/signup-landlord" style={{ textDecoration: "none" }}>
             <li>
               <AdminPanelSettingsOutlinedIcon className="icon" />

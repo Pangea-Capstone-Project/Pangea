@@ -4,16 +4,26 @@ import { createProperty, getLandlordId } from "./AddAPropertySlice";
 import { selectMe } from "../auth/authSlice";
 import styled from "styled-components";
 import AddAUnit from "./AddAUnit";
-import LandlordNavbar from "../navbar/LandlordNavbar";
+import Sidebar from "../../components/sidebar/Sidebar.jsx";
+
+
+const Container = styled.div`
+display:flex;
+flex-direction: row
+background: rgb(246,246,246);
+background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 44%, rgba(30,86,160,1) 79%, rgba(22,49,114,1) 99%);
+;`
 
 const Form = styled.form`
 display: flex;
+flex:7;
 flex-direction: column;
+justify-content: center;
 align-items: center;
 background-color: #F6F6F6;
 padding: 20px;
-border-radius: 10px;
-width: 80%;
+width: 80rem;
+height:20rem;
 margin: 20px auto;
 background-color: #f2f2f2;
 box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
@@ -21,28 +31,26 @@ box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 const Input = styled.input`
 margin: 10px 0;
 padding: 10px;
-width: 60%;
+width: 50rem;
 font-size: 1.2em;
-border-radius: 5px;
-border: none;
 box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 `;
 
 
 const Button = styled.button`
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 18px;
-  background-color: #1e56a0;
-  color: #fff;
-  border-radius: 5px;
-  border: none;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  &:hover {
-    background-color: #163172;
-    color: #f6f6f6;
-  }
+margin-top: 20px;
+padding: 10px 20px;
+font-size: 18px;
+background-color: #1e56a0;
+color: #fff;
+border-radius: 5px;
+border: none;
+box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+cursor: pointer;
+&:hover {
+  background-color: #163172;
+  color: #f6f6f6;
+}
 `;
 
 const CreateProperty = () => {
@@ -95,8 +103,8 @@ const CreateProperty = () => {
     setShowAddAUnit(true);
   };
   return (
-    <div>
-      <LandlordNavbar />
+    <Container>
+      <Sidebar />
       <Form onSubmit={handleSubmit}>
         <Input
           type="text"
@@ -120,7 +128,7 @@ const CreateProperty = () => {
         </Button>
       )}
       {showAddAUnit && <AddAUnit />}
-    </div>
+    </Container>
   );
 };
 
