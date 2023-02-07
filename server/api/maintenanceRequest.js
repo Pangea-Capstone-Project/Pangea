@@ -16,9 +16,9 @@ router.get('/', async (req, res, next) => {
     }
 })
 // Single Work Order Route
-router.get('/:maintenanceRequestId', async(req,res,next) =>{
+router.get('/:id', async(req,res,next) =>{
     try{
-        const maintenanceRequest = await MaintenanceRequest.findByPk(req.params.maintenanceRequestId);
+        const maintenanceRequest = await MaintenanceRequest.findByPk(req.params.id);
         res.send(maintenanceRequest);
     } catch(err){
         console.log(`error in single maintenance route`, err)

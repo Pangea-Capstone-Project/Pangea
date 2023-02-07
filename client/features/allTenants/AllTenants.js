@@ -7,6 +7,7 @@ import Sidebar from "../../components/sidebar/Sidebar.jsx";
 import {
   FaHome
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 
 const StyledLandlordProfile = styled.div`
@@ -76,7 +77,7 @@ const ProfileSection = styled.section`
         {tenants.map((tenant) => {
           const matchingUnit = units.find(
             (unit) => unit.id === tenant.unitId
-          );
+            );
 
           return (
             <TenantWrapper key={tenant.id}>
@@ -91,9 +92,7 @@ const ProfileSection = styled.section`
               <ProfileItem>leaseStartDate: {tenant.leaseStartDate}</ProfileItem>
               <ProfileItem>leaseEndDate: {tenant.leaseEndDate}</ProfileItem>
               <ProfileItem>Rent:{tenant.rentAmount}</ProfileItem>
-              <ProfileItem>
-                Status: {tenant.rentPaid ? "Paid" : "Owed"}
-              </ProfileItem>
+              <ProfileItem> Status: {tenant.rentPaid ? "Paid" : "Owed"}</ProfileItem>
             </TenantWrapper>
           );
         })}

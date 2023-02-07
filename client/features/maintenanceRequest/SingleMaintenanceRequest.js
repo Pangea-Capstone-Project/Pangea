@@ -6,34 +6,51 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import Sidebar from "../../components/sidebar/Sidebar.jsx";
 
 
 const WorkOrdersContainer = styled.div`
   display: flex;
-  flex-wrap: nowrap;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #163172;
-  margin: 10px;
-  padding: 20px;
-  border-radius: 20px;
-  height:400px;
-  text-align: center;
-  box-shadow: 0 4px 8px 0 #d6e4f0;
-  position: relative;
-  margin-bottom: 5.5%;
+  flex-direction: row;
+`;
+
+const WorkOrderItems = styled.div`
+background: linear-gradient(
+  90deg,
+  rgba(246, 246, 246, 1) 0%,
+  rgba(214, 228, 240, 1) 44%,
+  rgba(30, 86, 160, 1) 79%,
+  rgba(22, 49, 114, 1) 99%
+);
+background-color: #fff;
+flex: 7;
+width: 50%;
+padding: 20px;
+box-shadow: 4px 4px 20px rgba(1, 2, 3, 0.2);
+
+margin-top: 30px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+overflow: auto;
 `;
 
 
-const Unit = styled.p`
-font-weight: bold;
-font-size: 2rem;
-font-family: "Montserrat", sans-serif;
-background-color: #1e56a0;
-color: #fff;
-padding: 2px 4px;
-border-radius: 5px;
+const WorkOrder = styled.div`
+  width: 20rem;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  background-color: #eee;
+  box-shadow: 4px 4px 20px rgba(1, 2, 3, 0.2);
+  &.medium-severity {
+    background-color: #f9a51a;
+  }
+  &.high-severity {
+    background-color: #f92a2a;
+  }
 `;
 
 const Button = styled.button `
@@ -47,50 +64,30 @@ font-weight: bold;
 &:hover { background-color: #1e56a0; cursor: pointer; }
 `;
 
-const ImageContainer = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-`;
-
-const Image = styled.img`
-  position: absolute;
-  left: 25%;
-  top: 50%;
-  transform: translateY(-50%);
-`;
-
 
 const SingleMaintenanceRequest = () => {
-const { id } = useParams();
-const maintenanceRequest = useSelector(selectMaintenanceRequest);
-console.log(`line 76`,maintenanceRequest)
-console.log(`maintenanceReq`,maintenanceRequest)
+const maintenanceRequest = useSelector(selectMaintenanceRequest)
+const {id} = useParams()
 const dispatch = useDispatch();
 
-useEffect(() => {
-dispatch(fetchSingleMaintenanceRequestAsync(id));
-}, [dispatch]);
-
-// const { type, severity, description, imageUrl, unitId } =
-// maintenanceRequest.maintenanceRequest;
+useEffect(() =>{
+  dispatch(fetchSingleMaintenanceRequestAsync(id))
+},[dispatch]);
+console.log(`maintenanceRequest`,maintenanceRequest)
 return (
-  <>Hi there</>
+  <WorkOrdersContainer>
+    <Sidebar />
+    <WorkOrderItems>
+      <WorkOrder>
+      <p>Unit#:{maintenanceRequest.unitId}</p>
+      <p>Type: {maintenanceRequest.type}</p>
+      <p>Severity: {maintenanceRequest.severity}</p>
+        <p>{maintenanceRequest.description}</p>
+      <Button> Respond </Button>
+      </WorkOrder>
+    </WorkOrderItems>
+  </WorkOrdersContainer>
 );
-  // <div>
-  //   <LandlordNavbar />
-  //   <WorkOrdersContainer>
-  //     <Unit>Unit#:{unitId}</Unit>
-  //     <p>Type: {type}</p>
-  //     <p>Severity: {severity}</p>
-  //       <p>{description}</p>
-  //     <ImageContainer>
-  //       <Image src={imageUrl} alt="placeholder" />
-  //     </ImageContainer>
-  //     <Button> Respond </Button>
-  //   </WorkOrdersContainer>
-  // </div>
-// );
 };
 
 export default SingleMaintenanceRequest;
