@@ -31,7 +31,7 @@ const AuthForm = ({ name, displayName }) => {
         if (role === 'landlord') {
             navigate('/dashboard');
         } else if (role === 'tenant') {
-            navigate('/tenantHome');
+            navigate('/signup-tenant');
     }
 };
 

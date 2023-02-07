@@ -46,7 +46,7 @@ const Button = styled.button`
 const UnitForm = () => {
   const [unit, setUnit] = useState({
     unitNumber: '',
-    rentAmount: '',
+    // rentAmount: '',
     bedrooms: '',
     propertyId: '',
   });
@@ -80,13 +80,6 @@ const UnitForm = () => {
         value={unit.unitNumber}
         onChange={handleChange}
         placeholder="Unit#"
-        />
-      <Input
-        type="number"
-        name="rentAmount"
-        value={unit.rentAmount}
-        onChange={handleChange}
-        placeholder="Rent Amount"
         />
       <Input
         type="number"

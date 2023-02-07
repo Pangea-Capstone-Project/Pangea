@@ -2,7 +2,10 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { logout, me } from '../../../app/store';
+import { selectMe } from "../../auth/authSlice"
+import { fetchTenantAsync, selectTenant } from '../../allTenants/singleTenantSlice';
 
 const Background = styled.div`
 display: flex;
@@ -63,37 +66,24 @@ font-size: 1.5rem;
 margin-bottom: 2rem;
 `
 
-const MessageCount = styled.div`
-background-color: red;
-border-radius: 50%;
-width: 1.5rem;
-height: 1.5rem;
-font-size: 70%;
-display: flex;
-align-items: center;
-justify-content: center;
-color: white;
-margin-left: -14px;
 
-`
-const MessageButtonAndNumber = styled.div`
-display: flex;
-`
 //dummy daters
-const rent = 1000
 const tenantName = "Pepe Silvia"
 const tenantUnit = "202"
-const messageCount = 100
 
 const TenantHome = () => {
-
-    const [messageCount, setMessageCount] = useState(0)
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [rentDue, setRentDue] = useState(0)
-    const [rent, setRent] = useState(0)
+    const [rent, setRent] = useState(100)
+    const thisUser = useSelector(selectMe)
+    const thisTenant = useSelector(selectTenant)
 
-    function changeMessageCount() {
-        setMessageCount(messageCount + 10)
-    }
+    console.log(thisTenant)
+    useEffect(() => {
+        dispatch(fetchTenantAsync(thisUser.id))
+    }, [])
+
     function increaseRentDueClicked() {
         setRentDue(rentDue + 1000)
     }
@@ -101,16 +91,18 @@ const TenantHome = () => {
         setRent(rent + 1000)
     }
 
-
+    const logoutAndRedirectHome = () => {
+        dispatch(logout());
+        navigate('/login');
+    };
     //rentDue turns green if the tenant is caught up on rent, aka. $0.
-    //message counter disappears when the tenant has no unread messages.
-    //message counter stops displaying numbers of messages after 99. 
 
     return (
         <Background>
             <Title>Tenant Home</Title>
-            <Title>Hello, {tenantName}</Title>
-            <Title>Suite #{tenantUnit}</Title>
+
+            <Title>Hello, {thisTenant.name}</Title>
+            <Title>Suite #{thisTenant.unitIdToAssociateTenant}</Title>
             <RentBox>
                 <MonthlyRentBox>
                     <h2>Monthly Rent</h2>
@@ -144,18 +136,10 @@ const TenantHome = () => {
                     Submit Maintenance Request
                 </AllButtons>
             </Link>
-            <Link to={"/messages"}>
-                <MessageButtonAndNumber>
-                    <AllButtons>
-                        Messages
-                    </AllButtons>
+            <AllButtons onClick={logoutAndRedirectHome}>
+                Log Out
+            </AllButtons>
 
-                    <MessageCount style={{
-                        zIndex: (messageCount === 0) ? "-1" : "2"
-                    }}>{(messageCount >= 99) ? 99 : messageCount}</MessageCount>
-                </MessageButtonAndNumber>
-            </Link>
-            <h2 onClick={changeMessageCount}>Add Messages Test</h2>
             <h2 onClick={increaseRentClicked}>Increase Rent Test</h2>
             <h2 onClick={increaseRentDueClicked}>Increase Rent Due Test</h2>
         </Background>

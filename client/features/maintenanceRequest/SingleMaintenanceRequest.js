@@ -23,15 +23,6 @@ const WorkOrdersContainer = styled.div`
   box-shadow: 0 4px 8px 0 #d6e4f0;
   position: relative;
   margin-bottom: 5.5%;
-  &.low-severity {
-    background-color: #f6f6f6;
-  }
-  &.high-severity {
-    background-color: #f92a2a;
-  }
-  &.medium-severity {
-    background-color: #f9a51a;
-  }
 `;
 
 
@@ -72,8 +63,8 @@ const Image = styled.img`
 
 const SingleMaintenanceRequest = () => {
 const { id } = useParams();
-const isLoggedIn = useSelector((state) => !!state.auth.me.id);
 const maintenanceRequest = useSelector(selectMaintenanceRequest);
+console.log(`line 76`,maintenanceRequest)
 console.log(`maintenanceReq`,maintenanceRequest)
 const dispatch = useDispatch();
 
@@ -81,13 +72,13 @@ useEffect(() => {
 dispatch(fetchSingleMaintenanceRequestAsync(id));
 }, [dispatch]);
 
-const { type, severity, description, imageUrl } =
+const { type, severity, description, imageUrl, unitId } =
 maintenanceRequest.maintenanceRequest;
 return (
   <div>
     <LandlordNavbar />
-    <WorkOrdersContainer className={severity === "Low" ? "low-severity" : (severity === "Medium" ? "medium-severity" : "high-severity")}>
-      <Unit>Unit: #123</Unit>
+    <WorkOrdersContainer>
+      <Unit>Unit#:{unitId}</Unit>
       <p>Type: {type}</p>
       <p>Severity: {severity}</p>
         <p>{description}</p>

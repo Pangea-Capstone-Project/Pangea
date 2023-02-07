@@ -13,23 +13,11 @@ router.get("/", async (request, response, next) => {
   }
 });
 
-// router.get('/:id', async(req,res,next) =>{
-//   try{
-//     console.log(`req.params`,req.params)
-//     console.log(`req.body`,req.body)
-//       const landlord = await Landlord.findByPk(req.params.id);
-//       console.log(`landlordId`,req.params.id)
-//       res.send(landlord);
-//   } catch(err){
-//       console.log(`error in single landlord route`, err)
-//       next(err)
-//   }
-// })
 
 router.get('/:id', async (req, res, next) => {
   try {
     const { id } = req.params
-    const landlord = await Landlord.findAll({
+    const landlord = await Landlord.findOne({
       where: {
         userId: id,
       }

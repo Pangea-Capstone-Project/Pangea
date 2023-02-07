@@ -57,12 +57,11 @@ const AllTenants = () => {
   const dispatch = useDispatch();
   const tenants = useSelector(selectTenants);
   const units = useSelector(selectUnits);
-
+  console.log(`tenants`,tenants)
+  console.log(`units`,units)
   useEffect(() => {
     dispatch(fetchTenantsAsync());
     dispatch(fetchUnitsAsync());
-    console.log(`tenants`, tenants);
-    console.log(`units`, units);
   }, [dispatch]);
 
   return (
@@ -83,7 +82,7 @@ const AllTenants = () => {
                 <p style={{ color: "#163172" }}>{tenant.email}</p>
               </LeftContainer>
               <RightContainer>
-                <p>Rent Owed : {matchingUnit?.rentAmount}</p>
+                {/* <p>Rent Owed : {matchingUnit?.rentAmount}</p> */}
                 <p>Status: {tenant.rentPaid ? "Paid" : "Owed"}</p>
               </RightContainer>
             </TenantContainer>
