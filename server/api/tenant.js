@@ -79,6 +79,8 @@ router.put("/:id", async (req, res, next) => {
       landlordId = landlord.id;
 
     }
+
+    
     const tenant = await Tenant.update(
       {
         name: req.body.name,
@@ -86,8 +88,8 @@ router.put("/:id", async (req, res, next) => {
         phoneNumber: req.body.phoneNumber,
         email: req.body.email,
         landlordId: landlordId,
-        leaseStartDate: now.toISOString(),
-        leaseEndDate: nextMonth.toISOString(),
+        leaseStartDate: now.toLocaleDateString(),
+        leaseEndDate: nextMonth.toLocaleDateString(),
         idForTenantToAssociate: landlordId,
 
       },

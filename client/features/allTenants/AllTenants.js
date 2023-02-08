@@ -8,7 +8,7 @@ import {
   FaHome
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const StyledLandlordProfile = styled.div`
   display: flex;
@@ -22,10 +22,11 @@ const ProfileImage = styled.div`
   align-items: center;
   justify-content: center;
   margin: 10px;
+  font-size:5rem;
 `;
 
 const ProfileItem = styled.p`
-  font-size: 14px;
+  font-size: 1rem;
   margin: 10px;
 `;
 
@@ -59,6 +60,12 @@ const ProfileSection = styled.section`
   justify-content: center;
   overflow: auto;
 `;
+const Deletebtn = styled.span`
+  &:hover {
+    cursor: pointer;
+    color: white;
+  }
+`;
 
  const AllTenants = () => {
   const dispatch = useDispatch();
@@ -78,6 +85,7 @@ const ProfileSection = styled.section`
 const handleDelete = (id) => {
   dispatch(deleteTenantAsync(id));
   setDeleteId(id);
+  window.location.reload(false);
 };
 // when deleted the page needs the state to be updated
 useEffect(() => {
@@ -102,11 +110,14 @@ useEffect(() => {
               <ProfileItem>Email: {tenant.email}</ProfileItem>
               <ProfileItem>Username: {tenant.username}</ProfileItem>
               <ProfileItem>Birth Date: {tenant.dateOfBirth}</ProfileItem>
-              <ProfileItem>leaseStartDate: {tenant.leaseStartDate}</ProfileItem>
-              <ProfileItem>leaseEndDate: {tenant.leaseEndDate}</ProfileItem>
+              <ProfileItem>Lease End: {new Date(tenant.leaseStartDate).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/(\d+)\/(\d+)\/(\d+)/, '$3/$1/$2')}</ProfileItem>
+              <ProfileItem>Lease End: {new Date(tenant.leaseEndDate).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/(\d+)\/(\d+)\/(\d+)/, '$3/$1/$2')}</ProfileItem>
               <ProfileItem>Rent:{tenant.rentAmount}</ProfileItem>
               <ProfileItem> Status: {tenant.rentPaid ? "Paid" : "Owed"}</ProfileItem>
-              <button onClick={() => handleDelete(tenant.id)}>Delete</button>
+              {/* <Link to={`/singletenant/${tenant.id}`}>
+                View Details
+              </Link> */}
+              <Deletebtn onClick={() => handleDelete(tenant.id)}><DeleteIcon /></Deletebtn>
             </TenantWrapper>
           );
         })}

@@ -9,7 +9,7 @@ import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import Sidebar from "../../components/sidebar/Sidebar.jsx";
 import {FaHome} from "react-icons/fa";
-
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const WorkOrdersContainer = styled.div`
   display: flex;
@@ -23,7 +23,7 @@ const WorkOrderItems = styled.div`
   align-items: center;
   justify-content: center;
   margin: 10px;
-  font-size: 9rem;
+  font-size: 7rem;
 `;
 
 const WorkOrderFont = styled.p`
@@ -69,6 +69,12 @@ const WorkOrdersSection = styled.section`
   flex-wrap: wrap;
   justify-content: center;
   overflow: auto;
+`;
+const Deletebtn = styled.span`
+  &:hover {
+    cursor: pointer;
+    color: white;
+  }
 `;
 
 const MaintenanceRequest = () => {
@@ -121,11 +127,12 @@ const MaintenanceRequest = () => {
             <WorkOrderItems>
           <FaHome /># {maintenanceRequest.unitId}
             <Link to={`/workorders/${maintenanceRequest.id}`}>
+              
             <WorkOrderFont>Priority: {maintenanceRequest.severity}</WorkOrderFont>
             <WorkOrderFont>Type: {maintenanceRequest.type}</WorkOrderFont>
             </Link>
-            <button onClick={() => handleDelete(maintenanceRequest.id)}>Delete</button>
         </WorkOrderItems>
+        <Deletebtn onClick={() => handleDelete(maintenanceRequest.id)}><DeleteIcon /></Deletebtn>
           </WorkOrder>
         ))}
       </WorkOrdersSection>

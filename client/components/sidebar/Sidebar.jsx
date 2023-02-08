@@ -4,27 +4,26 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import StoreIcon from "@mui/icons-material/Store";
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import AddHomeWorkOutlinedIcon from '@mui/icons-material/AddHomeWorkOutlined';
-import AddHomeOutlinedIcon from '@mui/icons-material/AddHomeOutlined';
-import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
-import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
-import GroupRemoveIcon from '@mui/icons-material/GroupRemove';
-import CoPresentIcon from '@mui/icons-material/CoPresent';
+import AddHomeWorkOutlinedIcon from "@mui/icons-material/AddHomeWorkOutlined";
+import AddHomeOutlinedIcon from "@mui/icons-material/AddHomeOutlined";
+import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
+import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
+import GroupRemoveIcon from "@mui/icons-material/GroupRemove";
+import CoPresentIcon from "@mui/icons-material/CoPresent";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { Link } from "react-router-dom";
 import React from "react";
-import { logout } from '../../app/store.js';
+import { logout } from "../../app/store.js";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
-
-
+import pangeaLogo from "../../../public/pangeaLogo.png";
 const Sidebar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const logoutAndRedirectHome = () => {
     dispatch(logout());
-    navigate('/');
-};
+    navigate("/");
+  };
   return (
     <div className="sidebar">
       <div className="top">
@@ -32,18 +31,22 @@ const Sidebar = () => {
           <span className="logo">Pangea</span>
         </Link>
       </div>
-        <button onClick={logoutAndRedirectHome}> Logout </button>
       <hr />
       <div className="center">
         <ul>
           <p className="title">MAIN</p>
           <Link to="/dashboard" style={{ textDecoration: "none" }}>
-
-          <li>
-            <DashboardIcon className="icon" />
-            <span>Dashboard</span>
-          </li>
+            <li>
+              <DashboardIcon className="icon" />
+              <span>Dashboard</span>
+            </li>
           </Link>
+          <li onClick={logoutAndRedirectHome}>
+            <ExitToAppIcon className="icon" />
+            <span>
+              Sign Out
+            </span>
+          </li>
           <p className="title">USERS</p>
           <Link to="/tenants" style={{ textDecoration: "none" }}>
             <li>
@@ -65,10 +68,10 @@ const Sidebar = () => {
           </Link>
           <p className="title">SETTINGS</p>
           <Link to="/profile-page" style={{ textDecoration: "none" }}>
-          <li>
-            <AccountCircleOutlinedIcon className="icon" />
-            <span>Profile</span>
-          </li>
+            <li>
+              <AccountCircleOutlinedIcon className="icon" />
+              <span>Profile</span>
+            </li>
           </Link>
           <Link to="/signup-landlord" style={{ textDecoration: "none" }}>
             <li>
@@ -77,34 +80,34 @@ const Sidebar = () => {
             </li>
           </Link>
           <Link to="/add-property" style={{ textDecoration: "none" }}>
-          <li>
-            <AddHomeWorkOutlinedIcon className="icon" />
-            <span>Add Properties</span>
-          </li>
+            <li>
+              <AddHomeWorkOutlinedIcon className="icon" />
+              <span>Add Properties</span>
+            </li>
           </Link>
           <Link to="/add-unit" style={{ textDecoration: "none" }}>
-          <li>
-            <AddHomeOutlinedIcon className="icon" />
-            <span>Add Unit</span>
-          </li>
+            <li>
+              <AddHomeOutlinedIcon className="icon" />
+              <span>Add Unit</span>
+            </li>
           </Link>
           <Link to="/add-tenant-unit" style={{ textDecoration: "none" }}>
-          <li>
-            <CoPresentIcon className="icon" />
-            <span>Add Tenant to Unit</span>
-          </li>
+            <li>
+              <CoPresentIcon className="icon" />
+              <span>Add Tenant to Unit</span>
+            </li>
           </Link>
           <Link to="/addRent" style={{ textDecoration: "none" }}>
-          <li>
-            <AccountBalanceWalletIcon className="icon" />
-            <span>Manage Payments</span>
-          </li>
+            <li>
+              <AccountBalanceWalletIcon className="icon" />
+              <span>Manage Payments</span>
+            </li>
           </Link>
           <Link to="/remove" style={{ textDecoration: "none" }}>
-          <li>
-            <GroupRemoveIcon className="icon" />
-            <span>Remove</span>
-          </li>
+            <li>
+              <GroupRemoveIcon className="icon" />
+              <span>Remove</span>
+            </li>
           </Link>
         </ul>
       </div>

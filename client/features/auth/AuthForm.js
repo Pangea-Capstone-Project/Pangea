@@ -2,7 +2,8 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { authenticate } from '../../app/store';
-import './auth.css'
+import './auth.css';
+import pangeaLogo from "../../../public/pangeaLogo.png";
 
 /**
   The AuthForm component can be used for Login or Sign Up.
@@ -35,10 +36,9 @@ const AuthForm = ({ name, displayName }) => {
 
   return (
     <div id='home'>
-      <div id='loginBtns'>
-            <button className='landtenBtns'>Login</button>
-            <button className='landtenBtns' onClick={handleNav}>Sign Up</button>
-            </div>
+      <div id="logoContainer">
+        <img src={pangeaLogo} alt="Pangea Logo" id="pangeaLogo" />
+      </div>
       <form id='loginForm' onSubmit={handleSubmit} name={name}>
         <div>
           <label htmlFor="username">
@@ -54,6 +54,10 @@ const AuthForm = ({ name, displayName }) => {
         </div>
         <div id='loginDiv'>
           <button className='loginBtns' type="submit">{displayName}</button>
+        </div>
+        <div>
+          New to Pangea?
+          <a href="/signup" class="sign-in-link">Sign Up</a>
         </div>
         {error && <div> {error} </div>}
       </form>
