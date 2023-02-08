@@ -117,8 +117,7 @@ const Remove = () => {
     if (selectedProperty) handleDeleteProperty(selectedProperty);
     if (selectedTenant) handleDeleteTenant(selectedTenant);
     if (selectedUnit) handleDeleteUnit(selectedUnit);
-    if (selectMaintenanceRequests)
-      handleDeleteMaintenanceRequest(selectedMaintenanceRequest);
+    if (selectedMaintenanceRequest) handleDeleteMaintenanceRequest(selectedMaintenanceRequest);
   };
 
   return (

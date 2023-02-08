@@ -22,7 +22,7 @@ Unit.belongsTo(Property, { foreignKey: 'propertyId'});
 
 // Added this for the tenant 
 // Tenant.hasMany(Order, {foreignKey: "orderId"});
-Order.belongsTo(Tenant, { foreignKey: "orderId" });
+Order.belongsTo(Tenant, { foreignKey: "tenantId" });
 
 
 Landlord.hasMany(Property, { foreignKey: 'landlordId',});

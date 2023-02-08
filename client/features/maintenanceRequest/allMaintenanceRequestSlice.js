@@ -26,6 +26,7 @@ const maintenaceRequestsSlice = createSlice({
             return action.payload;
         });
         builder.addCase(deleteMaintenanceRequestAsync.fulfilled, (state,action) =>{
+            alert(`Work Order Delete Success`)
             return action.payload;
         });
     },
