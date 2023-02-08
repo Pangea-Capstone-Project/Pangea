@@ -5,6 +5,7 @@ import { selectMe } from "../auth/authSlice";
 import styled from "styled-components";
 import AddAUnit from "./AddAUnit";
 import Sidebar from "../../components/sidebar/Sidebar.jsx";
+import { useNavigate } from "react-router-dom";
 
 
 const Container = styled.div`
@@ -59,8 +60,7 @@ const CreateProperty = () => {
   const [propertyName, setPropertyName] = useState("");
   const [address, setAddress] = useState("");
   const [landlordId, setLandlordId] = useState(null);
-  const [showAddUnitButton, setShowAddUnitButton] = useState(false);
-  const [showAddAUnit, setShowAddAUnit] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchLandlordId = async () => {
@@ -93,15 +93,12 @@ const CreateProperty = () => {
           address,
           userId: me.id,
         })
-      );
-      setShowAddUnitButton(true);
-    }
+        );
+      }
+      navigate('/dashboard')
   };
   
 
-  const handleClick = () => {
-    setShowAddAUnit(true);
-  };
   return (
     <Container>
       <Sidebar />
@@ -122,12 +119,6 @@ const CreateProperty = () => {
         />
         <Button type="submit">Add Property</Button>
       </Form>
-      {showAddUnitButton && (
-        <Button type="button" onClick={handleClick}>
-          Add Unit
-        </Button>
-      )}
-      {showAddAUnit && <AddAUnit />}
     </Container>
   );
 };

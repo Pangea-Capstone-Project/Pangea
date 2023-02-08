@@ -19,17 +19,6 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-// router.get("/:id", async (request, response, next) => {
-//   try {
-//     const tenant = await Tenant.findOne({
-//       where: { userId: request.params.id },
-//     });
-//     response.json(tenant);
-//   } catch (error) {
-//     next(error);
-//   }
-// });
-
 // single tenant route 
 router.get('/:id', async (request, response, next) => {
   try {
@@ -68,104 +57,6 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-// router.put("/:id", async (req, res, next) => {
-//   try {
-//     console.log(`req.body`, req.body);
-//     const now = new Date();
-//     const nextMonth = new Date();
-//     nextMonth.setMonth(now.getMonth() + 1);
-//     const tenant = await Tenant.update(
-//       {
-//         name: req.body.name,
-//         dateOfBirth: req.body.dateOfBirth,
-//         phoneNumber: req.body.phoneNumber,
-//         email: req.body.email,
-//         idForTenantToAssociate: req.body.idForTenantToAssociate,
-//         leaseStartDate: now.toISOString(),
-//         leaseEndDate: nextMonth.toISOString(),
-//       },
-//       {
-//         where: {
-//           userId: req.params.id,
-//         },
-//       }
-//     );
-//     res.json(tenant);
-//   } catch (error) {
-//     console.log(`Error tenantPutRoute`, error);
-//     next(error);
-//   }
-// });
-
-// router.put("/:id", async (req, res, next) => {
-//   try {
-//     const now = new Date();
-//     const nextMonth = new Date();
-//     nextMonth.setMonth(now.getMonth() + 1);
-//     const tenant = await Tenant.update(
-//       {
-//         name: req.body.name,
-//         dateOfBirth: req.body.dateOfBirth,
-//         phoneNumber: req.body.phoneNumber,
-//         email: req.body.email,
-//         idForTenantToAssociate: req.body.idForTenantToAssociate,
-//         leaseStartDate: now.toISOString(),
-//         leaseEndDate: nextMonth.toISOString(),
-//       },
-//       {
-//         where: {
-//           userId: req.params.id,
-//         },
-//         include: [{
-//           model: Landlord,
-//           as: 'landlord',
-//         }]
-//       }
-//     );
-//     res.json(tenant);
-//   } catch (error) {
-//     console.log(`Error tenantPutRoute`, error);
-//     next(error);
-//   }
-// });
-// router.put("/:id", async (req, res, next) => {
-//   try {
-//     const now = new Date();
-//     const nextMonth = new Date();
-//     nextMonth.setMonth(now.getMonth() + 1);
-//     const idForTenantToAssociate = req.body.idForTenantToAssociate;
-//     const landlord = await Landlord.findOne({
-//       where: {
-//         idForTenantToAssociate: idForTenantToAssociate
-//       }
-//     });
-//     if (!landlord) {
-//       return res.status(400).send({
-//         message: `Landlord with idForTenantToAssociate=${idForTenantToAssociate} not found`
-//       });
-//     }
-//     const tenant = await Tenant.update(
-//       {
-//         name: req.body.name,
-//         dateOfBirth: req.body.dateOfBirth,
-//         phoneNumber: req.body.phoneNumber,
-//         email: req.body.email,
-//         landlordId: landlord.id,
-//         leaseStartDate: now.toISOString(),
-//         leaseEndDate: nextMonth.toISOString(),
-//       },
-//       {
-//         where: {
-//           userId: req.params.id,
-//         }
-//       }
-//     );
-//     res.json(tenant);
-//   } catch (error) {
-//     console.log(`Error tenantPutRoute`, error);
-//     next(error);
-//   }
-// });
 router.put("/:id", async (req, res, next) => {
   try {
     const now = new Date();

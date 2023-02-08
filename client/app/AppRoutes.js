@@ -29,7 +29,7 @@ import { selectMe } from "../features/auth/authSlice";
 import LandlordProfile from "../features/profilePage/LandlordProfile";
 import AddTenantToUnit from "../features/afterSignup/AddTenantToUnit";
 import CreateMaintenanceRequest from "../features/createMaintenanceRequestTenant/CreateMaintenanceRequest";
-
+import Delete from "../features/remove/Delete"
 const AppRoutes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const userLoggedIn = useSelector(selectMe);
@@ -86,6 +86,7 @@ const AppRoutes = () => {
             <Route path="/addRent"element={<AddRent name="addRent" displayName="Add Rent" />}/>
             <Route path="/rents"element={<AllRents name="rents" displayName="All rents" />}/>
             <Route path="/rents/:rentId"element={<Rent name="Rent" displayName="Rent" />}/>
+            <Route path="remove" element={<Delete/>} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/*" element={<Dashboard />} />
           </Routes>

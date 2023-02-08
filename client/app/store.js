@@ -16,6 +16,7 @@ import landlordReducer from '../features/profilePage/landlordProfileSlice';
 import singleTenantReducer from "../features/allTenants/singleTenantSlice";
 import maintenanceRequestReducer from "../features/maintenanceRequest/singleMaintenanceRequestSlice";
 
+
 const store = configureStore({
   reducer: {
     auth: authReducer,
@@ -39,7 +40,6 @@ const store = configureStore({
     order: orderSlice,
     orderDetails: cartRentDetailsSlice,
     landlord: landlordReducer,
-
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });

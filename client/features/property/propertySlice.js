@@ -12,6 +12,13 @@ export const fetchPropertiesAsync = createAsyncThunk('properties', async() =>{
   }
 });
 
+export const deletePropertyAsync = createAsyncThunk("deleteProperty", async(propertyId) => {
+  try{
+    const {data} = await axios.delete(`http://localhost:8080/api/property/${propertyId}`)
+  } catch(err) {
+    console.log(`Error in deletePropertyAsync`,err)
+  }
+})
 const propertiesSlice = createSlice({
     name: 'properties',
     initialState: [],
@@ -21,6 +28,10 @@ const propertiesSlice = createSlice({
         console.log(`action.payload`, action.payload)
         return action.payload;
       });
+      builder.addCase(deletePropertyAsync.fulfilled,(state,action) =>{
+        alert('Property Delete Success');
+        return action.payload;
+      })
     },
   });
 

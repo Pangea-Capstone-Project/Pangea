@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTenantsAsync, selectTenants } from "./allTenantsSlice";
+import { fetchTenantsAsync, selectTenants, deleteTenantAsync } from "./allTenantsSlice";
 import { fetchUnitsAsync, selectUnits } from "../units/unitsSlice";
 import styled from "styled-components";
 import Sidebar from "../../components/sidebar/Sidebar.jsx";
@@ -62,6 +62,10 @@ const ProfileSection = styled.section`
 
  const AllTenants = () => {
   const dispatch = useDispatch();
+
+  const [deleteId, setDeleteId] = useState(null);
+
+
   const tenants = useSelector(selectTenants);
   const units = useSelector(selectUnits);
   console.log(`tenants`, tenants);
@@ -70,15 +74,24 @@ const ProfileSection = styled.section`
     dispatch(fetchTenantsAsync());
     dispatch(fetchUnitsAsync());
   }, [dispatch]);
+
+const handleDelete = (id) => {
+  dispatch(deleteTenantAsync(id));
+  setDeleteId(id);
+};
+// when deleted the page needs the state to be updated
+useEffect(() => {
+  if (deleteId) {
+    dispatch(fetchTenantsAsync());
+    setDeleteId(null);
+  }
+}, [deleteId, dispatch]);
+
   return (
     <StyledLandlordProfile>
       <Sidebar />
         <ProfileSection>
-        {tenants.map((tenant) => {
-          const matchingUnit = units.find(
-            (unit) => unit.id === tenant.unitId
-            );
-
+        {tenants && Array.isArray(tenants) && tenants.map((tenant) => {
           return (
             <TenantWrapper key={tenant.id}>
               <ProfileImage>
@@ -93,6 +106,7 @@ const ProfileSection = styled.section`
               <ProfileItem>leaseEndDate: {tenant.leaseEndDate}</ProfileItem>
               <ProfileItem>Rent:{tenant.rentAmount}</ProfileItem>
               <ProfileItem> Status: {tenant.rentPaid ? "Paid" : "Owed"}</ProfileItem>
+              <button onClick={() => handleDelete(tenant.id)}>Delete</button>
             </TenantWrapper>
           );
         })}

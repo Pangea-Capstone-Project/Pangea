@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  fetchMaintenanceRequestAsync,
+  fetchMaintenanceRequestsAsync,
   selectMaintenanceRequests,
+  deleteMaintenanceRequestAsync
 } from "./allMaintenanceRequestSlice";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import Sidebar from "../../components/sidebar/Sidebar.jsx";
-import {
-  FaHome
-} from "react-icons/fa";
+import {FaHome} from "react-icons/fa";
+
 
 const WorkOrdersContainer = styled.div`
   display: flex;
@@ -74,7 +74,6 @@ const WorkOrdersSection = styled.section`
 const MaintenanceRequest = () => {
 
   const maintenanceRequests = useSelector(selectMaintenanceRequests);
-console.log(`maintenanceRequests`, maintenanceRequests)
   const dispatch = useDispatch();
 
   // filter for workorders 
@@ -83,10 +82,14 @@ console.log(`maintenanceRequests`, maintenanceRequests)
   
 
   useEffect(() => {
-    dispatch(fetchMaintenanceRequestAsync());
+    dispatch(fetchMaintenanceRequestsAsync());
 
   }, [dispatch]);
 
+  const handleDelete = async (maintenanceRequestId) =>{
+    await dispatch(deleteMaintenanceRequestAsync(maintenanceRequestId));
+    dispatch(fetchMaintenanceRequestsAsync());
+  }
   // checking url for unit id and filter workorders by unit id
   useEffect(() => {
   if('id' in urlParams){
@@ -121,6 +124,7 @@ console.log(`maintenanceRequests`, maintenanceRequests)
             <WorkOrderFont>Priority: {maintenanceRequest.severity}</WorkOrderFont>
             <WorkOrderFont>Type: {maintenanceRequest.type}</WorkOrderFont>
             </Link>
+            <button onClick={() => handleDelete(maintenanceRequest.id)}>Delete</button>
         </WorkOrderItems>
           </WorkOrder>
         ))}

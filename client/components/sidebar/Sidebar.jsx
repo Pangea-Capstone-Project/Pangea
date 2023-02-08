@@ -8,6 +8,7 @@ import AddHomeWorkOutlinedIcon from '@mui/icons-material/AddHomeWorkOutlined';
 import AddHomeOutlinedIcon from '@mui/icons-material/AddHomeOutlined';
 import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import GroupRemoveIcon from '@mui/icons-material/GroupRemove';
 import CoPresentIcon from '@mui/icons-material/CoPresent';
 import { Link } from "react-router-dom";
 import React from "react";
@@ -97,6 +98,12 @@ const Sidebar = () => {
           <li>
             <AccountBalanceWalletIcon className="icon" />
             <span>Manage Payments</span>
+          </li>
+          </Link>
+          <Link to="/remove" style={{ textDecoration: "none" }}>
+          <li>
+            <GroupRemoveIcon className="icon" />
+            <span>Remove</span>
           </li>
           </Link>
         </ul>
