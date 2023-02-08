@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components'
 import Footer from '../footer/Footer';
+import pangea5 from '../../../public/pangea5.png';
 
 const Background = styled.div`
 display: flex;
@@ -114,7 +115,7 @@ box-shadow: inset -30px -30px 150px 5px black;
 background-color: #1E56A0;
 width: 40vw;
 height: 40vw;
-background-image: url(pangea5.png);
+background-image: url(${pangea5});
 animation: ${rotate} 2000s linear infinite;
 animation-fill-mode: both;
 transform-style: preserve-3d;

@@ -42,19 +42,19 @@ async function seed() {
   Property.create({ propertyName:"West Haven", address:"West Town", numberOfUnits:"5", LandlordId:newLandlord[1].id,}),
 ])
 
-const maintenaceRequests = await Promise.all([
-  MaintenanceRequest.create({type:"Roofing", severity:"High",description:"Roof is missing somebody took my roof!!!"}),
-  MaintenanceRequest.create({type:"Roofing", severity:"Medium",description:"Roof has a hole an asteroid fell"}),
-  MaintenanceRequest.create({type:"Roofing", severity:"Low",description:"I have no Roof"}),
-])
 
 const units = await Promise.all([
   Unit.create({unitNumber:"1",isOccupied:false, bedrooms:"100"}),
   Unit.create({unitNumber:"2",isOccupied:true, bedrooms:"200"}),
   Unit.create({unitNumber:"3",isOccupied:false, bedrooms:"300"}),
 ])
-}
 
+const maintenaceRequests = await Promise.all([
+  MaintenanceRequest.create({type:"Roofing", severity:"High",description:"Roof is missing somebody took my roof!!!"}),
+  MaintenanceRequest.create({type:"Roofing", severity:"Medium",description:"Roof has a hole an asteroid fell"}),
+  MaintenanceRequest.create({type:"Roofing", severity:"Low",description:"I have no Roof"}),
+])
+}
 
 /*
 We've separated the `seed` function from the `runSeed` function.

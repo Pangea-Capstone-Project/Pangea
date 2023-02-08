@@ -16,9 +16,9 @@ router.get('/', async (req, res, next) => {
     }
 })
 // Single Work Order Route
-router.get('/:maintenanceRequestId', async(req,res,next) =>{
+router.get('/:id', async(req,res,next) =>{
     try{
-        const maintenanceRequest = await MaintenanceRequest.findByPk(req.params.maintenanceRequestId);
+        const maintenanceRequest = await MaintenanceRequest.findByPk(req.params.id);
         res.send(maintenanceRequest);
     } catch(err){
         console.log(`error in single maintenance route`, err)
@@ -59,9 +59,9 @@ router.put('/:maintenanceRequestId', async(req,res,next) =>{
 })
 
 // Delete Work Order Route
-router.delete('/:maintenanceRequestId', async(req,res,next) =>{
+router.delete('/:id', async(req,res,next) =>{
     try{
-        const maintenanceRequest = await MaintenanceRequest.destroy({where: {id: req.params.maintenanceRequestId}})
+        const maintenanceRequest = await MaintenanceRequest.destroy({where: {id: req.params.id}})
         res.json(maintenanceRequest)
     } catch(err){
         console.log(`error in delete maintenance route`, err)

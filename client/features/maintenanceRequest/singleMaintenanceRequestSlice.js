@@ -1,9 +1,7 @@
 import { createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios";
 
-const initialState = {
-    maintenanceRequest:{},
-};
+
 export const fetchSingleMaintenanceRequestAsync =  createAsyncThunk('singleMaintenanceRequest', async (id) =>{
     try{
         const { data } = await axios.get(`http://localhost:8080/api/maintenanceRequest/${id}`);
@@ -16,12 +14,11 @@ export const fetchSingleMaintenanceRequestAsync =  createAsyncThunk('singleMaint
 
 export const maintenanceRequestSlice = createSlice({
     name: 'maintenanceRequest',
-    initialState,
+    initialState:{},
     reducers: {},
     extraReducers:(builder) =>{
         builder.addCase(fetchSingleMaintenanceRequestAsync.fulfilled,(state,action) =>{
-            console.log(`action`,action)
-            state.maintenanceRequest = action.payload;
+            return action.payload
         })
     }
 })

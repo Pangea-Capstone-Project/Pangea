@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  fetchMaintenanceRequestAsync,
+  fetchMaintenanceRequestsAsync,
   selectMaintenanceRequests,
+  deleteMaintenanceRequestAsync
 } from "./allMaintenanceRequestSlice";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import Sidebar from "../../components/sidebar/Sidebar.jsx";
-import {
-  FaHome
-} from "react-icons/fa";
+import {FaHome} from "react-icons/fa";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const WorkOrdersContainer = styled.div`
   display: flex;
@@ -23,7 +23,7 @@ const WorkOrderItems = styled.div`
   align-items: center;
   justify-content: center;
   margin: 10px;
-  font-size: 9rem;
+  font-size: 7rem;
 `;
 
 const WorkOrderFont = styled.p`
@@ -70,11 +70,16 @@ const WorkOrdersSection = styled.section`
   justify-content: center;
   overflow: auto;
 `;
+const Deletebtn = styled.span`
+  &:hover {
+    cursor: pointer;
+    color: white;
+  }
+`;
 
 const MaintenanceRequest = () => {
 
   const maintenanceRequests = useSelector(selectMaintenanceRequests);
-console.log(`maintenanceRequests`, maintenanceRequests)
   const dispatch = useDispatch();
 
   // filter for workorders 
@@ -83,10 +88,14 @@ console.log(`maintenanceRequests`, maintenanceRequests)
   
 
   useEffect(() => {
-    dispatch(fetchMaintenanceRequestAsync());
+    dispatch(fetchMaintenanceRequestsAsync());
 
   }, [dispatch]);
 
+  const handleDelete = async (maintenanceRequestId) =>{
+    await dispatch(deleteMaintenanceRequestAsync(maintenanceRequestId));
+    dispatch(fetchMaintenanceRequestsAsync());
+  }
   // checking url for unit id and filter workorders by unit id
   useEffect(() => {
   if('id' in urlParams){
@@ -118,10 +127,12 @@ console.log(`maintenanceRequests`, maintenanceRequests)
             <WorkOrderItems>
           <FaHome /># {maintenanceRequest.unitId}
             <Link to={`/workorders/${maintenanceRequest.id}`}>
+              
             <WorkOrderFont>Priority: {maintenanceRequest.severity}</WorkOrderFont>
             <WorkOrderFont>Type: {maintenanceRequest.type}</WorkOrderFont>
             </Link>
         </WorkOrderItems>
+        <Deletebtn onClick={() => handleDelete(maintenanceRequest.id)}><DeleteIcon /></Deletebtn>
           </WorkOrder>
         ))}
       </WorkOrdersSection>

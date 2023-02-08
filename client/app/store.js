@@ -2,7 +2,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 import authReducer from '../features/auth/authSlice';
 import maintenanceRequestsReducer from '../features/maintenanceRequest/allMaintenanceRequestSlice';
-import maintenanceRequestReducer from '../features/maintenanceRequest/singleMaintenanceRequestSlice';
 import tenantsReducer from '../features/allTenants/allTenantsSlice';
 import unitsReducer from '../features/units/unitsSlice';
 import singleTenantSlice from '../components/SingleTenant/singleTenantSlice' 
@@ -14,13 +13,16 @@ import singleRentSlice from "../features/rent/singleRentSlice";
 import orderSlice from "../features/orders/orderSlice";
 import cartRentDetailsSlice from "../features/cart/cartRentDetailsSlice";
 import landlordReducer from '../features/profilePage/landlordProfileSlice';
-import singleTenantReducer from "../features/allTenants/singleTenantSlice"
+import singleTenantReducer from "../features/allTenants/singleTenantSlice";
+import maintenanceRequestReducer from "../features/maintenanceRequest/singleMaintenanceRequestSlice";
+
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
     // all maintenanceRequests
     maintenanceRequests: maintenanceRequestsReducer,
+    maintenanceRequest: maintenanceRequestReducer,
     // all tenants
     tenants: tenantsReducer,
     tenant: singleTenantSlice,
@@ -38,7 +40,6 @@ const store = configureStore({
     order: orderSlice,
     orderDetails: cartRentDetailsSlice,
     landlord: landlordReducer,
-
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });

@@ -2,11 +2,11 @@ import "./widget.scss";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import HouseIcon from '@mui/icons-material/House';
-import CommentBankIcon from '@mui/icons-material/CommentBank';
+import HouseIcon from "@mui/icons-material/House";
+import CommentBankIcon from "@mui/icons-material/CommentBank";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
-import React,{ useEffect, useState } from "react";
-
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 const Widget = ({ type }) => {
   const [amount, setAmount] = useState(null);
   const [diff, setDiff] = useState(null);
@@ -18,7 +18,7 @@ const Widget = ({ type }) => {
         title: "TENANTS",
         isMoney: false,
         link: "See all tenants",
-        query:"tenants",
+        query: "tenants",
         icon: (
           <PersonOutlinedIcon
             className="icon"
@@ -62,7 +62,7 @@ const Widget = ({ type }) => {
     case "properties":
       data = {
         title: "PROPERTIES",
-        query:"properties",
+        query: "properties",
         link: "See details",
         icon: (
           <HouseIcon
@@ -78,7 +78,6 @@ const Widget = ({ type }) => {
     default:
       break;
   }
-
   return (
     <div className="widget">
       <div className="left">
@@ -86,17 +85,33 @@ const Widget = ({ type }) => {
         <span className="counter">
           {data.isMoney && "$"} {amount}
         </span>
-        <span className="link">{data.link}</span>
+        {type === "tenants" && (
+          <Link to="/tenants" className="link">
+            {data.link}
+          </Link>
+        )}
+        {type === "maintenance_request" && (
+          <Link to="/workorders" className="link">
+            {data.link}
+          </Link>
+        )}
+        {type === "properties" && (
+          <Link to="/property" className="link">
+            {data.link}
+          </Link>
+        )}
+        {type !== "tenants" &&
+          type !== "maintenance_request" &&
+          type !== "properties" && <span className="link">{data.link}</span>}
       </div>
-      <div className="right">
-        <div className={`percentage ${diff < 0 ? "negative" : "positive"}`}>
-          {diff < 0 ? <KeyboardArrowDownIcon/> : <KeyboardArrowUpIcon/> }
-          {diff} %
+      <div className={`right ${diff < 0 ? "negative" : "positive"}`}>
+        <div className="percentage">
+          {diff < 0 ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}
+          {diff}%
         </div>
         {data.icon}
       </div>
     </div>
   );
 };
-
 export default Widget;
