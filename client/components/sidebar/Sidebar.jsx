@@ -16,7 +16,7 @@ import React from "react";
 import { logout } from "../../app/store.js";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import pangeaLogo from "../../../public/pangeaLogo.png";
+import { ThemeProvider } from "styled-components";
 const Sidebar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -115,11 +115,11 @@ const Sidebar = () => {
         <div
           className="colorOption"
           onClick={() => dispatch({ type: "LIGHT" })}
-        ></div>
+          ></div>
         <div
           className="colorOption"
           onClick={() => dispatch({ type: "DARK" })}
-        ></div>
+          ></div>
       </div>
     </div>
   );
