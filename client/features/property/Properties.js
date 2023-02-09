@@ -57,8 +57,8 @@ const Units = () => {
           properties.map((property) => {
             return (
               <PropertyItem key={property.id}>
-                <p>property#: {property.propertyName}</p>
-                <PropertyImage src={`${property.image}`} alt="image" />
+                <p>{property.propertyName}</p>
+                <PropertyImage src={`/properties/${property.image}`} alt="image" />
                 <p>Units Available: {property.numberOfUnits}</p>
               </PropertyItem>
             );

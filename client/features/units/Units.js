@@ -45,12 +45,9 @@ const Units = () => {
   const units = useSelector(selectUnits);
 
   useEffect(() => {
-    units.forEach(unit => {
-      const img = new window.Image();
-      img.src = unit.image;
-    });
-    dispatch(fetchUnitsAsync());
-  }, [dispatch, units]);
+    dispatch(fetchUnitsAsync())
+    
+  }, [dispatch]);
 
   return (
     <Container>
@@ -62,7 +59,7 @@ const Units = () => {
             return (
               <UnitItem key={unit.id}>
                 <p>Unit#: {unit.unitNumber}</p>
-                <UnitImage src={`${unit.image}`} alt="image" />
+                <UnitImage src={`/units/${unit.image}`} alt="image" />
                 <p>Bedrooms: {unit.bedrooms}</p>
               </UnitItem>
             );
