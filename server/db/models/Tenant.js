@@ -25,7 +25,6 @@ const Tenant = db.define("tenant",{
     },
     leaseStartDate: {
         type: Sequelize.STRING,
-
     },
     leaseEndDate: {
         type: Sequelize.DATE,

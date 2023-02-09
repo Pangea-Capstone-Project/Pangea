@@ -29,11 +29,13 @@ router.get('/:id', async(req,res,next) =>{
 // Create Work Order Route
 router.post('/', async (req, res, next) => {
     try {
+        const now = new Date();
         console.log(`req.body`,req.body)
       const newMaintenanceRequest = await MaintenanceRequest.create({
         type: req.body.type,
         severity: req.body.severity,
         description: req.body.description,
+        creationDate: now.toLocaleDateString(),
         // imageUrl: req.body.imageUrl,
         // unitId: req.body.unitId
       });

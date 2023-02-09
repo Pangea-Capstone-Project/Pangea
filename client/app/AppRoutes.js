@@ -30,6 +30,8 @@ import LandlordProfile from "../features/profilePage/LandlordProfile";
 import AddTenantToUnit from "../features/afterSignup/AddTenantToUnit";
 import CreateMaintenanceRequest from "../features/createMaintenanceRequestTenant/CreateMaintenanceRequest";
 import Delete from "../features/remove/Delete"
+import Units from "../features/units/Units";
+import Properties from "../features/property/Properties"
 const AppRoutes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const userLoggedIn = useSelector(selectMe);
@@ -87,6 +89,9 @@ const AppRoutes = () => {
             <Route path="/rents"element={<AllRents name="rents" displayName="All rents" />}/>
             <Route path="/rents/:rentId"element={<Rent name="Rent" displayName="Rent" />}/>
             <Route path="remove" element={<Delete/>} />
+            <Route path="/units" element={<Units/>} />
+            <Route path="/properties" element={<Properties/>} />
+
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/*" element={<Dashboard />} />
           </Routes>

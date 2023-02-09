@@ -16,7 +16,8 @@ import React from "react";
 import { logout } from "../../app/store.js";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
+import ApartmentIcon from '@mui/icons-material/Apartment';
+
 const Sidebar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -48,16 +49,22 @@ const Sidebar = () => {
             </span>
           </li>
           <p className="title">USERS</p>
+          <Link to="/properties" style={{ textDecoration: "none" }}>
+            <li>
+              <ApartmentIcon className="icon" />
+              <span>Properties</span>
+            </li>
+          </Link>
+          <Link to="/units" style={{ textDecoration: "none" }}>
+            <li>
+              <StoreIcon className="icon" />
+              <span>Units</span>
+            </li>
+          </Link>
           <Link to="/tenants" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
               <span>Users</span>
-            </li>
-          </Link>
-          <Link to="/property" style={{ textDecoration: "none" }}>
-            <li>
-              <StoreIcon className="icon" />
-              <span>Properties</span>
             </li>
           </Link>
           <Link to="/workorders" style={{ textDecoration: "none" }}>
