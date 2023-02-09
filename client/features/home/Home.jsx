@@ -2,13 +2,11 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components'
-<<<<<<< Updated upstream
 import Footer from '../footer/Footer';
 import pangea5 from '../../../public/pangea5.png';
-=======
+
 import Carousel from "react-elastic-carousel";
 
->>>>>>> Stashed changes
 
 const Background = styled.div`
 display: flex;
@@ -121,12 +119,8 @@ box-shadow: inset -30px -30px 150px 5px black;
 background-color: #1E56A0;
 width: 40vw;
 height: 40vw;
-<<<<<<< Updated upstream
 background-image: url(${pangea5});
-=======
-background-image: url(pangea5.png);
 background-repeat: repeat-x;
->>>>>>> Stashed changes
 animation: ${rotate} 2000s linear infinite;
 animation-fill-mode: both;
 transform-style: preserve-3d;
@@ -162,8 +156,10 @@ const breakPoints = [
 
 ];
 
-
-
+//slogans
+//Uniting your property world with Pangea
+// Bringing order to your property world, with Pangea.
+//Managing your world, one property at a time with Pangea.
 const Home = () => {
 
 
@@ -191,9 +187,9 @@ const Home = () => {
                     </Description>
                 </DescriptionBlock>
             </MainBlock>
-<<<<<<< Updated upstream
-            <Footer />
-=======
+
+        
+
 
             <Properties>
                 <Carousel breakPoints={breakPoints} enableAutoPlay disableArrowsOnEnd={false}>
@@ -242,7 +238,9 @@ const Home = () => {
                     </Description>
                 </DescriptionBlock>
             </Properties>
->>>>>>> Stashed changes
+
+            <Footer />
+            
         </Background>
     )
 }
