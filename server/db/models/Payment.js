@@ -1,11 +1,24 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
+const Tenant = require('../models/Tenant')
+
 
 const Payment = db.define("payment", {
-    paymentAmount: {
-      type: Sequelize.INTEGER
+    tenantId: {
+      type: Sequelize.INTEGER,
+      references: {
+        model: Tenant,
+        key: "id",
+        as: "tenant"
+      }
     },
     paymentDate: {
       type: Sequelize.DATE
-    }
+    },paidAmount: {
+        type: Sequelize.INTEGER,
+      },
+      
   });
+
+  module.exports = Payment
+  

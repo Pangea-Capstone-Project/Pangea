@@ -2,7 +2,7 @@ const router = require("express").Router();
 module.exports = router;
 
 const {
-  models: { Tenant, Unit, MaintenanceRequest, Landlord },
+  models: { Tenant, Unit, MaintenanceRequest, Landlord, PaymentHistory },
 } = require("../db");
 
 const Sequelize = require("sequelize")
@@ -125,5 +125,5 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
-
 module.exports = router;
+

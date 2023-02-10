@@ -11,6 +11,9 @@ router.use('/orders', require('./orders'))
 router.use('/cart', require('./cart'))
 router.use('/rents', require('./rents'))
 
+router.use('/payment', require('./payment'))
+router.use('/paymentHistory', require('./paymentHistory'))
+
 router.use('/associateTenantWithUnit', require('./associateTenantWithUnit'))
 
 router.use((req, res, next) => {

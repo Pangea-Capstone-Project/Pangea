@@ -9,6 +9,7 @@ import {
 import { useParams } from "react-router-dom";
 import { selectMe } from "../../auth/authSlice";
 import Sidebar from "../tenantSidebar/Sidebar.jsx";
+import { useNavigate } from "react-router-dom";
 const Background = styled.div`
   display: flex;
   align-items: center;
@@ -37,7 +38,7 @@ const RentBox = styled.div`
 const Section = styled.section`
   flex: 6;
   width: 50rem;
-  height:100%;
+  height: 100%;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   margin-top: 2rem;
   display: flex;
@@ -79,20 +80,20 @@ const DueAmount = styled.div`
   font-size: 1.5rem;
 `;
 const Button = styled.button`
-margin-top: 20px;
-padding: 10px 20px;
-font-size: 18px;
-background-color: #1e56a0;
-color: #fff;
-border-radius: 20px;
-border: none;
-width: 30vw;
-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-cursor: pointer;
-&:hover {
-  background-color: #163172;
-  color: #f6f6f6;
-}
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #1e56a0;
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  width: 30vw;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  &:hover {
+    background-color: #163172;
+    color: #f6f6f6;
+  }
 `;
 
 const MakeAPayment = () => {
@@ -118,15 +119,19 @@ const MakeAPayment = () => {
   function changeAmountToPay(e) {
     setAmountToPay(e.target.value);
   }
-  function PayRent() {
-    setRentDue(
-      rentDue >= amountToPay
-        ? rentDue - amountToPay
-        : alert(
-            "You can only enter an amount less than or equal to you rent due."
-          )
-    );
-  }
+//   function PayRent() {
+//     setRentDue(
+//       rentDue >= amountToPay
+//         ? rentDue - amountToPay
+//         : alert(
+//             "You can only enter an amount less than or equal to you rent due."
+//           )
+//     );
+//   }
+  const navigate = useNavigate();
+const handleNav = () =>{
+    navigate('/payment')
+}
 
   const [greeting, setGreeting] = useState("");
 
@@ -149,7 +154,9 @@ const MakeAPayment = () => {
     <Background>
       <Sidebar />
       <Section>
-        <Title1>{greeting}, {tenant.name}</Title1>
+        <Title1>
+          {greeting}, {tenant.name}
+        </Title1>
         <Title>Suite #{tenant.unitIdToAssociateTenant}</Title>
         <RentBox>
           <MonthlyRentBox>
@@ -167,7 +174,7 @@ const MakeAPayment = () => {
             </DueAmount>
           </DueRentBox>
         </RentBox>
-        <Button onClick={PayRent}>Pay Rent Now</Button>
+        <Button onClick={handleNav}>Pay Rent Now</Button>
       </Section>
       {/* <h3>Amount To Pay: </h3>
             <input label={"Amount to pay"} type={"number"} onChange={changeAmountToPay}

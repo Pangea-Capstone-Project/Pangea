@@ -32,6 +32,7 @@ import CreateMaintenanceRequest from "../features/createMaintenanceRequestTenant
 import Delete from "../features/remove/Delete"
 import Units from "../features/units/Units";
 import Properties from "../features/property/Properties"
+import TenantPayment from "../features/tenant/payments/TenantPayment";
 const AppRoutes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const userLoggedIn = useSelector(selectMe);
@@ -70,6 +71,7 @@ const AppRoutes = () => {
             <Route path="/addRent"element={<AddRent name="addRent" displayName="Add Rent" />}/>
             <Route path="/checkout" element={<Checkout name="checkout" displayName="checkout" />}/>
             <Route path="/myOrders"element={<OrderHistory name="orderHistory" displayName="order history" />}/>
+            <Route path="/payment"element={<TenantPayment/>}/>
           </Routes>
         ) : (
           ////////// IF Logged in as a Landlord show this Routes///////
