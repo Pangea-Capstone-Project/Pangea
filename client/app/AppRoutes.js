@@ -33,6 +33,7 @@ import Delete from "../features/remove/Delete"
 import Units from "../features/units/Units";
 import Properties from "../features/property/Properties"
 import TenantPayment from "../features/tenant/payments/TenantPayment";
+import Payments from "../features/paymentsLandlord/Payments";
 const AppRoutes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const userLoggedIn = useSelector(selectMe);
@@ -93,6 +94,7 @@ const AppRoutes = () => {
             <Route path="remove" element={<Delete/>} />
             <Route path="/units" element={<Units/>} />
             <Route path="/properties" element={<Properties/>} />
+            <Route path="/payments" element={<Payments/>} />
 
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/*" element={<Dashboard />} />

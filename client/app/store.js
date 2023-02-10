@@ -15,7 +15,7 @@ import cartRentDetailsSlice from "../features/cart/cartRentDetailsSlice";
 import landlordReducer from '../features/profilePage/landlordProfileSlice';
 import singleTenantReducer from "../features/allTenants/singleTenantSlice";
 import maintenanceRequestReducer from "../features/maintenanceRequest/singleMaintenanceRequestSlice";
-
+import paymentHistoryReducer from "../features/paymentsLandlord/paymentsSlice"
 
 const store = configureStore({
   reducer: {
@@ -33,7 +33,7 @@ const store = configureStore({
     order: orderSlice,
     orderDetails: cartRentDetailsSlice,
     landlord: landlordReducer,
-
+    paymentHistory: paymentHistoryReducer,
     // Unusable Code Fix!!!
     // users: usersReducer,
     // tenant: singleTenantSlice,

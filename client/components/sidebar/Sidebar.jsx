@@ -11,13 +11,13 @@ import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import GroupRemoveIcon from "@mui/icons-material/GroupRemove";
 import CoPresentIcon from "@mui/icons-material/CoPresent";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import PaymentIcon from '@mui/icons-material/Payment';
 import { Link } from "react-router-dom";
 import React from "react";
 import { logout } from "../../app/store";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ApartmentIcon from '@mui/icons-material/Apartment';
-
 const Sidebar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -71,6 +71,12 @@ const Sidebar = () => {
             <li>
               <PsychologyOutlinedIcon className="icon" />
               <span>Maintenance Requests</span>
+            </li>
+          </Link>
+          <Link to="/payments" style={{ textDecoration: "none" }}>
+            <li>
+              <PaymentIcon className="icon" />
+              <span>Payments</span>
             </li>
           </Link>
           <p className="title">SETTINGS</p>
