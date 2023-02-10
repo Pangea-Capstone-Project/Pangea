@@ -114,6 +114,7 @@ const MaintenanceRequest = () => {
       <WorkOrdersSection>
         {maintenanceRequests.map((maintenanceRequest) => (
           <WorkOrder
+          key={maintenanceRequest.id}
           className={`
           ${
             maintenanceRequest.severity.toLowerCase().charAt(0) === "l"

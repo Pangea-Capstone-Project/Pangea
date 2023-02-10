@@ -15,6 +15,9 @@ const MaintenanceRequest = db.define('maintenanceRequest', {
         type: Sequelize.STRING,
         defaultValue: 'placeholder'
       },
+    creationDate: {
+      type: Sequelize.DATE,
+    }
   })
   
   module.exports = MaintenanceRequest;

@@ -9,8 +9,8 @@ const Unit = require('./models/Unit')
 const Landlord = require('./models/Landlord')
 const MaintenanceRequest = require('./models/MaintenanceRequest')
 const Admin = require('./models/Admin')
-const Rent = require('./models/Rent')
-const Order = require('./models/Order')
+const Payment = require('./models/Payment')
+const PaymentHistory = require('./models/PaymentHistory')
 //associations could go here!
 
 Landlord.hasMany(Property, { foreignKey: 'landlordId'});
@@ -18,11 +18,6 @@ Property.belongsTo(Landlord, { foreignKey: 'landlordId'});
 
 Property.hasMany(Unit, { foreignKey: 'propertyId'});
 Unit.belongsTo(Property, { foreignKey: 'propertyId'});
-
-
-// Added this for the tenant 
-// Tenant.hasMany(Order, {foreignKey: "orderId"});
-Order.belongsTo(Tenant, { foreignKey: "tenantId" });
 
 
 Landlord.hasMany(Property, { foreignKey: 'landlordId',});
@@ -51,9 +46,10 @@ Landlord.belongsTo(User, { foreignKey: 'userId', onDelete: 'cascade' });
 Landlord.hasMany(Tenant, { foreignKey: 'idForTenantToAssociate', targetKey: 'id'});
 Tenant.belongsTo(Landlord, { foreignKey: 'idForTenantToAssociate', sourceKey: 'id'});
 
-
-
-
+Tenant.hasMany(Payment, { foreignKey: 'tenantId', as: 'payments' });
+Payment.belongsTo(Tenant, { foreignKey: 'tenantId' });
+Payment.hasMany(PaymentHistory, { foreignKey: 'paymentId', as: 'paymentHistory' });
+PaymentHistory.belongsTo(Payment, { foreignKey: 'paymentId' });
 
 module.exports = {
   db,
@@ -65,7 +61,7 @@ module.exports = {
     Landlord,
     MaintenanceRequest,
     Admin,
-    Rent,
-    Order,
+    Payment,
+    PaymentHistory,
   },
 }

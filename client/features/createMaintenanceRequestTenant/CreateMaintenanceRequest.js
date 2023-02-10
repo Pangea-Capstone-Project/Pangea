@@ -4,6 +4,34 @@ import styled from "styled-components";
 import { createMaintenanceRequest } from "./createMaintenanceRequestSlice";
 import { fetchUnitsAsync, selectUnits } from "../units/unitsSlice";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "../tenant/tenantSidebar/Sidebar.jsx";
+
+
+const Container = styled.div`
+display: flex;
+flex-direction: row;
+`;
+
+const FormWrapper = styled.div`
+background: rgb(246,246,246);
+background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 44%, rgba(30,86,160,1) 79%, rgba(22,49,114,1) 99%);
+  flex: 6;
+  width: 50rem;
+  height:55rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    width: 0;
+    background-color: transparent;
+  }
+`;
 
 const Form = styled.form`
   display: flex;
@@ -80,6 +108,10 @@ const CreateMaintenanceRequest = () => {
   };
 
   return (
+    <Container>
+        <Sidebar />
+      <FormWrapper>
+
     <Form onSubmit={handleSubmit}>
       <Select name="unitId" value={requestData.unitId} onChange={handleChange}>
         <option value>Select Unit Number</option>
@@ -101,16 +133,18 @@ const CreateMaintenanceRequest = () => {
         value={requestData.type}
         placeholder="Type"
         onChange={handleChange}
-      />
+        />
       <Input
         type="text"
         name="description"
         value={requestData.description}
         placeholder="Description"
         onChange={handleChange}
-      />
+        />
       <Button type="submit">Submit Workorder</Button>
     </Form>
+        </FormWrapper>
+        </Container>
   );
 };
 

@@ -34,7 +34,7 @@ const SingleTenant = () => {
                         <Link className="tenLinks" to={`/messages/${tenant.id}`}>Messages</Link>
                     </li> */}
                     <li className="tenantLi">
-                        <Link className="tenLinks" to={tenant.unit && `/singletenant/${tenant.unit.id}/workorders`}>Work Orders: <span id="workNum">{tenant.unit && tenant.unit.workOrders}</span></Link>
+                        <Link className="tenLinks" to={tenant && `/singletenant/${tenant.unitIdToAssociateTenant}/workorders`}>Work Orders: <span id="workNum">{tenant.unit && tenant.unit.workOrders}</span></Link>
                     </li>
                     <li className="tenantLi">
                         <Link className="tenLinks" to={'/pastpayments'}>Payment History</Link>

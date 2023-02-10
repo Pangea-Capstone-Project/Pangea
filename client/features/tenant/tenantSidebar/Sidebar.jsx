@@ -11,13 +11,13 @@ import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import GroupRemoveIcon from "@mui/icons-material/GroupRemove";
 import CoPresentIcon from "@mui/icons-material/CoPresent";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import PaymentIcon from '@mui/icons-material/Payment';
 import { Link } from "react-router-dom";
 import React from "react";
-import { logout } from "../../app/store";
+import { logout } from "../../../app/store.js";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ApartmentIcon from '@mui/icons-material/Apartment';
+
 const Sidebar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ const Sidebar = () => {
           <Link to="/dashboard" style={{ textDecoration: "none" }}>
             <li>
               <DashboardIcon className="icon" />
-              <span>Dashboard</span>
+              <span>Home</span>
             </li>
           </Link>
           <li onClick={logoutAndRedirectHome}>
@@ -48,37 +48,6 @@ const Sidebar = () => {
               Sign Out
             </span>
           </li>
-          <p className="title">USERS</p>
-          <Link to="/properties" style={{ textDecoration: "none" }}>
-            <li>
-              <ApartmentIcon className="icon" />
-              <span>Properties</span>
-            </li>
-          </Link>
-          <Link to="/units" style={{ textDecoration: "none" }}>
-            <li>
-              <StoreIcon className="icon" />
-              <span>Units</span>
-            </li>
-          </Link>
-          <Link to="/tenants" style={{ textDecoration: "none" }}>
-            <li>
-              <PersonOutlineIcon className="icon" />
-              <span>Users</span>
-            </li>
-          </Link>
-          <Link to="/workorders" style={{ textDecoration: "none" }}>
-            <li>
-              <PsychologyOutlinedIcon className="icon" />
-              <span>Maintenance Requests</span>
-            </li>
-          </Link>
-          <Link to="/payments" style={{ textDecoration: "none" }}>
-            <li>
-              <PaymentIcon className="icon" />
-              <span>Payments</span>
-            </li>
-          </Link>
           <p className="title">SETTINGS</p>
           <Link to="/profile-page" style={{ textDecoration: "none" }}>
             <li>
@@ -86,40 +55,22 @@ const Sidebar = () => {
               <span>Profile</span>
             </li>
           </Link>
-          <Link to="/signup-landlord" style={{ textDecoration: "none" }}>
+          <Link to="/signup-tenant" style={{ textDecoration: "none" }}>
             <li>
               <AdminPanelSettingsOutlinedIcon className="icon" />
               <span>Update Account</span>
             </li>
           </Link>
-          <Link to="/add-property" style={{ textDecoration: "none" }}>
+          <Link to="/makeapayment" style={{ textDecoration: "none" }}>
             <li>
               <AddHomeWorkOutlinedIcon className="icon" />
-              <span>Add Properties</span>
-            </li>
-          </Link>
-          <Link to="/add-unit" style={{ textDecoration: "none" }}>
-            <li>
-              <AddHomeOutlinedIcon className="icon" />
-              <span>Add Unit</span>
-            </li>
-          </Link>
-          <Link to="/add-tenant-unit" style={{ textDecoration: "none" }}>
-            <li>
-              <CoPresentIcon className="icon" />
-              <span>Add Tenant to Unit</span>
-            </li>
-          </Link>
-          <Link to="/addRent" style={{ textDecoration: "none" }}>
-            <li>
-              <AccountBalanceWalletIcon className="icon" />
               <span>Manage Payments</span>
             </li>
           </Link>
-          <Link to="/remove" style={{ textDecoration: "none" }}>
+          <Link to="/create-maintenance-request" style={{ textDecoration: "none" }}>
             <li>
-              <GroupRemoveIcon className="icon" />
-              <span>Remove</span>
+              <PsychologyOutlinedIcon className="icon" />
+              <span>Submit Work Order</span>
             </li>
           </Link>
         </ul>

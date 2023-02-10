@@ -18,11 +18,6 @@ import AfterSignUpTenant from "../features/afterSignup/AfterSignUpTenant";
 import AddAProperty from "../features/afterSignup/AddAProperty";
 import { me } from "./store";
 import AddAUnit from "../features/afterSignup/AddAUnit";
-import AllRents from "../features/rent/Rents";
-import { Rent } from "../features/rent/Rent";
-import Checkout from "../features/checkout/Checkout";
-import { CartView } from "../features/cart/CartView";
-import { OrderHistory } from "../features/orders/OrderHistory";
 import AddRent from "../features/rent/AddRent";
 
 import { selectMe } from "../features/auth/authSlice";
@@ -30,6 +25,10 @@ import LandlordProfile from "../features/profilePage/LandlordProfile";
 import AddTenantToUnit from "../features/afterSignup/AddTenantToUnit";
 import CreateMaintenanceRequest from "../features/createMaintenanceRequestTenant/CreateMaintenanceRequest";
 import Delete from "../features/remove/Delete"
+import Units from "../features/units/Units";
+import Properties from "../features/property/Properties"
+import TenantPayment from "../features/tenant/payments/TenantPayment";
+import Payments from "../features/paymentsLandlord/Payments";
 const AppRoutes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const userLoggedIn = useSelector(selectMe);
@@ -61,13 +60,7 @@ const AppRoutes = () => {
               element={<CreateMaintenanceRequest />}
             />
             <Route path="/*" element={<TenantHome />} />
-            {/* <Route path="/*" element={<AllRents />} /> */}
-            <Route path="/rents"element={<AllRents name="rents" displayName="All rents" />}/>
-            <Route path="/rents/:rentId"element={<Rent name="Rent" displayName="Rent" />}/>
-            <Route path="/cart"element={<CartView name="cart" displayName="Cart" />}/>
-            <Route path="/addRent"element={<AddRent name="addRent" displayName="Add Rent" />}/>
-            <Route path="/checkout" element={<Checkout name="checkout" displayName="checkout" />}/>
-            <Route path="/myOrders"element={<OrderHistory name="orderHistory" displayName="order history" />}/>
+            <Route path="/payment"element={<TenantPayment/>}/>
           </Routes>
         ) : (
           ////////// IF Logged in as a Landlord show this Routes///////
@@ -84,9 +77,10 @@ const AppRoutes = () => {
             <Route path="/profile-page" element={<LandlordProfile />} />
             <Route path="add-tenant-unit" element={<AddTenantToUnit />} />
             <Route path="/addRent"element={<AddRent name="addRent" displayName="Add Rent" />}/>
-            <Route path="/rents"element={<AllRents name="rents" displayName="All rents" />}/>
-            <Route path="/rents/:rentId"element={<Rent name="Rent" displayName="Rent" />}/>
             <Route path="remove" element={<Delete/>} />
+            <Route path="/units" element={<Units/>} />
+            <Route path="/properties" element={<Properties/>} />
+            <Route path="/payments" element={<Payments/>} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/*" element={<Dashboard />} />
           </Routes>

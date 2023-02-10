@@ -25,7 +25,6 @@ const Tenant = db.define("tenant",{
     },
     leaseStartDate: {
         type: Sequelize.STRING,
-
     },
     leaseEndDate: {
         type: Sequelize.DATE,
@@ -48,9 +47,6 @@ const Tenant = db.define("tenant",{
     rentAmount: {
         type: Sequelize.INTEGER,
     },
-    // orderId: {
-    //     type: Sequelize.INTEGER,
-    // },
 })
 
 module.exports = Tenant

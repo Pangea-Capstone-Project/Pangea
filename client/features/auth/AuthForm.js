@@ -37,7 +37,7 @@ const AuthForm = ({ name, displayName }) => {
   return (
     <div id='home'>
       <div id="logoContainer">
-        <img src={pangeaLogo} alt="Pangea Logo" id="pangeaLogo" />
+        <img src={pangeaLogo} alt="Pangea Logo" id="pangeaLogo" draggable="false"/>
       </div>
       <form id='loginForm' onSubmit={handleSubmit} name={name}>
         <div>
