@@ -70,7 +70,7 @@ const rentsSlice = createSlice({
 				}
 			});
 			return filtered;
-			console.log(filtered);
+			// console.log(filtered);
 		},
 		sortAZ(state, action) {
 			return state.sort((a, b) =>

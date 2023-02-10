@@ -32,31 +32,31 @@ router.get("/:id", async (request, response, next) => {
   }
 });
 
-// router.get('/:id', async (request, response, next) => {
-//   try {
-//   const tenant = await Tenant.findOne({ 
-//       where: { id: request.params.id }, 
-//       include: {
-//           model: Unit,
-// // number of work orders 
-//           attributes: {
-//               include: [
-//                   [Sequelize.fn('COUNT', Sequelize.col('unit.maintenanceRequests.id')), 'workOrders']
-//               ]
-//           },
-//           include: {
-//               model: MaintenanceRequest,
-//               attributes: []
-//           }
-//       },
-//       group: ['tenant.id', 'unit.id']
-//   })
+router.get('/:id/landlordview', async (request, response, next) => {
+  try {
+  const tenant = await Tenant.findOne({ 
+      where: { id: request.params.id }, 
+      include: {
+          model: Unit,
+// number of work orders 
+          attributes: {
+              include: [
+                  [Sequelize.fn('COUNT', Sequelize.col('unit.maintenanceRequests.id')), 'workOrders']
+              ]
+          },
+          include: {
+              model: MaintenanceRequest,
+              attributes: []
+          }
+      },
+      group: ['tenant.id', 'unit.id']
+  })
 
-//   response.send(tenant)
-//   } catch(error){
-//   next(error)
-//   }
-//   });
+  response.send(tenant)
+  } catch(error){
+  next(error)
+  }
+  });
 
 router.post("/", async (req, res, next) => {
   console.log(`im request.body`, req.body);
