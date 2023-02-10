@@ -8,7 +8,7 @@ router.post("/", async (req, res) => {
   try {
     console.log(`req.body`, req.body);
 
-    const { tenantId, paymentDate, paidAmount } = req.body;
+    const { tenantId, paymentDate, paidAmount, paymentBy } = req.body;
     const tenant = await Tenant.findByPk(tenantId).catch((error) => {
       console.error(error);
     });
@@ -20,6 +20,7 @@ router.post("/", async (req, res) => {
       tenantId,
       paymentDate,
       paidAmount,
+      paymentBy,
     });
 
     // Update payment history
@@ -27,7 +28,9 @@ router.post("/", async (req, res) => {
       tenantId,
       paymentDate,
       paidAmount,
+      paymentBy,
       paymentId: payment.id,
+
     });
 
     res.send({ payment });

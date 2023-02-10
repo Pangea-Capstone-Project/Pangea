@@ -17,6 +17,9 @@ const Payment = db.define("payment", {
     },paidAmount: {
         type: Sequelize.INTEGER,
       },
+      paymentBy:{
+        type: Sequelize.STRING,
+      }
       
   });
 

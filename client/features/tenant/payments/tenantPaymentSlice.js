@@ -1,17 +1,32 @@
-import axios from 'axios';
-import { createSlice } from '@reduxjs/toolkit';
+import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit";
+
+
+export const submitPayment =
+  (tenantId, paymentDate, paidAmount, paymentBy) => async (dispatch) => {
+    dispatch(submitPaymentStart());
+    try {
+      const response = await axios.post("/api/payment", {
+        tenantId,
+        paymentDate,
+        paidAmount,
+        paymentBy,
+      });
+      dispatch(submitPaymentSuccess(response.data));
+    } catch (error) {
+      dispatch(submitPaymentFailure(error.message));
+    }
+  };
 
 const initialState = {
   payment: {},
-  paymentLoading: false,
-  paymentError: null,
 };
 
 const paymentsSlice = createSlice({
-  name: 'payments',
+  name: "payments",
   initialState,
   reducers: {
-    submitPaymentStart: state => {
+    submitPaymentStart: (state) => {
       state.paymentLoading = true;
       state.paymentError = null;
     },
@@ -27,15 +42,10 @@ const paymentsSlice = createSlice({
   },
 });
 
-export const { submitPaymentStart, submitPaymentSuccess, submitPaymentFailure } = paymentsSlice.actions;
+export const {
+  submitPaymentStart,
+  submitPaymentSuccess,
+  submitPaymentFailure,
+} = paymentsSlice.actions;
 export default paymentsSlice.reducer;
 
-export const submitPayment = (tenantId, paymentDate, paidAmount) => async dispatch => {
-  dispatch(submitPaymentStart());
-  try {
-    const response = await axios.post('/api/payment', { tenantId, paymentDate, paidAmount });
-    dispatch(submitPaymentSuccess(response.data));
-  } catch (error) {
-    dispatch(submitPaymentFailure(error.message));
-  }
-};

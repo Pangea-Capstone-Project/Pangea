@@ -6,10 +6,13 @@ const Payment = require('./Payment')
 
 const PaymentHistory = db.define("paymentHistory", {
     paidAmount: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
     },
     paymentDate: {
-      type: Sequelize.DATE
+      type: Sequelize.DATE,
+    },
+    paymentBy:{
+      type: Sequelize.STRING,
     },
     tenantId: {
       type: Sequelize.INTEGER,

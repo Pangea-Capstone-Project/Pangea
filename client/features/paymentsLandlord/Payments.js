@@ -75,8 +75,6 @@ const Deletebtn = styled.span`
 const Payments = () => {
   const dispatch = useDispatch();
   const paymentHistory = useSelector(state => state.paymentHistory);
-  const error = useSelector(state => state.error);
-  const loading = useSelector(state => state.loading);
     console.log(`payments`,paymentHistory.paymentHistory)
   useEffect(() => {
     dispatch(fetchPaymentHistory());
@@ -84,11 +82,7 @@ const Payments = () => {
 
   return (
     <div>
-      {loading ? (
-        <p>Loading...</p>
-      ) : error ? (
-        <p>An error occurred: {error}</p>
-      ) : (
+      
         <table>
           <thead>
             <tr>
@@ -96,6 +90,7 @@ const Payments = () => {
               <th>Payment Date</th>
               <th>Tenant ID</th>
               <th>Payment ID</th>
+              <th>Payment Payment By:</th>
             </tr>
           </thead>
           <tbody>
@@ -105,11 +100,12 @@ const Payments = () => {
                 <td>{new Date(payment.paymentDate).toLocaleDateString()}</td>
                 <td>{payment.tenantId}</td>
                 <td>{payment.paymentId}</td>
+                <td>{payment.paymentBy}</td>
               </tr>
             ))}
           </tbody>
         </table>
-      )}
+      
     </div>
   );
 };
