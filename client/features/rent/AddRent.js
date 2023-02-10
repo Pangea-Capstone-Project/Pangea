@@ -93,7 +93,7 @@ const AddRent = () => {
             <option>Select Tenant</option>
             {tenants.map((tenant) =>(
               <option key={tenant.id} value={tenant.id}>
-                {tenant.username}
+                {tenant.name}
               </option>
             ))}
 

@@ -1,8 +1,15 @@
 #home {
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 99vw;
+  height: 98vh;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("https://lexica-serve-encoded-images2.sharif.workers.dev/full_jpg/70b7c5df-27b7-4f50-84c6-7eef4bf2405b") center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   }
   
   #logoContainer {
@@ -14,8 +21,8 @@
   }
   
   #pangeaLogo {
-    height: 40rem;
-    width: auto;
+    height: 50rem;
+    width: 90rem;
   }
   
   #loginBtns {
@@ -74,6 +81,7 @@
     
     .loginBtns:hover {
     background-color: #164581;
+    cursor: pointer;
     }
     a.sign-in-link {
   color: #1E56A0;

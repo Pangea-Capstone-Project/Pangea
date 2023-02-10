@@ -4,17 +4,31 @@ import { updateTenant} from './afterTenantSignUpSlice';
 import { selectMe } from '../auth/authSlice';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-
+import Sidebar from '../tenant/tenantSidebar/Sidebar.jsx';
+const Container = styled.div`
+display: flex;
+flex-direction: row;
+`;
 
 const FormWrapper = styled.div`
-  background-color: #F6F6F6;
-  padding: 20px;
-  border-radius: 10px;
-  width: 90%;
-  margin: 20px auto;
-  background-color: #f2f2f2;
-  border-radius: 10px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+background: rgb(246,246,246);
+background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 44%, rgba(30,86,160,1) 79%, rgba(22,49,114,1) 99%);
+  flex: 6;
+  width: 50rem;
+  height:55rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    width: 0;
+    background-color: transparent;
+  }
 `;
 const StyledForm = styled.form`
   display: flex;
@@ -98,6 +112,8 @@ const AfterSignUpTenant = () => {
   };
 
   return (
+    <Container>
+      <Sidebar />
     <FormWrapper>
       <StyledForm onSubmit={handleSubmit}>
         <StyledInput
@@ -138,6 +154,7 @@ const AfterSignUpTenant = () => {
           <StyledButton type="submit">Update</StyledButton>
           </StyledForm>
           </FormWrapper>
+          </Container>
   )
 }
 

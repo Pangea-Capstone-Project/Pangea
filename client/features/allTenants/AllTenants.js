@@ -114,9 +114,9 @@ useEffect(() => {
               <ProfileItem>Lease End: {new Date(tenant.leaseEndDate).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/(\d+)\/(\d+)\/(\d+)/, '$3/$1/$2')}</ProfileItem>
               <ProfileItem>Rent:{tenant.rentAmount}</ProfileItem>
               <ProfileItem> Status: {tenant.rentPaid ? "Paid" : "Owed"}</ProfileItem>
-              {/* <Link to={`/singletenant/${tenant.id}`}>
+              <Link to={`/singletenant/${tenant.id}`}>
                 View Details
-              </Link> */}
+              </Link>
               <Deletebtn onClick={() => handleDelete(tenant.id)}><DeleteIcon /></Deletebtn>
             </TenantWrapper>
           );

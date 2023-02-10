@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Order = require("../db/models/Order.js");
 const User = require("../db/models/User.js");
+const Tenant = require("../db/models/Tenant.js");
 //retrieving ALL orders, this is admin only
 router.get("/", async (req, res, next) => {
 	try {
@@ -17,7 +18,7 @@ router.get("/myOrders", async (req, res, next) => {
 		const user = await User.findByToken(req.headers.authorization);
 		const orderHistory = await Order.findAll({
 			where: {
-				userId: user.id
+				tenantId: user.id
 			},
 		});
 		res.json(orderHistory);
@@ -31,9 +32,12 @@ router.post("/newOrder", async (req, res, next) => {
 	try {
 		if (req.headers.authorization) {
 			const user = await User.findByToken(req.headers.authorization);
+			const tenant = await Tenant.findOne({
+				where: { userId: user.id },
+			  });
 			res.status(201).send(
 				await Order.create({
-					userId: user.id,
+					tenantId: tenant.id,
 					order: user.cart,
 					address: req.body.address,
 					rentDetails: req.body.orderDetails

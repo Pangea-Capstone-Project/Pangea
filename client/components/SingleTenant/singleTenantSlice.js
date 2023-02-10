@@ -17,5 +17,10 @@ const singleTenantSlice = createSlice({
     }
 })
 
+
+export const selectTenant = (state) => {
+    return state.tenant;
+}
+
 // export default getTenant
 export default singleTenantSlice.reducer

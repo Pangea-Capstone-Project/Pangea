@@ -20,31 +20,43 @@ router.get("/", async (req, res, next) => {
 });
 
 // single tenant route 
-router.get('/:id', async (request, response, next) => {
-  try {
-  const tenant = await Tenant.findOne({ 
-      where: { id: request.params.id }, 
-      include: {
-          model: Unit,
-// number of work orders 
-          attributes: {
-              include: [
-                  [Sequelize.fn('COUNT', Sequelize.col('unit.maintenanceRequests.id')), 'workOrders']
-              ]
-          },
-          include: {
-              model: MaintenanceRequest,
-              attributes: []
-          }
-      },
-      group: ['tenant.id', 'unit.id']
-  })
 
-  response.send(tenant)
-  } catch(error){
-  next(error)
+router.get("/:id", async (request, response, next) => {
+  try {
+    const tenant = await Tenant.findOne({
+      where: { userId: request.params.id },
+    });
+    response.json(tenant);
+  } catch (error) {
+    next(error);
   }
-  });
+});
+
+// router.get('/:id', async (request, response, next) => {
+//   try {
+//   const tenant = await Tenant.findOne({ 
+//       where: { id: request.params.id }, 
+//       include: {
+//           model: Unit,
+// // number of work orders 
+//           attributes: {
+//               include: [
+//                   [Sequelize.fn('COUNT', Sequelize.col('unit.maintenanceRequests.id')), 'workOrders']
+//               ]
+//           },
+//           include: {
+//               model: MaintenanceRequest,
+//               attributes: []
+//           }
+//       },
+//       group: ['tenant.id', 'unit.id']
+//   })
+
+//   response.send(tenant)
+//   } catch(error){
+//   next(error)
+//   }
+//   });
 
 router.post("/", async (req, res, next) => {
   console.log(`im request.body`, req.body);
@@ -77,10 +89,8 @@ router.put("/:id", async (req, res, next) => {
         });
       }
       landlordId = landlord.id;
-
     }
 
-    
     const tenant = await Tenant.update(
       {
         name: req.body.name,
@@ -91,7 +101,6 @@ router.put("/:id", async (req, res, next) => {
         leaseStartDate: now.toLocaleDateString(),
         leaseEndDate: nextMonth.toLocaleDateString(),
         idForTenantToAssociate: landlordId,
-
       },
       {
         where: {

@@ -4,7 +4,7 @@ import authReducer from '../features/auth/authSlice';
 import maintenanceRequestsReducer from '../features/maintenanceRequest/allMaintenanceRequestSlice';
 import tenantsReducer from '../features/allTenants/allTenantsSlice';
 import unitsReducer from '../features/units/unitsSlice';
-import singleTenantSlice from '../components/SingleTenant/singleTenantSlice' 
+// import singleTenantSlice from '../components/SingleTenant/singleTenantSlice' 
 import propertiesReducer from '../features/property/propertySlice'
 import rentsReducer from "../features/rent/rentSlice";
 import cartSlice from "../features/cart/cartSlice";
@@ -20,26 +20,23 @@ import maintenanceRequestReducer from "../features/maintenanceRequest/singleMain
 const store = configureStore({
   reducer: {
     auth: authReducer,
-    // all maintenanceRequests
     maintenanceRequests: maintenanceRequestsReducer,
     maintenanceRequest: maintenanceRequestReducer,
-    // all tenants
     tenants: tenantsReducer,
-    tenant: singleTenantSlice,
     units: unitsReducer,
-    // single tenant
     tenant: singleTenantReducer,
-    
-    // all properties
     property: propertiesReducer,
-
+    
     rents: rentsReducer,
     singleRent: singleRentSlice,
     cart: cartSlice,
-    // users: usersReducer,
     order: orderSlice,
     orderDetails: cartRentDetailsSlice,
     landlord: landlordReducer,
+
+    // Unusable Code Fix!!!
+    // users: usersReducer,
+    // tenant: singleTenantSlice,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
