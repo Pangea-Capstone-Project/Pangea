@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
 
 export const getTenant = createAsyncThunk('tenant/getTenant', async (id) => {
-    const tenant = await axios.get(`/api/tenant/${id}`)
+    const tenant = await axios.get(`/api/tenant/${id}/landlordview`)
     return tenant.data
 })
 

@@ -4,7 +4,7 @@ import authReducer from '../features/auth/authSlice';
 import maintenanceRequestsReducer from '../features/maintenanceRequest/allMaintenanceRequestSlice';
 import tenantsReducer from '../features/allTenants/allTenantsSlice';
 import unitsReducer from '../features/units/unitsSlice';
-// import singleTenantSlice from '../components/SingleTenant/singleTenantSlice' 
+import singleTenantSlice from '../components/SingleTenant/singleTenantSlice' 
 import propertiesReducer from '../features/property/propertySlice'
 import rentsReducer from "../features/rent/rentSlice";
 import singleRentSlice from "../features/rent/singleRentSlice";
@@ -30,7 +30,7 @@ const store = configureStore({
     paymentHistory: paymentHistoryReducer,
     // Unusable Code Fix!!!
     // users: usersReducer,
-    // tenant: singleTenantSlice,
+    landlordTenant: singleTenantSlice,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });

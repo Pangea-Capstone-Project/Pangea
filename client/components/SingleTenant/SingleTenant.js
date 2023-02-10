@@ -17,7 +17,7 @@ const SingleTenant = () => {
     useEffect(() => {
         dispatch(getTenant(id))
     }, [])
-
+console.log("TENANT:"+ tenant)
     return (
         <div>
             <LandlordNavbar />

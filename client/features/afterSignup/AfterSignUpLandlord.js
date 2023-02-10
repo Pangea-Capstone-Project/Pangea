@@ -8,6 +8,9 @@ import Sidebar from '../../components/sidebar/Sidebar.jsx';
 
 const Container = styled.div`
 display:flex;
+height: 98vh;
+margin: 0;
+justify-content: center;
 flex-direction: row
 background: rgb(246,246,246);
 background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 44%, rgba(30,86,160,1) 79%, rgba(22,49,114,1) 99%);
@@ -15,23 +18,24 @@ background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 4
 
 const StyledForm = styled.form`
 display: flex;
-flex:7;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-background-color: #F6F6F6;
-padding: 20px;
-width: 80rem;
-height:40rem;
-margin: 15px auto;
-background-color: #f2f2f2;
-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+width: auto;
+height:auto;
+margin: 10%;
+align-self: center;
+background-color: #fff;
+box-shadow: 0px 0px 10px #1E56A0;
+border-radius: 1rem;
+padding: 5rem;
+
 `;
 
 const StyledInput = styled.input`
 margin: 10px 0;
 padding: 10px;
-width: 20rem;
+width: 20vw;
 font-size: 1.2em;
 box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 `;
@@ -57,7 +61,7 @@ cursor: pointer;
 
 const UpdateLandlordForm = () => {
   const me = useSelector(selectMe)
-  console.log(`me`,me)
+  console.log(`me`, me)
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -105,8 +109,8 @@ const UpdateLandlordForm = () => {
   //   setShowAddAProperty(true);
   // };
   return (
-      <Container>
-        <Sidebar />
+    <Container>
+      <Sidebar />
       <StyledForm onSubmit={handleSubmit}>
         <StyledInput
           type="text"
@@ -114,41 +118,41 @@ const UpdateLandlordForm = () => {
           value={name}
           onChange={handleNameChange}
           placeholder="Name"
-          />
+        />
         <StyledInput
           type="text"
           name="phoneNumber"
           value={phoneNumber}
           onChange={handlePhoneNumberChange}
           placeholder="Phone Number"
-          />
+        />
         <StyledInput
           type="email"
           name="email"
           value={email}
           onChange={handleEmailChange}
           placeholder="Email"
-          />
+        />
         <StyledInput
           type="number"
           name="idForTenantToAssociate"
           value={idForTenantToAssociate}
           onChange={handleIdForTenantToAssociateChange}
           placeholder="ID for Tenant to Associate"
-          />
-          <StyledInput
+        />
+        <StyledInput
           type="text"
           name="address"
           value={address}
           onChange={handleAddressChange}
           placeholder="Address"
-          />
+        />
         <StyledButton type="submit">Update Landlord</StyledButton>
       </StyledForm>
       {/* <StyledAddAPropertyButton onClick={handleClick}>Add Property</StyledAddAPropertyButton>
       {showAddAProperty && <AddAProperty />} */}
-          </Container>
-    );
+    </Container>
+  );
 };
 
 export default UpdateLandlordForm

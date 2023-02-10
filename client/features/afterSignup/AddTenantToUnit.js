@@ -14,24 +14,26 @@ import Sidebar from "../../components/sidebar/Sidebar.jsx";
 
 const Container = styled.div`
 display:flex;
-flex-direction: row
+height: 98vh;
+margin: 0;
+justify-content: center;
 background: rgb(246,246,246);
 background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 44%, rgba(30,86,160,1) 79%, rgba(22,49,114,1) 99%);
 ;`
 
 const Form = styled.form`
 display: flex;
-flex:7;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-background-color: #F6F6F6;
-padding: 20px;
-width: 80rem;
-height:20rem;
-margin: 20px auto;
-background-color: #f2f2f2;
-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+width: auto;
+height:auto;
+margin: 10%;
+align-self: center;
+background-color: #fff;
+box-shadow: 0px 0px 10px #1E56A0;
+border-radius: 1rem;
+padding: 5rem;
 `;
 
 const Label = styled.label`
