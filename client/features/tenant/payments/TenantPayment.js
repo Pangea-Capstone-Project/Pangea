@@ -17,6 +17,7 @@ const Background = styled.div`
 `;
 const FormContainer = styled.div`
   display: flex;
+  flex: 7;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -33,11 +34,15 @@ const FormGroup = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
+  width: 50rem;
 `;
 
 const Label = styled.label`
+  display: flex;
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Input = styled.input`
@@ -61,6 +66,27 @@ const SubmitButton = styled.button`
   }
 `;
 
+const NameContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const LabelStyled = styled.label`
+  width: 45%;
+  text-align: right;
+  padding-right: 10px;
+`;
+
+const NameInput = styled.input`
+  width: 20rem;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 5px;
+`;
+
 const PaymentForm = () => {
   const dispatch = useDispatch();
   const [paymentDate, setPaymentDate] = useState(
@@ -82,11 +108,13 @@ const PaymentForm = () => {
     event.preventDefault();
     setLoading(true);
     try {
-      // Handle the credit card payment process here
-      // ...
-      // Once the payment process is successful, submit the payment to the backend
       await dispatch(
-        submitPayment(thisTenant.id, paymentDate, thisTenant.rentAmount, thisTenant.name)
+        submitPayment(
+          thisTenant.id,
+          paymentDate,
+          thisTenant.rentAmount,
+          thisTenant.name
+        )
       );
     } catch (error) {
       setError(error.message);
@@ -95,94 +123,87 @@ const PaymentForm = () => {
     }
   };
 
-return (
-  <FormContainer>
-    <Form onSubmit={handleSubmit}>
-      <FormGroup>
-        <Label htmlFor="paymentDate">Payment Date:</Label>
-        <Input type="date" id="paymentDate" value={paymentDate} readOnly />
-      </FormGroup>
+  return (
+    <Background>
+      <Sidebar />
+      <FormContainer>
+        <Form onSubmit={handleSubmit}>
+          <h1> Personal Information </h1>
+          <FormGroup>
+            <Label htmlFor="paymentDate">Payment Date:</Label>
+            <Input type="date" id="paymentDate" value={paymentDate} readOnly />
+          </FormGroup>
 
-      <FormGroup>
-        <Label htmlFor="firstName">First Name:</Label>
-        <Input
-          type="text"
-          id="firstName"
-          placeholder="Enter your first name"
-        />
-      </FormGroup>
+          <NameContainer>
+            {/* <LabelStyled htmlFor="firstName">First Name:</LabelStyled> */}
+            <NameInput type="text" id="firstName" placeholder="First Name" />
+            {/* <Label htmlFor="lastName">Last Name:</Label> */}
+            <NameInput type="text" id="lastName" placeholder="Last Name" />
+          </NameContainer>
 
-      <FormGroup>
-        <Label htmlFor="lastName">Last Name:</Label> 
-        <Input
-            type="text"
-            id="lastName"
-            placeholder="Enter your last name"
-          />
-        </FormGroup>
+          <FormGroup>
+            <Label htmlFor="address">Address:</Label>
+            <Input
+              type="text"
+              id="street"
+              placeholder="Street Address"
+              onChange={(e) => setStreet(e.target.value)}
+            />
+            <Input
+              type="text"
+              id="city"
+              placeholder="City"
+              onChange={(e) => setCity(e.target.value)}
+            />
+            <Input
+              type="text"
+              id="state"
+              placeholder="State"
+              onChange={(e) => setState(e.target.value)}
+            />
+            <Input
+              type="text"
+              id="zip"
+              placeholder="Zipcode"
+              onChange={(e) => setZip(e.target.value)}
+            />
+            <h1>Payment Information</h1>
+            <FormGroup>
+              <Label htmlFor="cardholderName">Cardholder Name:</Label>
+              <Input
+                type="text"
+                id="cardholderName"
+                placeholder="Name on the card"
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label htmlFor="creditCardNumber">Credit Card Number:</Label>
+              <Input
+                type="text"
+                id="creditCardNumber"
+                placeholder="Credit Card Number"
+              />
+            </FormGroup>
 
-        <FormGroup>
-          <Label htmlFor="address">Address:</Label>
-          <Input
-            type="text"
-            id="address"
-            placeholder="Enter your address"
-          />
-        </FormGroup>
+            <FormGroup>
+              <Label htmlFor="expirationDate">Expiration Date:</Label>
+              <Input type="month" id="expirationDate" />
+            </FormGroup>
 
-        <FormGroup>
-          <Label htmlFor="zipCode">Zip Code:</Label>
-          <Input
-            type="text"
-            id="zipCode"
-            placeholder="Enter your zip code"
-          />
-              <FormGroup>
-        <Label htmlFor="creditCardNumber">Credit Card Number:</Label>
-        <Input
-          type="text"
-          id="creditCardNumber"
-          placeholder="Enter your credit card number"
-        />
-      </FormGroup>
-
-      <FormGroup>
-        <Label htmlFor="expirationDate">Expiration Date:</Label>
-        <Input
-          type="month"
-          id="expirationDate"
-          placeholder="Enter your credit card expiration date"
-        />
-      </FormGroup>
-
-      <FormGroup>
-        <Label htmlFor="cvv">CVV:</Label>
-        <Input
-          type="text"
-          id="cvv"
-          placeholder="Enter your credit card CVV"
-          onChange={(e) => setCvv(e.target.value)}
-        />
-      </FormGroup>
-
-      <FormGroup>
-        <Label htmlFor="cardholderName">Cardholder Name:</Label>
-        <Input
-          type="text"
-          id="cardholderName"
-          placeholder="Enter your name as it appears on the card"
-        />
-      </FormGroup>
-        </FormGroup>
-        {loading ? (
-          <div>Loading...</div>
-        ) : error ? (
-          <div>Error: {error}</div>
-        ) : (
+            <FormGroup>
+              <Label htmlFor="cvv">CVV:</Label>
+              <Input
+                type="text"
+                id="cvv"
+                placeholder="CVV"
+                onChange={(e) => setCvv(e.target.value)}
+              />
+            </FormGroup>
+          </FormGroup>
           <SubmitButton type="submit">Submit Payment</SubmitButton>
-        )}
-      </Form>
-    </FormContainer>
+        </Form>
+      </FormContainer>
+    </Background>
   );
 };
 

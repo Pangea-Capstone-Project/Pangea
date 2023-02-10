@@ -7,11 +7,8 @@ import unitsReducer from '../features/units/unitsSlice';
 // import singleTenantSlice from '../components/SingleTenant/singleTenantSlice' 
 import propertiesReducer from '../features/property/propertySlice'
 import rentsReducer from "../features/rent/rentSlice";
-import cartSlice from "../features/cart/cartSlice";
 import singleRentSlice from "../features/rent/singleRentSlice";
 // import usersReducer from "../features/users/usersSlice";
-import orderSlice from "../features/orders/orderSlice";
-import cartRentDetailsSlice from "../features/cart/cartRentDetailsSlice";
 import landlordReducer from '../features/profilePage/landlordProfileSlice';
 import singleTenantReducer from "../features/allTenants/singleTenantSlice";
 import maintenanceRequestReducer from "../features/maintenanceRequest/singleMaintenanceRequestSlice";
@@ -29,9 +26,6 @@ const store = configureStore({
     
     rents: rentsReducer,
     singleRent: singleRentSlice,
-    cart: cartSlice,
-    order: orderSlice,
-    orderDetails: cartRentDetailsSlice,
     landlord: landlordReducer,
     paymentHistory: paymentHistoryReducer,
     // Unusable Code Fix!!!
