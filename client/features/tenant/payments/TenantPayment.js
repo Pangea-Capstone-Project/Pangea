@@ -18,23 +18,26 @@ const Background = styled.div`
 const FormContainer = styled.div`
   display: flex;
   flex: 7;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 5rem;
+  background-color: #eee;
+  padding-bottom: 5rem;
+  height:30rem;
 `;
 
-const FormGroup = styled.div`
+const FormGroup= styled.div`
   display: flex;
+  flex:1;
   flex-direction: column;
   margin-bottom: 1rem;
-  width: 50rem;
+  width: 35rem;
 `;
 
 const Label = styled.label`
@@ -73,14 +76,10 @@ const NameContainer = styled.div`
   justify-content: space-between;
 `;
 
-const LabelStyled = styled.label`
-  width: 45%;
-  text-align: right;
-  padding-right: 10px;
-`;
+
 
 const NameInput = styled.input`
-  width: 20rem;
+  width: 16.5rem;
   height: 30px;
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -92,9 +91,6 @@ const PaymentForm = () => {
   const [paymentDate, setPaymentDate] = useState(
     new Date().toISOString().slice(0, 10)
   );
-  const [creditCard, setCreditCard] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   const thisUser = useSelector(selectMe);
   const thisTenant = useSelector(selectTenant);
@@ -127,78 +123,45 @@ const PaymentForm = () => {
     <Background>
       <Sidebar />
       <FormContainer>
-        <Form onSubmit={handleSubmit}>
-          <h1> Personal Information </h1>
+       
+          <Form onSubmit={handleSubmit}>
+            <h1> Personal Information </h1>
+            <FormGroup>
+              <Label>Payment Date: {paymentDate}</Label>
+            
+              <Label>Due Amount: ${thisTenant.rentAmount}</Label>
+            </FormGroup>
+            <NameContainer>
+              <Input type="text" id="firstName" placeholder="First Name" />
+              <Input type="text" id="lastName" placeholder="Last Name" />
+            </NameContainer>
+            <FormGroup>
+              <Input type="text" id="street" placeholder="Street Address" />
+              <Input type="text" id="city" placeholder="City" />
+              <Input type="text" id="state" placeholder="State" />
+              <Input type="text" id="zip" placeholder="Zipcode" />
+            </FormGroup>
+          
+        </Form>
+  
+        <Form>
+          <h1>Payment Information</h1>
           <FormGroup>
-            <Label htmlFor="paymentDate">Payment Date:</Label>
-            <Input type="date" id="paymentDate" value={paymentDate} readOnly />
-          </FormGroup>
-
-          <NameContainer>
-            {/* <LabelStyled htmlFor="firstName">First Name:</LabelStyled> */}
-            <NameInput type="text" id="firstName" placeholder="First Name" />
-            {/* <Label htmlFor="lastName">Last Name:</Label> */}
-            <NameInput type="text" id="lastName" placeholder="Last Name" />
-          </NameContainer>
-
-          <FormGroup>
-            <Label htmlFor="address">Address:</Label>
+            <Label htmlFor="cardholderName">Cardholder Name:</Label>
+            <Input type="text" id="cardholderName" placeholder="Name on the card"/>
+          
+            <Label htmlFor="creditCardNumber">Credit Card Number:</Label>
             <Input
               type="text"
-              id="street"
-              placeholder="Street Address"
-              onChange={(e) => setStreet(e.target.value)}
+              id="creditCardNumber"
+              placeholder="Credit Card Number"
             />
-            <Input
-              type="text"
-              id="city"
-              placeholder="City"
-              onChange={(e) => setCity(e.target.value)}
-            />
-            <Input
-              type="text"
-              id="state"
-              placeholder="State"
-              onChange={(e) => setState(e.target.value)}
-            />
-            <Input
-              type="text"
-              id="zip"
-              placeholder="Zipcode"
-              onChange={(e) => setZip(e.target.value)}
-            />
-            <h1>Payment Information</h1>
-            <FormGroup>
-              <Label htmlFor="cardholderName">Cardholder Name:</Label>
-              <Input
-                type="text"
-                id="cardholderName"
-                placeholder="Name on the card"
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label htmlFor="creditCardNumber">Credit Card Number:</Label>
-              <Input
-                type="text"
-                id="creditCardNumber"
-                placeholder="Credit Card Number"
-              />
-            </FormGroup>
-
-            <FormGroup>
-              <Label htmlFor="expirationDate">Expiration Date:</Label>
-              <Input type="month" id="expirationDate" />
-            </FormGroup>
-
-            <FormGroup>
-              <Label htmlFor="cvv">CVV:</Label>
-              <Input
-                type="text"
-                id="cvv"
-                placeholder="CVV"
-                onChange={(e) => setCvv(e.target.value)}
-              />
-            </FormGroup>
+          
+            <Label htmlFor="expirationDate">Expiration Date:</Label>
+            <Input type="month" id="expirationDate" />
+          
+            <Label htmlFor="cvv">CVV:</Label>
+            <Input type="text" id="cvv" placeholder="CVV" />
           </FormGroup>
           <SubmitButton type="submit">Submit Payment</SubmitButton>
         </Form>
