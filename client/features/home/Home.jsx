@@ -68,13 +68,13 @@ width: fit-content;
 margin: 0.5rem 0 0 0;
 display: flex;
 z-index: 3;
-// background-color: rgba(30, 86, 160, 0.4);
+${'' /* background-color: rgba(30, 86, 160, 0.4); */}
 box-shadow: 4px 4px 10px 1px black;
 color: #D6E4F0;
 text-shadow: 2px 2px 4px black;
 justify-content: center;
 border-radius: 20px;
-// border: 2px solid darkgreen;
+${'' /* border: 2px solid darkgreen; */}
 padding: 1rem;
 font-style: italic;
 `
@@ -153,8 +153,8 @@ const Item = styled.div`
 display: flex;
 justify-content: center;
 align-items: center;
-//   height: 50vw;
-//   width: 100%;
+${'' /* height: 50vw;
+width: 100%; */}
   background-color: none;
   color: #fff;
   margin: 0 15px;
@@ -231,10 +231,10 @@ const Home = () => {
 
             <CarouselBox>
                 <StyledCarousel breakPoints={breakPoints} enableAutoPlay disableArrowsOnEnd={false} autoPlaySpeed={5000}>
-                    <Item><CarouselPhoto src="453.jpg"></CarouselPhoto></Item>
-                    <Item><CarouselPhoto src="BTP.webp"></CarouselPhoto></Item>
-                    <Item><CarouselPhoto src="TrailerPark.jpg"></CarouselPhoto></Item>
-                    <Item><CarouselPhoto src="vintageTP.jpeg"></CarouselPhoto></Item>
+                    <Item><CarouselPhoto src="photos/pic1.jpg"></CarouselPhoto></Item>
+                    <Item><CarouselPhoto src="photos/pic2.jpg"></CarouselPhoto></Item>
+                    <Item><CarouselPhoto src="photos/pic3.jpg"></CarouselPhoto></Item>
+                    <Item><CarouselPhoto src="photos/pic4.jpg"></CarouselPhoto></Item>
                 </StyledCarousel>
                 <DescriptionBlock>
                     <DescriptionTitle>三 Powerful Tools 三 </DescriptionTitle>

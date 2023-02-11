@@ -6,9 +6,10 @@ export const fetchTenantsAsync = createAsyncThunk('tenants', async() =>{
         const { data } = await axios.get(`http://localhost:8080/api/tenant`);
         return data
     } catch (err){
-        console.log(`error in tenantsThunk`,err)
+        console.log(`error in tenantsThunk`, err)
     }
 })
+
 export const deleteTenantAsync = createAsyncThunk(
     "tenants/deleteTenant",
     async (tenantId) => {

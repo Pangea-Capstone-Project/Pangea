@@ -6,7 +6,7 @@ import Widget from "../../components/widget/Widget.jsx";
 import Featured from "../../components/featured/Featured.jsx";
 import Chart from "../../components/chart/Chart.jsx";
 import Table from "../../components/table/Table.jsx";
-import NavbarDashboard from "../../components/navbardashboard/NavbarDashboard.jsx";
+import NavbarDashboard from "../../components/navbardashboard/NavbarDashboard.jsx"; 
 
 
 /**
