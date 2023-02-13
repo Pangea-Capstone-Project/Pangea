@@ -11,7 +11,8 @@ import Sidebar from '../../components/sidebar/Sidebar.jsx';
 const Container = styled.div`
 display:flex;
 height: 98vh;
-margin: 0;
+margin-left: 17vw;
+width: 83vw;
 justify-content: center;
 background: rgb(246,246,246);
 background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 44%, rgba(30,86,160,1) 79%, rgba(22,49,114,1) 99%);

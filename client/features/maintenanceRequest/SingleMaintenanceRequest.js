@@ -12,6 +12,8 @@ import Sidebar from "../../components/sidebar/Sidebar.jsx";
 const WorkOrdersContainer = styled.div`
   display: flex;
   flex-direction: row;
+  margin-left: 17vw;
+  width: 83vw;
 `;
 
 const WorkOrderItems = styled.div`
@@ -84,7 +86,7 @@ return (
       <p>Severity: {maintenanceRequest.severity}</p>
         <p>{maintenanceRequest.description}</p>
       <Button> Respond </Button>
-      <p>Submittedo on: {new Date(maintenanceRequest.creationDate).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/(\d+)\/(\d+)\/(\d+)/, '$3/$1/$2')}</p>
+      <p>Submitted on: {new Date(maintenanceRequest.creationDate).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/(\d+)\/(\d+)\/(\d+)/, '$3/$1/$2')}</p>
       </WorkOrder>
     </WorkOrderItems>
   </WorkOrdersContainer>

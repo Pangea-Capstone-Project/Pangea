@@ -4,7 +4,6 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components'
 import Footer from '../footer/Footer';
 import pangea5 from '../../../public/pangea5.png';
-
 import Carousel, { rec } from "react-elastic-carousel";
 
 
