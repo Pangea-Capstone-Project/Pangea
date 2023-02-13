@@ -26,7 +26,8 @@ import {
 const Container = styled.div`
 display:flex;
 height: 98vh;
-margin: 0;
+margin-left: 17vw;
+width: 83vw;
 justify-content: center;
 flex-direction: row
 background: rgb(246,246,246);

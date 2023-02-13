@@ -7,7 +7,8 @@ import Sidebar from "../../components/sidebar/Sidebar.jsx";
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  
+  margin-left: 17vw;
+  width: 83vw;
 `;
 
 const UnitContainer = styled.div`
