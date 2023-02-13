@@ -102,7 +102,6 @@ const PaymentForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setLoading(true);
     try {
       await dispatch(
         submitPayment(
@@ -114,8 +113,6 @@ const PaymentForm = () => {
       );
     } catch (error) {
       setError(error.message);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -124,7 +121,7 @@ const PaymentForm = () => {
       <Sidebar />
       <FormContainer>
        
-          <Form onSubmit={handleSubmit}>
+          <Form>
             <h1> Personal Information </h1>
             <FormGroup>
               <Label>Payment Date: {paymentDate}</Label>
@@ -144,7 +141,7 @@ const PaymentForm = () => {
           
         </Form>
   
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <h1>Payment Information</h1>
           <FormGroup>
             <Label htmlFor="cardholderName">Cardholder Name:</Label>
