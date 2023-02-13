@@ -57,7 +57,7 @@ const AuthForm = ({ name, displayName }) => {
         </div>
         <div>
           New to Pangea?
-          <a href="/signup" class="sign-in-link">Sign Up</a>
+          <a href="/signup" className="sign-in-link">Sign Up</a>
         </div>
         {error && <div> {error} </div>}
       </form>

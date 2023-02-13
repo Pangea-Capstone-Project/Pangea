@@ -42,19 +42,19 @@ const AuthForm = ({ name, displayName }) => {
       <form id="loginForm" onSubmit={handleSubmit} name={name}>
         <div>
           <label htmlFor="username">
-            <medium>Username</medium>
+            <small>Username</small>
           </label>
           <input name="username" type="text" />
         </div>
         <div>
           <label htmlFor="password">
-            <medium>Password</medium>
+            <small>Password</small>
           </label>
           <input name="password" type="password" />
         </div>
         <div>
           <label htmlFor="role">
-            <medium>Role</medium>
+            <small>Role</small>
           </label>
           <select name="role">
             <option value="tenant">Tenant</option>

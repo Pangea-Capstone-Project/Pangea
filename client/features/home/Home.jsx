@@ -22,6 +22,7 @@ background: linear-gradient(
 // background-image: url("photos/background5.jpg");
 background-repeat: no-repeat;
 background-color: #10121f;
+background-size: 100vw;
 `
 const WelcomeBanner = styled.div`
 Width: 93vw;
