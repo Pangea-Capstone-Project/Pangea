@@ -7,11 +7,38 @@ import CommentBankIcon from "@mui/icons-material/CommentBank";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { selectTenants, fetchTenantsAsync } from "../../features/allTenants/allTenantsSlice";
+import { selectMaintenanceRequests, fetchMaintenanceRequestsAsync } from "../../features/maintenanceRequest/allMaintenanceRequestSlice";
+import { selectPaymentHistory, fetchPaymentHistory } from "../../features/paymentsLandlord/paymentsSlice";
+import { selectProperties, fetchPropertiesAsync } from "../../features/property/propertySlice";
 const Widget = ({ type }) => {
   const [amount, setAmount] = useState(null);
   const [diff, setDiff] = useState(null);
   let data;
-
+  const dispatch = useDispatch();
+  let tenants = useSelector(selectTenants)
+  let maintenanceRequests = useSelector(selectMaintenanceRequests)
+  let earnings = useSelector(selectPaymentHistory)
+  let properties = useSelector(selectProperties)
+  
+  
+  useEffect(() => {
+    dispatch(fetchTenantsAsync());
+    dispatch(fetchMaintenanceRequestsAsync());
+    dispatch(fetchPaymentHistory());
+    dispatch(fetchPropertiesAsync());
+    if (tenants) {
+      setAmount(tenants.length);
+    }
+  }, [dispatch, tenants.length]);
+  const totalEarnings = earnings.paymentHistory.reduce(
+    (total, payment) => {
+      return total + payment.paidAmount;
+    },
+    0
+    );
+  
   switch (type) {
     case "tenants":
       data = {
@@ -82,27 +109,48 @@ const Widget = ({ type }) => {
     <div className="widget">
       <div className="left">
         <span className="title">{data.title}</span>
-        <span className="counter">
-          {data.isMoney && "$"} {amount}
-        </span>
+        {type === "tenants" && (
+          <span className="counter">
+            You Have {amount} Tenants
+          </span>
+        )}
         {type === "tenants" && (
           <Link to="/tenants" className="link">
             {data.link}
           </Link>
         )}
+        
+
+        {type === "maintenance_request" && (
+          <span className="counter">
+          {maintenanceRequests.length} Work Orders Open
+          </span>
+           )}
         {type === "maintenance_request" && (
           <Link to="/workorders" className="link">
             {data.link}
           </Link>
         )}
-        {type === "properties" && (
-          <Link to="/property" className="link">
+        {type === "earning" && (
+          <span className="counter">
+           ${totalEarnings}
+          </span>
+           )}
+        {type === "earning" && (
+          <Link to="/payments" className="link">
             {data.link}
           </Link>
         )}
-        {type !== "tenants" &&
-          type !== "maintenance_request" &&
-          type !== "properties" && <span className="link">{data.link}</span>}
+        {type === "properties" && (
+          <span className="counter">
+           You Own {properties.length} Properties
+          </span>
+           )}
+        {type === "properties" && (
+          <Link to="/properties" className="link">
+            {data.link}
+          </Link>
+        )}
       </div>
       <div className={`right ${diff < 0 ? "negative" : "positive"}`}>
         <div className="percentage">
@@ -115,3 +163,4 @@ const Widget = ({ type }) => {
   );
 };
 export default Widget;
+

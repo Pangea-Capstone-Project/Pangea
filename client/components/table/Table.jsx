@@ -45,7 +45,7 @@ const List = () => {
             <TableCell className="tableCell">Property Tax Yearly</TableCell>
             <TableCell className="tableCell">Insurance Yearly</TableCell>
             <TableCell className="tableCell">Vacancy Rate</TableCell>
-            <TableCell className="tableCell">Repairs Expense</TableCell>
+          
           </TableRow>
         </TableHead>
         <TableBody>
@@ -65,7 +65,6 @@ const List = () => {
               <TableCell className="tableCell">{property.propertyTax}</TableCell>
               <TableCell className="tableCell">{property.insuranceExpense}</TableCell>
               <TableCell className="tableCell">{property.vacancyRate}</TableCell>
-              <TableCell className="tableCell">{property.repairsExpense}</TableCell>
             </TableRow>
           ))}
         </TableBody>
