@@ -40,6 +40,18 @@ background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 4
   }
 `;
 
+const ProfileBox = styled.div`
+align-self: center;
+background-color: #fff;
+box-shadow: 0px 0px 10px #1E56A0;
+border-radius: 1rem;
+padding: 5rem;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+`
+
 const ProfileHeader = styled.h2`
   color: #1d3557;
 `;
@@ -80,6 +92,7 @@ const LandlordProfile = () => {
     <StyledLandlordProfile>
       <Sidebar />
       <ProfileSection>
+        <ProfileBox>
         <ProfileImage>
           <FaUserCircle />
         </ProfileImage>
@@ -114,6 +127,7 @@ const LandlordProfile = () => {
           </ProfileIcon>
           Unique Id: {userLandlord.idForTenantToAssociate}
         </ProfileItem>
+        </ProfileBox>
       </ProfileSection>
     </StyledLandlordProfile>
   );
