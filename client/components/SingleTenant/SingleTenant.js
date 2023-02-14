@@ -10,7 +10,7 @@ import LandlordNavbar from "../../features/navbar/LandlordNavbar";
 const SingleTenant = () => {
 
     const tenant = useSelector(state => {
-        return state.tenant
+        return state.landlordTenant
     })
     const dispatch = useDispatch()
     const { id } = useParams()

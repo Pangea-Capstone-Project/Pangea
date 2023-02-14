@@ -4,25 +4,22 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom';
 
-
-const Background = styled.div`
+const Div = styled.div`
 display: flex;
-align-items: center;
 flex-direction: column;
-background-color: white;
-margin-left: 17vw;
-width: 83vw;
+align-content: center;
+text-align: center;
 `
+
 const Title = styled.h1`
 color: #163172;
+padding: 5px;
 `
-
 const EmInfoBox = styled.div`
 border: 3px solid #1E56A0;
 color: #1E56A0;
 font-size: 1.4rem;
 font-weight: bold;
-border-radius: 20px;
 width: 45vw;
 height: auto;
 margin: 2rem 2rem 0 2rem;
@@ -31,7 +28,7 @@ display: flex;
 flex-direction: column;
 align-content: center;
 text-align: center;
-
+font-weight: bold;
 `
 const EmContact = styled.h3`
 color: #1E56A0;
@@ -43,11 +40,12 @@ const AllButtons = styled.button`
 background-color: #1E56A0;
 color: white;
 border: none;
-border-radius: 20px;
 width: 30vw;
 height: 5vh;
 font-size: 1.5rem;
 margin-bottom: 2rem;
+opacity: 75%;
+margin: auto;
 `
 
 
@@ -72,7 +70,7 @@ const MaintenanceReq = () => {
         navigate('/create-maintenance-request')
     }
     return (
-        <Background>
+        <Div>
             <Title>Maintenance Request</Title>
             <EmInfoBox>
                 Examples of emergency maintenance situations include: Burst Pipes, Gas Leaks,
@@ -90,12 +88,10 @@ const MaintenanceReq = () => {
             {makeEmergencyReq ? "Cancel" : "Emergency Request"}
                 
             </AllButtons>
-            <AllButtons onClick={handleNav}>
+            {/* <AllButtons onClick={handleNav}>
                 Initiate Request
-            </AllButtons>
-
-            
-        </Background>
+            </AllButtons> */}
+        </Div>
     )
 }
 

@@ -5,6 +5,8 @@ import { createMaintenanceRequest } from "./createMaintenanceRequestSlice";
 import { fetchUnitsAsync, selectUnits } from "../units/unitsSlice";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../tenant/tenantSidebar/Sidebar.jsx";
+import WO from '../../../public/photos/WO.jpeg'
+import MaintenanceReq from "../tenant/maintenanceReq/MaintenanceReq.jsx";
 
 
 const Container = styled.div`
@@ -12,6 +14,7 @@ display: flex;
 flex-direction: row;
 margin-left: 17vw;
 width: 83vw;
+
 `;
 
 const FormWrapper = styled.div`
@@ -19,7 +22,7 @@ background: rgb(246,246,246);
 background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 44%, rgba(30,86,160,1) 79%, rgba(22,49,114,1) 99%);
   flex: 6;
   width: 50rem;
-  height:55rem;
+  height:45rem;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   margin-top: 2rem;
   display: flex;
@@ -33,6 +36,10 @@ background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 4
     width: 0;
     background-color: transparent;
   }
+  background-image: url(${WO});
+background-size: 1500px;
+background-repeat: no-repeat;
+background-position: center;
 `;
 
 const Form = styled.form`
@@ -41,8 +48,8 @@ const Form = styled.form`
   align-items: center;
   background-color: #f6f6f6;
   padding: 20px;
-  border-radius: 10px;
-  width: 80%;
+  opacity: 95%;
+  width: 500px;
   margin: 20px auto;
   background-color: #f2f2f2;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
@@ -72,7 +79,6 @@ const Button = styled.button`
   font-size: 18px;
   background-color: #1e56a0;
   color: #fff;
-  border-radius: 5px;
   border: none;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
   cursor: pointer;
@@ -113,7 +119,7 @@ const CreateMaintenanceRequest = () => {
     <Container>
         <Sidebar />
       <FormWrapper>
-
+    <MaintenanceReq />
     <Form onSubmit={handleSubmit}>
       <Select name="unitId" value={requestData.unitId} onChange={handleChange}>
         <option value>Select Unit Number</option>
