@@ -10,6 +10,8 @@ display: flex;
 align-items: center;
 flex-direction: column;
 background-color: white;
+margin-left: 17vw;
+width: 83vw;
 `
 const Title = styled.h1`
 color: #163172;

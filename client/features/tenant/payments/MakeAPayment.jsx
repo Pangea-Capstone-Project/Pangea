@@ -15,6 +15,8 @@ const Background = styled.div`
   align-items: center;
   flex-direction: row;
   background-color: white;
+  margin-left: 17vw;
+width: 83vw;
 `;
 const Title1 = styled.h1`
   color: #163172;

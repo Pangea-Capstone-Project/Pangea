@@ -14,6 +14,8 @@ const Background = styled.div`
   align-items: center;
   flex-direction: row;
   background-color: white;
+  margin-left: 17vw;
+width: 83vw;
 `;
 const FormContainer = styled.div`
   display: flex;
@@ -62,7 +64,6 @@ const SubmitButton = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
-
   &:hover {
     background-color: blue;
     color: white;
@@ -91,6 +92,9 @@ const PaymentForm = () => {
   const [paymentDate, setPaymentDate] = useState(
     new Date().toISOString().slice(0, 10)
   );
+  const [creditCard, setCreditCard] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const thisUser = useSelector(selectMe);
   const thisTenant = useSelector(selectTenant);
@@ -104,13 +108,12 @@ const PaymentForm = () => {
     event.preventDefault();
     setLoading(true);
     try {
+      // Handle the credit card payment process here
+      // ...
+      // Once the payment process is successful, submit the payment to the backend
+      console.log(`helllooooo`)
       await dispatch(
-        submitPayment(
-          thisTenant.id,
-          paymentDate,
-          thisTenant.rentAmount,
-          thisTenant.name
-        )
+        submitPayment(thisTenant.id, paymentDate, thisTenant.rentAmount, thisTenant.name)
       );
     } catch (error) {
       setError(error.message);
@@ -119,12 +122,13 @@ const PaymentForm = () => {
     }
   };
 
+
   return (
     <Background>
       <Sidebar />
       <FormContainer>
        
-          <Form onSubmit={handleSubmit}>
+          <Form>
             <h1> Personal Information </h1>
             <FormGroup>
               <Label>Payment Date: {paymentDate}</Label>
@@ -144,7 +148,7 @@ const PaymentForm = () => {
           
         </Form>
   
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <h1>Payment Information</h1>
           <FormGroup>
             <Label htmlFor="cardholderName">Cardholder Name:</Label>
