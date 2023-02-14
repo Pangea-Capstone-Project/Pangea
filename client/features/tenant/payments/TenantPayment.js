@@ -112,7 +112,7 @@ const PaymentForm = () => {
       // Once the payment process is successful, submit the payment to the backend
       console.log(`helllooooo`)
       await dispatch(
-        submitPayment(thisTenant.id, paymentDate, thisTenant.rentAmount, thisTenant.name)
+        submitPayment(thisTenant.id, paymentDate, thisTenant.rentAmount, thisTenant.name, thisTenant.unitIdToAssociateTenant)
       );
     } catch (error) {
       setError(error.message);

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTenantsAsync, selectTenants, deleteTenantAsync } from "./allTenantsSlice";
 import { fetchUnitsAsync, selectUnits } from "../units/unitsSlice";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Sidebar from "../../components/sidebar/Sidebar.jsx";
 import {
   FaHome
@@ -35,6 +35,14 @@ const ProfileItem = styled.p`
   font-size: 1rem;
   margin: 10px;
 `;
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 const TenantWrapper = styled.div`
   width: 20%;
@@ -45,6 +53,11 @@ const TenantWrapper = styled.div`
   margin: 10px;
   background-color: #eee;
   box-shadow: 2px 2px 5px rgba(1, 2, 3, 0.2);
+  &:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+    
+  }
+  animation: ${fadeIn} 1s;
 `;
 
 const ProfileSection = styled.section`
@@ -69,7 +82,7 @@ const ProfileSection = styled.section`
 const Deletebtn = styled.span`
   &:hover {
     cursor: pointer;
-    color: white;
+    color: red;
   }
 `;
 

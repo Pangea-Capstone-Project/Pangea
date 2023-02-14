@@ -6,7 +6,7 @@ import {
   deleteMaintenanceRequestAsync
 } from "./allMaintenanceRequestSlice";
 import { Link, useParams } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Sidebar from "../../components/sidebar/Sidebar.jsx";
 import {FaHome} from "react-icons/fa";
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -39,6 +39,14 @@ const WorkOrderFont = styled.p`
   color: black;
 `;
 
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 const WorkOrder = styled.div`
   width: 20rem;
   height: 20rem;
@@ -54,6 +62,11 @@ const WorkOrder = styled.div`
   &.high-severity {
     background-color: #f92a2a;
   }
+  transition: box-shadow 0.2s ease-in-out;
+  &:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+  }
+  animation: ${fadeIn} 1s;
 `;
 
 const WorkOrdersSection = styled.section`
@@ -97,7 +110,7 @@ const MaintenanceRequest = () => {
   }, [dispatch]);
 
   const handleDelete = async (maintenanceRequestId) =>{
-    await dispatch(deleteMaintenanceRequestAsync(maintenanceRequestId));
+    dispatch(deleteMaintenanceRequestAsync(maintenanceRequestId));
     dispatch(fetchMaintenanceRequestsAsync());
   }
   // checking url for unit id and filter workorders by unit id

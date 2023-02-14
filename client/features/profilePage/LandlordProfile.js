@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchlandlordAsync, selectLandlord } from "./landlordProfileSlice";
 import { selectMe } from "../auth/authSlice";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import {
   FaUser,
   FaHome,
@@ -38,6 +38,19 @@ background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 4
     width: 0;
     background-color: transparent;
   }
+  
+`;
+
+const bounce = keyframes`
+  0% {
+    transform: translateY(-50px);
+  }
+  80% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 `;
 
 const ProfileBox = styled.div`
@@ -50,6 +63,10 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+&:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+animation: ${bounce} 1s;
 `
 
 const ProfileHeader = styled.h2`

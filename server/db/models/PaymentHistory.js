@@ -14,6 +14,9 @@ const PaymentHistory = db.define("paymentHistory", {
     paymentBy:{
       type: Sequelize.STRING,
     },
+    unitNumber:{
+      type:Sequelize.STRING,
+    },
     tenantId: {
       type: Sequelize.INTEGER,
       references: {

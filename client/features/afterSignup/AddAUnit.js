@@ -31,7 +31,9 @@ background-color: #fff;
 box-shadow: 0px 0px 10px #1E56A0;
 border-radius: 1rem;
 padding: 5rem;
-
+&:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
 `;
 const Input = styled.input`
 margin: 10px 0;
