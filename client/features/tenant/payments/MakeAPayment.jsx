@@ -16,14 +16,19 @@ const Background = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
-  background-color: white;
+  background-image: url(${pay});
+  background-size: 1500px;
+  background-repeat: no-repeat;
+  background-position: 25% 75%;
 `;
 const Title1 = styled.h1`
   color: #163172;
+  font-size: 30px;
 `;
 const Title = styled.h1`
   color: #163172;
   margin-bottom: 0-3rem;
+  font-size: 30px;
 `;
 
 const RentBox = styled.div`
@@ -51,10 +56,6 @@ const Section = styled.section`
     width: 0;
     background-color: transparent;
   }
-  background-image: url(${pay});
-  background-size: 1500px;
-  background-repeat: no-repeat;
-  background-position: 25% 75%;
 `;
 
 const MonthlyRentBox = styled.div`
@@ -64,6 +65,8 @@ const MonthlyRentBox = styled.div`
   align-items: center;
   width: 50%;
   border-right: 2px solid #1e56a0;
+  background-color: #f2f2f2;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 `;
 const DueRentBox = styled.div`
   display: flex;
@@ -71,6 +74,8 @@ const DueRentBox = styled.div`
   justify-content: center;
   align-items: center;
   width: 50%;
+  background-color: #f2f2f2;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 `;
 const MonthlyAmount = styled.div`
   display: flex;

@@ -4,6 +4,8 @@ const {
   db,
   models: { User, Landlord, Tenant, Property, MaintenanceRequest, Unit, Order },
 } = require("../server/db");
+const Payment = require("../server/db/models/Payment");
+const PaymentHistory = require("../server/db/models/PaymentHistory");
 
 
 console.log(`this is models`, User)
@@ -38,8 +40,8 @@ async function seed() {
   
   
   const newProperties = await Promise.all([
-    Property.create({ propertyName:"North Haven", address:"North Town", numberOfUnits:"5", LandlordId:newLandlord[0].id,}),
-  Property.create({ propertyName:"West Haven", address:"West Town", numberOfUnits:"5", LandlordId:newLandlord[1].id,}),
+    Property.create({ propertyName:"North Haven", address:"5064 N Kimball Ave #4 Chicago, IL 60625", numberOfUnits:"5", LandlordId:newLandlord[0].id,}),
+    Property.create({ propertyName:"West Haven", address:"5064 N Kimball Ave #4 Chicago, IL 60625", numberOfUnits:"5", LandlordId:newLandlord[1].id,}),
 ])
 
 
@@ -49,10 +51,20 @@ const units = await Promise.all([
   Unit.create({unitNumber:"3",isOccupied:false, bedrooms:"300"}),
 ])
 
-const maintenaceRequests = await Promise.all([
+const maintenanceRequests = await Promise.all([
   MaintenanceRequest.create({type:"Roofing", severity:"High",description:"Roof is missing somebody took my roof!!!"}),
   MaintenanceRequest.create({type:"Roofing", severity:"Medium",description:"Roof has a hole an asteroid fell"}),
   MaintenanceRequest.create({type:"Roofing", severity:"Low",description:"I have no Roof"}),
+])
+const payments = await Promise.all([
+  Payment.create({tenantId:newTenant[0].id,paidAmount:500, paymentDate:Date.now(),paymentBy:newTenant[0].name}),
+  Payment.create({tenantId:newTenant[1].id,paidAmount:600, paymentDate:Date.now(),paymentBy:newTenant[1].name}),
+  Payment.create({tenantId:newTenant[2].id,paidAmount:700, paymentDate:Date.now(),paymentBy:newTenant[2].name}),
+])
+const paymentHistories = await Promise.all([
+  PaymentHistory.create({paidAmount:500, paymentDate:Date.now(), paymentBy:newTenant[0].name, tenantId:newTenant[0].id, paymentId:payments[0].id, unitNumber:0}),
+  PaymentHistory.create({paidAmount:600, paymentDate:Date.now(), paymentBy:newTenant[1].name, tenantId:newTenant[1].id, paymentId:payments[1].id, unitNumber:1}),
+  PaymentHistory.create({paidAmount:700, paymentDate:Date.now(), paymentBy:newTenant[2].name, tenantId:newTenant[2].id, paymentId:payments[2].id, unitNumber:2}),
 ])
 }
 

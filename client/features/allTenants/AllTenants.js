@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTenantsAsync, selectTenants, deleteTenantAsync } from "./allTenantsSlice";
 import { fetchUnitsAsync, selectUnits } from "../units/unitsSlice";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Sidebar from "../../components/sidebar/Sidebar.jsx";
 import {
   FaHome
@@ -11,10 +11,14 @@ import { Link } from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const StyledLandlordProfile = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-left: 17vw;
-  width: 83vw;
+display:flex;
+height: 98vh;
+margin-left: 17vw;
+width: 83vw;
+justify-content: center;
+flex-direction: row
+background: rgb(246,246,246);
+background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 44%, rgba(30,86,160,1) 79%, rgba(22,49,114,1) 99%);
 `;
 
 const ProfileImage = styled.div`
@@ -31,6 +35,14 @@ const ProfileItem = styled.p`
   font-size: 1rem;
   margin: 10px;
 `;
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 const TenantWrapper = styled.div`
   width: 20%;
@@ -41,6 +53,11 @@ const TenantWrapper = styled.div`
   margin: 10px;
   background-color: #eee;
   box-shadow: 2px 2px 5px rgba(1, 2, 3, 0.2);
+  &:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+    
+  }
+  animation: ${fadeIn} 1s;
 `;
 
 const ProfileSection = styled.section`
@@ -65,7 +82,7 @@ const ProfileSection = styled.section`
 const Deletebtn = styled.span`
   &:hover {
     cursor: pointer;
-    color: white;
+    color: red;
   }
 `;
 

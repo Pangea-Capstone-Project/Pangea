@@ -10,6 +10,8 @@ import acc from '../../../public/photos/acc.jpeg'
 const Container = styled.div`
 display: flex;
 flex-direction: row;
+margin-left: 17vw;
+width: 83vw;
 `;
 
 const FormWrapper = styled.div`
@@ -31,10 +33,11 @@ background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 4
     width: 0;
     background-color: transparent;
   }
-  background-image: url(${acc});
-  background-size: 1500px;
-  background-repeat: no-repeat;
-  background-position: 25% 75%;
+  
+background-image: url(${acc});
+background-size: 1500px;
+background-repeat: no-repeat;
+background-position: 25% 75%;
 `;
 const StyledForm = styled.form`
   display: flex;

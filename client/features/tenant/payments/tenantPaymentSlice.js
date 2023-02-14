@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 export const submitPayment =
-  (tenantId, paymentDate, paidAmount, paymentBy) => async (dispatch) => {
+  (tenantId, paymentDate, paidAmount, paymentBy, unitNumber) => async (dispatch) => {
     dispatch(submitPaymentStart());
     try {
       const response = await axios.post("/api/payment", {
@@ -11,6 +11,7 @@ export const submitPayment =
         paymentDate,
         paidAmount,
         paymentBy,
+        unitNumber,
       });
       dispatch(submitPaymentSuccess(response.data));
     } catch (error) {

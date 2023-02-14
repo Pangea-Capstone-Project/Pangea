@@ -12,6 +12,9 @@ import MaintenanceReq from "../tenant/maintenanceReq/MaintenanceReq.jsx";
 const Container = styled.div`
 display: flex;
 flex-direction: row;
+margin-left: 17vw;
+width: 83vw;
+
 `;
 
 const FormWrapper = styled.div`
@@ -34,9 +37,9 @@ background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 4
     background-color: transparent;
   }
   background-image: url(${WO});
-  background-size: 1500px;
-  background-repeat: no-repeat;
-  background-position: center;
+background-size: 1500px;
+background-repeat: no-repeat;
+background-position: center;
 `;
 
 const Form = styled.form`
