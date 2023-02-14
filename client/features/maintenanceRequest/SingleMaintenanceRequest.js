@@ -10,25 +10,23 @@ import Sidebar from "../../components/sidebar/Sidebar.jsx";
 
 
 const WorkOrdersContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-left: 17vw;
-  width: 83vw;
+display:flex;
+height: 98vh;
+margin-left: 17vw;
+width: 83vw;
+justify-content: center;
+align-items: center;
+flex-direction: row
+background: rgb(246,246,246);
+background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 44%, rgba(30,86,160,1) 79%, rgba(22,49,114,1) 99%);
 `;
 
 const WorkOrderItems = styled.div`
-background: linear-gradient(
-  90deg,
-  rgba(246, 246, 246, 1) 0%,
-  rgba(214, 228, 240, 1) 44%,
-  rgba(30, 86, 160, 1) 79%,
-  rgba(22, 49, 114, 1) 99%
-);
-background-color: #fff;
+
 flex: 7;
 width: 50%;
 padding: 20px;
-box-shadow: 4px 4px 20px rgba(1, 2, 3, 0.2);
+
 
 margin-top: 30px;
 display: flex;

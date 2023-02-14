@@ -106,7 +106,6 @@ const PaymentForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setLoading(true);
     try {
       // Handle the credit card payment process here
       // ...
@@ -117,8 +116,6 @@ const PaymentForm = () => {
       );
     } catch (error) {
       setError(error.message);
-    } finally {
-      setLoading(false);
     }
   };
 
