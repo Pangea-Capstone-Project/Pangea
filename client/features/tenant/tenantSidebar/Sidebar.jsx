@@ -75,7 +75,7 @@ const Sidebar = () => {
           </Link>
         </ul>
       </div>
-      <div className="bottom">
+      {/* <div className="bottom">
         <div
           className="colorOption"
           onClick={() => dispatch({ type: "LIGHT" })}
@@ -84,7 +84,7 @@ const Sidebar = () => {
           className="colorOption"
           onClick={() => dispatch({ type: "DARK" })}
           ></div>
-      </div>
+      </div> */}
     </div>
   );
 };

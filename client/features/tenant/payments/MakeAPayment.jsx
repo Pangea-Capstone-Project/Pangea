@@ -10,6 +10,8 @@ import { useParams } from "react-router-dom";
 import { selectMe } from "../../auth/authSlice";
 import Sidebar from "../tenantSidebar/Sidebar.jsx";
 import { useNavigate } from "react-router-dom";
+import pay from '../../../../public/photos/pay2.jpeg'
+
 const Background = styled.div`
   display: flex;
   align-items: center;
@@ -18,7 +20,6 @@ const Background = styled.div`
 `;
 const Title1 = styled.h1`
   color: #163172;
-  margin-bottom: 20rem;
 `;
 const Title = styled.h1`
   color: #163172;
@@ -28,7 +29,6 @@ const Title = styled.h1`
 const RentBox = styled.div`
   border: 3px solid #1e56a0;
   color: #1e56a0;
-  border-radius: 20px;
   width: 45vw;
   height: 15vh;
   margin: 2rem;
@@ -38,8 +38,7 @@ const RentBox = styled.div`
 const Section = styled.section`
   flex: 6;
   width: 50rem;
-  height: 100%;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  height: 45rem;
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
@@ -52,6 +51,10 @@ const Section = styled.section`
     width: 0;
     background-color: transparent;
   }
+  background-image: url(${pay});
+  background-size: 1500px;
+  background-repeat: no-repeat;
+  background-position: 25% 75%;
 `;
 
 const MonthlyRentBox = styled.div`
@@ -84,10 +87,10 @@ const Button = styled.button`
   padding: 10px 20px;
   font-size: 18px;
   background-color: #1e56a0;
+  opacity: 75%;
   color: #fff;
-  border-radius: 20px;
   border: none;
-  width: 30vw;
+  width: 20vw;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   &:hover {

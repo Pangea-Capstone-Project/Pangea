@@ -10,11 +10,16 @@ import {
   selectTenant,
 } from "../../allTenants/singleTenantSlice";
 import Sidebar from "../tenantSidebar/Sidebar.jsx";
+import lobby from '../../../../public/photos/lobby.jpeg'
+
 const Background = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
-  background-color: white;
+  background-image: url(${lobby});
+  background-size: 1500px;
+  background-repeat: no-repeat;
+  background-position: center;
 `;
 const Title = styled.h1`
   color: #163172;
@@ -24,7 +29,6 @@ const Title = styled.h1`
 const RentBox = styled.div`
   border: 3px solid #1e56a0;
   color: #1e56a0;
-  border-radius: 20px;
   width: 45vw;
   height: 15vh;
   margin: 2rem;
@@ -32,8 +36,7 @@ const RentBox = styled.div`
 `;
 const Section = styled.section`
   flex: 6;
-  width: 50rem;
-  height: 100%;
+  height: 45em;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   margin-top: 2rem;
   display: flex;
@@ -77,9 +80,9 @@ const DueAmount = styled.div`
 const AllButtons = styled.button`
   background-color: #1e56a0;
   color: white;
+  opacity: 75%;
   border: none;
-  border-radius: 20px;
-  width: 30vw;
+  width: 25vw;
   height: 5vh;
   font-size: 1.5rem;
   margin-bottom: 2rem;
@@ -153,16 +156,16 @@ const TenantHome = () => {
             </DueAmount>
           </DueRentBox>
         </RentBox>
-        <Link to={"/makeapayment"}>
+        {/* <Link to={"/makeapayment"}>
           <AllButtons>Make A Payment</AllButtons>
-        </Link>
+        </Link> */}
         <Link to={"/pastpayments"}>
           <AllButtons>Past Payments</AllButtons>
         </Link>
-        <Link to={"/maintenancereq"}>
+        {/* <Link to={"/maintenancereq"}>
           <AllButtons>Submit Maintenance Request</AllButtons>
-        </Link>
-        <AllButtons onClick={logoutAndRedirectHome}>Log Out</AllButtons>
+        </Link> */}
+        {/* <AllButtons onClick={logoutAndRedirectHome}>Log Out</AllButtons> */}
 
         {/* <h2 onClick={increaseRentClicked}>Increase Rent Test</h2>
             <h2 onClick={increaseRentDueClicked}>Increase Rent Due Test</h2> */}
