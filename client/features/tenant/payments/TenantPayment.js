@@ -10,26 +10,34 @@ import styled from "styled-components";
 import Sidebar from "../tenantSidebar/Sidebar.jsx";
 
 const Background = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  background-color: white;
-  margin-left: 17vw;
+display: flex;
+flex-direction: row;
+background: linear-gradient(
+  rgba(255, 255, 255, 0),
+  rgba(200, 200, 200, 0.5)
+), url("ba4a69c82567318b2769.jpeg");
 width: 83vw;
+height:98vh;
+margin-left: 15vw;
+background-size: cover;
+background-position: center;
+justify-content: center;
+
 `;
 const FormContainer = styled.div`
   display: flex;
-  flex: 7;
   flex-direction: row;
-  justify-content: space-between;
+  align-items: center;
+
 `;
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 5rem;
-  background-color: #eee;
+  margin: 0.5vw;
+  background-color: #fff;
+  opacity: 85%;
   padding-bottom: 5rem;
   height:30rem;
 `;

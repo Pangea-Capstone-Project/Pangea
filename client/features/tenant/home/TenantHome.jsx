@@ -11,14 +11,19 @@ import {
 } from "../../allTenants/singleTenantSlice";
 import Sidebar from "../tenantSidebar/Sidebar.jsx";
 import lobby from '../../../../public/photos/lobby.jpeg'
+import tenhome from "/public/81737cd51c11eaf4d303.jpeg"
 
 const Background = styled.div`
   display: flex;
-  align-items: center;
   flex-direction: row;
-  background-image: url(${lobby});
-  background-size: 1500px;
-  background-repeat: no-repeat;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0),
+    rgba(200, 200, 200, 0.5)
+  ), url(${tenhome});
+  width: 83vw;
+  height:98vh;
+  margin-left: 15vw;
+  background-size: cover;
   background-position: center;
 `;
 const Title = styled.h1`
@@ -34,12 +39,10 @@ const RentBox = styled.div`
   margin: 2rem;
   display: flex;
   background-color: #f2f2f2;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 `;
 const Section = styled.section`
   flex: 6;
   height: 45em;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
@@ -158,19 +161,11 @@ const TenantHome = () => {
             </DueAmount>
           </DueRentBox>
         </RentBox>
-        {/* <Link to={"/makeapayment"}>
-          <AllButtons>Make A Payment</AllButtons>
-        </Link> */}
-        <Link to={"/pastpayments"}>
+    
+        {/* <Link to={"/pastpayments"}>
           <AllButtons>Past Payments</AllButtons>
-        </Link>
-        {/* <Link to={"/maintenancereq"}>
-          <AllButtons>Submit Maintenance Request</AllButtons>
         </Link> */}
-        {/* <AllButtons onClick={logoutAndRedirectHome}>Log Out</AllButtons> */}
-
-        {/* <h2 onClick={increaseRentClicked}>Increase Rent Test</h2>
-            <h2 onClick={increaseRentDueClicked}>Increase Rent Due Test</h2> */}
+        
       </Section>
     </Background>
   );

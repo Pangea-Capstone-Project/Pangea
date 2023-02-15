@@ -9,6 +9,12 @@ display: flex;
 flex-direction: column;
 align-content: center;
 text-align: center;
+box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+background-color: white;
+padding: 20px;
+
+opacity: 90%;
+
 `
 
 const Title = styled.h1`
@@ -44,7 +50,6 @@ width: 30vw;
 height: 5vh;
 font-size: 1.5rem;
 margin-bottom: 2rem;
-opacity: 75%;
 margin: auto;
 `
 

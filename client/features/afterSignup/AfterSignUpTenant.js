@@ -16,12 +16,10 @@ width: 83vw;
 
 const FormWrapper = styled.div`
 background: rgb(246,246,246);
-background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 44%, rgba(30,86,160,1) 79%, rgba(22,49,114,1) 99%);
   flex: 6;
-  width: 50rem;
-  height:45rem;
+  width: 83vw;
+  height:98vh;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,9 +32,11 @@ background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 4
     background-color: transparent;
   }
   
-background-image: url(${acc});
-background-size: 1500px;
-background-repeat: no-repeat;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.1),
+    rgba(200, 200, 200, 0.8)
+  ), url(${acc});
+  background-repeat: no-repeat;
 background-position: 25% 75%;
 `;
 const StyledForm = styled.form`
