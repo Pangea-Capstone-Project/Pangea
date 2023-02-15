@@ -161,19 +161,11 @@ const TenantHome = () => {
             </DueAmount>
           </DueRentBox>
         </RentBox>
-        {/* <Link to={"/makeapayment"}>
-          <AllButtons>Make A Payment</AllButtons>
-        </Link> */}
-        <Link to={"/pastpayments"}>
+    
+        {/* <Link to={"/pastpayments"}>
           <AllButtons>Past Payments</AllButtons>
-        </Link>
-        {/* <Link to={"/maintenancereq"}>
-          <AllButtons>Submit Maintenance Request</AllButtons>
         </Link> */}
-        {/* <AllButtons onClick={logoutAndRedirectHome}>Log Out</AllButtons> */}
-
-        {/* <h2 onClick={increaseRentClicked}>Increase Rent Test</h2>
-            <h2 onClick={increaseRentDueClicked}>Increase Rent Due Test</h2> */}
+        
       </Section>
     </Background>
   );
