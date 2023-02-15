@@ -1,5 +1,5 @@
-Pangea
- is a web application for connecting Tenants and Landlords. The application is built using React, Redux, Axios, Node Express.js, PSQL and Sequelize.
+<h1 align="center">PANGEA</h1>
+Pangea is a web application for connecting Tenants and Landlords. The application is built using React, Redux, Axios, Node Express.js, PSQL and Sequelize.
 
 Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
