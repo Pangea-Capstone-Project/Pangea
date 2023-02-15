@@ -1,6 +1,6 @@
+![image](https://user-images.githubusercontent.com/113549706/219100764-0ff0f951-53a6-43a7-a7e7-f32cec056e38.png)
 <h1 align="center">PANGEA</h1>
 Pangea is a web application for connecting Tenants and Landlords. The application is built using React, Redux, Axios, Node Express.js, PSQL and Sequelize.
-
 Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
