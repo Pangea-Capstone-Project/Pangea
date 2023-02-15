@@ -15,11 +15,16 @@ import pay from '../../../../public/photos/pay2.jpeg'
 const Background = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: row;
   background-image: url(${pay});
   background-size: 1500px;
   background-repeat: no-repeat;
   background-position: 25% 75%;
+  width: 83vw;
+  height: 98vh;
+margin-left: 17vw;
+
 `;
 const Title1 = styled.h1`
   color: #163172;
@@ -36,21 +41,21 @@ const RentBox = styled.div`
   color: #1e56a0;
   width: 45vw;
   height: 15vh;
-  margin: 2rem;
   display: flex;
 `;
 
 const Section = styled.section`
-  flex: 6;
-  width: 50rem;
-  height: 45rem;
-  margin-top: 2rem;
+  width: 30vw;
+  height: 45vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   scrollbar-width: none;
+  background-color: white;
+  opacity: 90%;
+  padding: 0 10vw;
   -ms-overflow-style: none;
   &::-webkit-scrollbar {
     width: 0;

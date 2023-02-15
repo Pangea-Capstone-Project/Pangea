@@ -5,7 +5,7 @@ import { createMaintenanceRequest } from "./createMaintenanceRequestSlice";
 import { fetchUnitsAsync, selectUnits } from "../units/unitsSlice";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../tenant/tenantSidebar/Sidebar.jsx";
-import WO from '../../../public/photos/WO.jpeg'
+import WO from "/public/38de0ff84859226f689e.jpeg"
 import MaintenanceReq from "../tenant/maintenanceReq/MaintenanceReq.jsx";
 
 
@@ -13,18 +13,14 @@ const Container = styled.div`
 display: flex;
 flex-direction: row;
 margin-left: 17vw;
-width: 83vw;
 
 `;
 
 const FormWrapper = styled.div`
-background: rgb(246,246,246);
-background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 44%, rgba(30,86,160,1) 79%, rgba(22,49,114,1) 99%);
-  flex: 6;
-  width: 50rem;
-  height:45rem;
+ flex: 6;
+ width: 83vw;
+ height: 98vh;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,8 +32,11 @@ background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 4
     width: 0;
     background-color: transparent;
   }
-  background-image: url(${WO});
-background-size: 1500px;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0),
+    rgba(200, 200, 200, 0.5)
+  ), url(${WO});
+background-size: cover;
 background-repeat: no-repeat;
 background-position: center;
 `;

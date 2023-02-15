@@ -13,24 +13,20 @@ import {
 
 import Sidebar from "../../components/sidebar/Sidebar.jsx";
 const StyledLandlordProfile = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-left: 17vw;
-  width: 83vw;
+  // display: flex;
+  // flex-direction: row;
+  // margin-left: 17vw;
+  // width: 83vw;
 `;
 
 const ProfileSection = styled.section`
 background: rgb(246,246,246);
 background: linear-gradient(90deg, rgba(246,246,246,1) 0%, rgba(214,228,240,1) 44%, rgba(30,86,160,1) 79%, rgba(22,49,114,1) 99%);
-  flex: 6;
-  width: 50rem;
-  height:55rem;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+display:flex;
+height: 98vh;
+margin-left: 17vw;
+width: 83vw;
+justify-content: center;
   overflow: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none;

@@ -145,7 +145,7 @@ gap: 2rem;
 margin: 2rem;
 `
 const CarouselPhoto = styled.img`
-height: 70vh;
+max-width: 40vw;
 width: auto;
 border-radius: 20px;
 `
@@ -231,10 +231,23 @@ const Home = () => {
 
             <CarouselBox>
                 <StyledCarousel breakPoints={breakPoints} enableAutoPlay disableArrowsOnEnd={false} autoPlaySpeed={5000}>
-                    <Item><CarouselPhoto src="photos/pic1.jpg"></CarouselPhoto></Item>
-                    <Item><CarouselPhoto src="photos/pic2.jpg"></CarouselPhoto></Item>
-                    <Item><CarouselPhoto src="photos/pic3.jpg"></CarouselPhoto></Item>
-                    <Item><CarouselPhoto src="photos/pic4.jpg"></CarouselPhoto></Item>
+                    <Item><CarouselPhoto src="screenshots/1.jpeg"></CarouselPhoto></Item>
+                    <Item><CarouselPhoto src="screenshots/2.jpeg"></CarouselPhoto></Item>
+                    <Item><CarouselPhoto src="screenshots/3.jpeg"></CarouselPhoto></Item>
+                    <Item><CarouselPhoto src="screenshots/4.jpeg"></CarouselPhoto></Item>
+                    <Item><CarouselPhoto src="screenshots/5.jpeg"></CarouselPhoto></Item>
+                    <Item><CarouselPhoto src="screenshots/6.jpeg"></CarouselPhoto></Item>
+                    <Item><CarouselPhoto src="screenshots/7.jpeg"></CarouselPhoto></Item>
+                    <Item><CarouselPhoto src="screenshots/8.jpeg"></CarouselPhoto></Item>
+                    <Item><CarouselPhoto src="screenshots/9.jpeg"></CarouselPhoto></Item>
+                    <Item><CarouselPhoto src="screenshots/10.jpeg"></CarouselPhoto></Item>
+                    <Item><CarouselPhoto src="screenshots/11.jpeg"></CarouselPhoto></Item>
+                    <Item><CarouselPhoto src="screenshots/12.jpeg"></CarouselPhoto></Item>
+                    <Item><CarouselPhoto src="screenshots/13.jpeg"></CarouselPhoto></Item>
+                    <Item><CarouselPhoto src="screenshots/14.jpeg"></CarouselPhoto></Item>
+                    <Item><CarouselPhoto src="screenshots/15.jpeg"></CarouselPhoto></Item>
+                    <Item><CarouselPhoto src="screenshots/16.jpeg"></CarouselPhoto></Item>
+                    <Item><CarouselPhoto src="screenshots/17.jpeg"></CarouselPhoto></Item>
                 </StyledCarousel>
                 <DescriptionBlock>
                     <DescriptionTitle>三 Powerful Tools 三 </DescriptionTitle>
@@ -265,7 +278,6 @@ const Home = () => {
                     <Item><CarouselPhoto src="photos/landlord1.jpg"></CarouselPhoto></Item>
                     <Item><CarouselPhoto src="photos/landlord2.jpg"></CarouselPhoto></Item>
                     <Item><CarouselPhoto src="photos/landlord3.jpg"></CarouselPhoto></Item>
-                    <Item><CarouselPhoto src="photos/landlord4.jpg"></CarouselPhoto></Item>
                     <Item><CarouselPhoto src="photos/landlord5.jpg"></CarouselPhoto></Item>
 
                 </StyledCarousel>
