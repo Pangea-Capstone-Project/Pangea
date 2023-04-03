@@ -1,65 +1,53 @@
-![image](https://user-images.githubusercontent.com/113549706/219101146-d6aa7cd8-b375-43cd-94f8-39dfb53cf86d.png)
-<h1 align="center">PANGEA</h1>
-Pangea is a web application for connecting Tenants and Landlords. The application is built using React, Redux, Axios, Node Express.js, PSQL and Sequelize.
-Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+# On The Go
 
-Prerequisites
-Before you get started, you'll need to have the following tools installed on your computer:
+On The Go is a modern flight ticket booking website that allows users to search for flights, book them, and pay securely using Stripe. The website is built using **React**, **Redux**, **Javascript**, **Tailwind CSS**, **Vite**, and integrates with the **SkyScanner API** and the **worldDirectory API** from RapidAPI.
 
-Node.js
-PSQL
-Sequelize
+## Features
 
-Installing
-To get started, follow these steps:
+- Search for roundtrip or one-way flights
+- View available flights and prices
+- Book flights securely using Stripe
+- View price summary and trip details before booking
+- Responsive design for mobile and desktop devices
+- Integration with SkyScanner API and worldDirectory API
 
-1: Clone the repository:
+## Technologies Used
 
-$ git clone git@github.com:Pangea-Capstone-Project/Pangea.git
+- React
+- Redux
+- Javascript
+- Tailwind CSS
+- Vite
+- Stripe
+- SkyScanner API
+- worldDirectory API from RapidAPI
+- Node.js
 
-2: Navigate to the directory:
+## Getting Started
 
-$ cd Pangea
+1. Clone the repository: `git clone https://github.com/your-username/on-the-go.git`
+2. Install dependencies: `npm install`
+3. Create a `.env` file and add your Stripe API key: `REACT_APP_STRIPE_API_KEY=your-api-key`
+4. Run the application: `npm start`
+5. Open http://localhost:3000 to view it in the browser.
 
-3: Install the dependencies: 
+## Usage
 
-$ npm install
+1. Search for flights by entering your departure and arrival locations, travel dates, and number of passengers.
+2. View available flights and prices.
+3. Select a flight and review the price summary and trip details.
+4. Enter your payment information and click the "Book" button to complete your booking.
 
-4: Create your database for this project
+## Contributing
 
-$ createdb pangea
+If you would like to contribute to this project, please submit a pull request.
 
-5: Start the development server:
+## License
 
-$ npm run start:dev
+This project is licensed under the MIT License. See the LICENSE file for more information.
 
-Built With
+## Acknowledgements
 
-React - JavaScript library for building user interfaces
-Redux - JavaScript library for managing application state
-Axios - HTTP client for making API requests
-Node Express.js - Web framework for Node.js
-PSQL - Object-relational database management system
-Sequelize - Promise-based ORM for Node.js
-
-
-Contributing
-
-If you would like to contribute to the project, please follow these steps:
-
-Fork the repository
-Create a new branch for your changes (git checkout -b my-feature)
-Commit your changes (git commit -am 'Add some feature')
-Push the branch (git push origin my-feature)
-Create a new Pull Request
-
-This Project is made possible by a contributing effort of 
-  Margie Guzman || https://github.com/Margie00
-  Christian Shin || https://github.com/ch839
-  Joseph Mealor || https://github.com/jmealor
-  Mathis Stone || https://github.com/Mstone95
-  Kyle Colangelo || https://github.com/kyle123c
-  Zimmer Kennedy || https://github.com/ZimmerKennedy
-
-
+- SkyScanner API
+- worldDirectory API from RapidAPI
+- Stripe
